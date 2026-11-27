@@ -6,7 +6,8 @@
 | Category | DFIR |
 | Author | odytr |
 | Difficulty | Medium |
-| Status | to solve |
+| Status | ✅ solved |
+| Flag | `RxR{+05:00_156688_0x54_Sora}` |
 
 - `sujet/` — statement
 - `fichiers/` — original files (untouched)

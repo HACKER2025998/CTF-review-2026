@@ -6,7 +6,8 @@
 | Category | Crypto |
 | Author | FBI_Soldier |
 | Difficulty | Easy |
-| Status | solved during the event (flag / write-up to add) |
+| Status | ✅ solved |
+| Flag | `RxR{call_me_maybe}` |
 
 - `sujet/` — statement
 - `fichiers/` — original files (untouched)

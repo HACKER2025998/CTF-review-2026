@@ -6,7 +6,8 @@
 | Category | DFIR |
 | Author | odytr |
 | Difficulty | Easy |
-| Status | solved during the event (flag / write-up to add) |
+| Status | ✅ solved |
+| Flag | `RxR{admin_198.51.100.7_robben_10}` |
 
 - `sujet/` — statement
 - `fichiers/` — original files (untouched)

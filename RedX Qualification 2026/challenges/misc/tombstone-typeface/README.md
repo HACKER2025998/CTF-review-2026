@@ -6,7 +6,8 @@
 | Category | Misc |
 | Author | FBI_Soldier |
 | Difficulty | Hard |
-| Status | solved during the event (flag / write-up to add) |
+| Status | ✅ solved |
+| Flag | `RxR{gsub_st4t3_m4ch1n3_3p1t4ph}` |
 
 - `sujet/` — statement
 - `fichiers/` — original files (untouched)

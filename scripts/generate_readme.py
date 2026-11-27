@@ -21,7 +21,7 @@ CTFS = [  # (folder, title, description)
     ('ECOWASCTF 2026', 'ECOWAS CTF 2026', 'Regional ECOWAS CTF (flag format `EcowasCTF{...}`), West-African themed challenges.'),
     ('RedX Qualification 2026', 'RedX (RedReaper) Qualification 2026',
      'Online qualification round of the RedX / RedReaper CTF (27 November 2026, CTFd, flag format `RxR{...}`). '
-     'All **57 challenges** archived with statement, author, difficulty and original files.'),
+     'All **59 challenges** archived with statement, author, difficulty and original files.'),
     ('HackDCTF 2026', 'HackDCTF 2026', 'Challenges from HackDCTF (flag format `HackDCTF{...}` / `HackCTF{...}`).'),
     ('Other platforms/Cyberini', 'Cyberini', 'Training challenges and write-ups from the Cyberini platform.'),
     ('Other platforms/TryHackMe', 'TryHackMe', 'TryHackMe rooms with a write-up.'),
@@ -176,6 +176,7 @@ o += ['## 🤝 Contributing', '',
       'All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, the RedX / RedReaper team, '
       'HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events '
       'ended. The `*.t.ctf.tg` addresses found in write-ups were temporary instances and have expired. '
+      'Public NCTF26 write-ups (`writeup_alwil17.md`) are © 2026 [alwil17](https://github.com/Alwil17), MIT License. '
       'If you are an author or organiser and want a challenge removed, please open an issue.', '']
 
 (ROOT / 'README.md').write_text('\n'.join(o) + '\n')

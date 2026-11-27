@@ -6,7 +6,8 @@
 | Category | AI Hacking |
 | Author | unknown |
 | Difficulty | — |
-| Status | solved during the event (flag / write-up to add) |
+| Status | ✅ solved |
+| Flag | `RxR{m3t4d4t4_n3v3r_l13s}` |
 
 - `sujet/` — statement
 - `fichiers/` — original files (untouched)
