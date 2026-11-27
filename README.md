@@ -1,92 +1,107 @@
-# 🏴 CTF Review 2026 — archive de challenges
+# 🏴 CTF Review 2026 — Challenge Archive
 
-Archive de révision des CTF joués en 2026 : **NCTF26** (CTF national du Togo, organisé par le CERT.tg — finale à Lomé, 19–20 novembre 2026) et **ECOWAS CTF 2026**. Chaque épreuve est rangée avec son sujet, ses fichiers d’origine, son auteur et, quand il existe, son write-up et ses scripts de résolution.
+A structured archive of the CTF challenges played in **2026**: every challenge has its own folder with the statement, the original files, the author and — when available — a write-up and solve scripts. Write-ups are being added progressively.
 
-> Équipe **1HUNTERS** — archive tenue par **xhackerip**. Les write-ups sont rédigés progressivement.
+> Team **1HUNTERS** — maintained by **xhackerip**.
 
-## 📊 En chiffres
+## 📊 At a glance
 
-| | |
+| Event / platform | Challenges |
 |---|---|
-| Épreuves NCTF26 (liste officielle) | **525** |
-| Catégories | **25** |
-| Auteurs identifiés | **15** |
-| ✅ Résolues (flag retrouvé) | 56 |
-| 📝 Write-up / scripts en cours | 21 |
-| 📁 Fichiers présents, à résoudre | 21 |
-| ⏳ Sujet à retrouver | 427 |
-| Épreuves ECOWAS CTF 2026 / non identifiées | 59 |
+| [NCTF26 — Togo National CTF 2026](#nctf26--togo-national-ctf-2026) | 525 |
+| [ECOWAS CTF 2026](#ecowas-ctf-2026) | 25 |
+| [HackDCTF 2026](#hackdctf-2026) | 3 |
+| [Cyberini](#cyberini) | 4 |
+| [TryHackMe](#tryhackme) | 1 |
+| [BDSec](#bdsec) | 1 |
+| [Root-Me](#root-me) | 13 |
+| [Unsorted 2026](#unsorted-2026) | 35 |
+| **Total** | **607** |
 
-## 🗂️ Organisation du dépôt
+Status: ✅ solved (flag recovered) **56** · 📝 write-up / scripts in progress **25** · 📁 files available, not solved yet **99** · ⏳ statement still to retrieve **427**
+
+## 🗂️ Repository layout
 
 ```
-CTF2026 review/
+CTF-review-2026/
 ├── README.md
+├── scripts/generate_readme.py      regenerates this README
 ├── NCTF26/
-│   ├── INDEX.md              index détaillé des 525 épreuves (statut, flags)
-│   ├── scoreboard.md         suivi des flags pendant la compétition
-│   ├── challenges/
-│   │   └── <catégorie>/
-│   │       └── <épreuve>/
-│   │           ├── README.md     catégorie, auteur, statut, provenance
-│   │           ├── sujet/        enonce.md — énoncé de l’épreuve
-│   │           ├── fichiers/     fichiers fournis (intacts)
-│   │           └── solve/        writeup.md + scripts de résolution
-│   ├── kingofthehill/       boîte à outils KOTH (6 variantes) + write-ups
-│   ├── tools/                utilitaires (connexion, triage, battlekit)
-│   └── templates/            gabarits notes.md / solve.py / exploit.py
-└── ECOWASCTF 2026/           épreuves hors liste NCTF26 (même structure, voir A_CLASSER.md)
+│   ├── INDEX.md                    detailed index (status + flags, French)
+│   ├── scoreboard.md               flag tracking during the event
+│   ├── challenges/<category>/<challenge>/
+│   ├── _unidentified/              NCTF26 material not yet matched to an official challenge
+│   ├── kingofthehill/              King of the Hill toolkit + write-ups
+│   ├── tools/  templates/
+├── ECOWASCTF 2026/challenges/<category>/<challenge>/
+├── HackDCTF 2026/challenges/...
+├── Other platforms/{Root-Me,TryHackMe,Cyberini,BDSec}/challenges/...
+└── Unsorted 2026/challenges/...
 ```
 
-Le nom d’une épreuve suit la convention de la plateforme : `auteur--nom-du-challenge` quand l’auteur est connu (ex. `boazak--sodabi`), sinon le nom seul.
+Every challenge folder follows the same structure:
 
-## 🚀 Utilisation
+```
+<challenge>/
+├── README.md     category, author, status, flag, provenance
+├── sujet/        statement (enonce.md)
+├── fichiers/     original challenge files, left untouched
+└── solve/        write-up (writeup.md) and solve scripts
+```
+
+NCTF26 challenge names follow the platform convention `author--challenge-name` when the author is known (e.g. `boazak--sodabi`). Folder names `sujet/fichiers/solve` are French for *statement/files/solve*; NCTF26 write-ups are written in French.
+
+## 🚀 Usage
 
 ```bash
 git clone https://github.com/HACKER2025998/CTF-review-2026.git
 cd CTF-review-2026/NCTF26/challenges/crypto/fermat-twins
-cat sujet/enonce.md        # lire le sujet
-ls fichiers/                # fichiers du challenge
-python3 solve/solve.py      # rejouer la résolution
+cat sujet/enonce.md       # read the statement
+ls fichiers/               # challenge files
+python3 solve/solve.py     # replay the solution
 ```
 
-> ⚠️ **Spoilers** : `solve/`, `INDEX.md` et `scoreboard.md` contiennent les solutions et les flags. Pour s’entraîner, ne lisez que `sujet/` et `fichiers/`.
+> ⚠️ **Spoilers:** `solve/`, `INDEX.md`, `scoreboard.md` and per-challenge READMEs contain solutions and flags. To practise, only look at `sujet/` and `fichiers/`.
 >
-> ⚠️ Certains fichiers sont des **binaires ou scripts malveillants volontaires** (épreuves reverse, pwn, forensics, supply chain). Ne les exécutez que dans une VM isolée.
+> ⚠️ Some files are **intentionally malicious** binaries or scripts (reverse, pwn, forensics, supply-chain challenges). Only run them inside an isolated VM.
 
-## 📈 Répartition par catégorie
+## NCTF26 — Togo National CTF 2026
 
-| Catégorie | Épreuves |
+National CTF of Togo organised by CERT.tg (final in Lomé, 19–20 November 2026). The full official list of **525 challenges** is archived, each with its author.
+
+### Categories
+
+| Category | Challenges |
 |---|---|
-| [ai](#ai) | 13 |
-| [blockchain](#blockchain) | 11 |
-| [boot2root](#boot2root) | 36 |
-| [chains](#chains) | 5 |
-| [cloud](#cloud) | 46 |
-| [cti](#cti) | 4 |
-| [defense](#defense) | 5 |
-| [crypto](#crypto) | 86 |
-| [forensics](#forensics) | 47 |
-| [hardware](#hardware) | 8 |
-| [ics](#ics) | 1 |
-| [iot](#iot) | 3 |
-| [misc](#misc) | 18 |
-| [ml](#ml) | 11 |
-| [mobile](#mobile) | 13 |
-| [networking](#networking) | 11 |
-| [osint](#osint) | 13 |
-| [ppc](#ppc) | 10 |
-| [pwn](#pwn) | 22 |
-| [reverse](#reverse) | 29 |
-| [stego](#stego) | 15 |
-| [supplychain](#supplychain) | 14 |
-| [sysadmin](#sysadmin) | 12 |
-| [warmup](#warmup) | 16 |
-| [web](#web) | 76 |
+| ai | 13 |
+| blockchain | 11 |
+| boot2root | 36 |
+| chains | 5 |
+| cloud | 46 |
+| crypto | 86 |
+| cti | 4 |
+| defense | 5 |
+| forensics | 47 |
+| hardware | 8 |
+| ics | 1 |
+| iot | 3 |
+| misc | 18 |
+| ml | 11 |
+| mobile | 13 |
+| networking | 11 |
+| osint | 13 |
+| ppc | 10 |
+| pwn | 22 |
+| reverse | 29 |
+| stego | 15 |
+| supplychain | 14 |
+| sysadmin | 12 |
+| warmup | 16 |
+| web | 76 |
 
-## ✍️ Auteurs
+### Authors
 
-| Auteur | Épreuves |
+| Author | Challenges |
 |---|---|
 | boazak | 87 |
 | the-darknova | 40 |
@@ -103,18 +118,16 @@ python3 solve/solve.py      # rejouer la résolution
 | hibris | 2 |
 | Clawd | 2 |
 | hackusman | 1 |
-| _non indiqué_ | 285 |
+| _not specified_ | 285 |
 
-## 📚 Liste complète des épreuves NCTF26
+### Full challenge list
 
-Légende : ✅ résolue · 📝 write-up / scripts en cours · 📁 fichiers présents · ⏳ sujet à retrouver. Colonnes 📁/🛠️ : fichiers du sujet / scripts de résolution présents.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
+<details>
+<summary><b>ai</b> (13 challenges)</summary>
 
-### ai
-
-_13 épreuves_
-
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [agent-tool-abuse](NCTF26/challenges/ai/agent-tool-abuse/) | — | 📝 |  | ✔ |
 | 2 | [ai0-leaked-transcript](NCTF26/challenges/ai/ai0-leaked-transcript/) | — | ⏳ |  |  |
@@ -130,11 +143,12 @@ _13 épreuves_
 | 12 | [oracle-reverse-emit](NCTF26/challenges/ai/oracle-reverse-emit/) | — | ⏳ |  |  |
 | 13 | [oracle-tool-args](NCTF26/challenges/ai/oracle-tool-args/) | — | ⏳ |  |  |
 
-### blockchain
+</details>
 
-_11 épreuves_
+<details>
+<summary><b>blockchain</b> (11 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [airdrop-forge](NCTF26/challenges/blockchain/airdrop-forge/) | — | ⏳ |  |  |
 | 2 | [allowance-drift](NCTF26/challenges/blockchain/allowance-drift/) | — | ✅ | ✔ | ✔ |
@@ -148,11 +162,12 @@ _11 épreuves_
 | 10 | [reentrant-vault](NCTF26/challenges/blockchain/reentrant-vault/) | — | ⏳ |  |  |
 | 11 | [replay-signer](NCTF26/challenges/blockchain/replay-signer/) | — | ⏳ |  |  |
 
-### boot2root
+</details>
 
-_36 épreuves_
+<details>
+<summary><b>boot2root</b> (36 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [0xfle1j4i--cartograph](NCTF26/challenges/boot2root/0xfle1j4i--cartograph/) | 0xfle1j4i | ⏳ |  |  |
 | 2 | [0xfle1j4i--consent](NCTF26/challenges/boot2root/0xfle1j4i--consent/) | 0xfle1j4i | ⏳ |  |  |
@@ -191,11 +206,12 @@ _36 épreuves_
 | 35 | [komisergio--redteam-tg](NCTF26/challenges/boot2root/komisergio--redteam-tg/) | komisergio | ⏳ |  |  |
 | 36 | [r06u3-004--kpakpa](NCTF26/challenges/boot2root/r06u3-004--kpakpa/) | r06u3-004 | ⏳ |  |  |
 
-### chains
+</details>
 
-_5 épreuves_
+<details>
+<summary><b>chains</b> (5 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [citadel](NCTF26/challenges/chains/citadel/) | — | ⏳ |  |  |
 | 2 | [clinic](NCTF26/challenges/chains/clinic/) | — | ⏳ |  |  |
@@ -203,11 +219,12 @@ _5 épreuves_
 | 4 | [relay](NCTF26/challenges/chains/relay/) | — | ⏳ |  |  |
 | 5 | [tokenforge](NCTF26/challenges/chains/tokenforge/) | — | ⏳ |  |  |
 
-### cloud
+</details>
 
-_46 épreuves_
+<details>
+<summary><b>cloud</b> (46 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [artifacts-envexec](NCTF26/challenges/cloud/artifacts-envexec/) | — | ⏳ |  |  |
 | 2 | [artifacts-imds](NCTF26/challenges/cloud/artifacts-imds/) | — | ⏳ |  |  |
@@ -256,34 +273,12 @@ _46 épreuves_
 | 45 | [the-darknova--spiffe-mtls-ghost](NCTF26/challenges/cloud/the-darknova--spiffe-mtls-ghost/) | the-darknova | 📁 | ✔ |  |
 | 46 | [trail-of-keys](NCTF26/challenges/cloud/trail-of-keys/) | — | ⏳ |  |  |
 
-### cti
+</details>
 
-_4 épreuves_
+<details>
+<summary><b>crypto</b> (86 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
-|---|---|---|---|---|---|
-| 1 | [the-darknova--lazarus-bridge-heist](NCTF26/challenges/cti/the-darknova--lazarus-bridge-heist/) | the-darknova | ⏳ |  |  |
-| 2 | [the-darknova--sandworm-beacon](NCTF26/challenges/cti/the-darknova--sandworm-beacon/) | the-darknova | ⏳ |  |  |
-| 3 | [the-darknova--silent-patch-cve](NCTF26/challenges/cti/the-darknova--silent-patch-cve/) | the-darknova | ⏳ |  |  |
-| 4 | [the-darknova--vendor-supply-drop](NCTF26/challenges/cti/the-darknova--vendor-supply-drop/) | the-darknova | ⏳ |  |  |
-
-### defense
-
-_5 épreuves_
-
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
-|---|---|---|---|---|---|
-| 1 | [defense-audit-assigame](NCTF26/challenges/defense/defense-audit-assigame/) | — | ⏳ |  |  |
-| 2 | [defense-binaire-guichet](NCTF26/challenges/defense/defense-binaire-guichet/) | — | ⏳ |  |  |
-| 3 | [defense-linux-ceet](NCTF26/challenges/defense/defense-linux-ceet/) | — | ⏳ |  |  |
-| 4 | [defense-wallet-akpe](NCTF26/challenges/defense/defense-wallet-akpe/) | — | ⏳ |  |  |
-| 5 | [defense-web-agbadja](NCTF26/challenges/defense/defense-web-agbadja/) | — | ⏳ |  |  |
-
-### crypto
-
-_86 épreuves_
-
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--dzesido](NCTF26/challenges/crypto/44r0nmeta--dzesido/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [affine-relay](NCTF26/challenges/crypto/affine-relay/) | — | ⏳ |  |  |
@@ -372,65 +367,92 @@ _86 épreuves_
 | 85 | [twister-tell](NCTF26/challenges/crypto/twister-tell/) | — | ⏳ |  |  |
 | 86 | [vigenere-drift](NCTF26/challenges/crypto/vigenere-drift/) | — | ⏳ |  |  |
 
-### forensics
+</details>
 
-_47 épreuves_
+<details>
+<summary><b>cti</b> (4 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [Audio FSK](NCTF26/challenges/forensics/Audio%20FSK/) | — | 📁 | ✔ |  |
-| 2 | [DNS Exfil](NCTF26/challenges/forensics/DNS%20Exfil/) | — | ⏳ |  |  |
-| 3 | [Evasion Timeline](NCTF26/challenges/forensics/Evasion%20Timeline/) | — | ⏳ |  |  |
-| 4 | [SRAM Retention](NCTF26/challenges/forensics/SRAM%20Retention/) | — | 📁 | ✔ |  |
-| 5 | [USB Keystrokes](NCTF26/challenges/forensics/USB%20Keystrokes/) | — | ⏳ |  |  |
-| 6 | [algorithme123--coupure-sokode](NCTF26/challenges/forensics/algorithme123--coupure-sokode/) | algorithme123 | 📁 | ✔ |  |
-| 7 | [algorithme123--kds-whitespace-commit](NCTF26/challenges/forensics/algorithme123--kds-whitespace-commit/) | algorithme123 | 📁 | ✔ |  |
-| 8 | [algorithme123--lome-transit-0417](NCTF26/challenges/forensics/algorithme123--lome-transit-0417/) | algorithme123 | 📁 | ✔ |  |
-| 9 | [algorithme123--zemidjan-classement](NCTF26/challenges/forensics/algorithme123--zemidjan-classement/) | algorithme123 | ⏳ |  |  |
-| 10 | [auth-timeline](NCTF26/challenges/forensics/auth-timeline/) | — | ✅ | ✔ | ✔ |
-| 11 | [boazak--bras-arme](NCTF26/challenges/forensics/boazak--bras-arme/) | boazak | ⏳ |  |  |
-| 12 | [boazak--kouve-memory](NCTF26/challenges/forensics/boazak--kouve-memory/) | boazak | ⏳ |  |  |
-| 13 | [boazak--kpessi](NCTF26/challenges/forensics/boazak--kpessi/) | boazak | ⏳ |  |  |
-| 14 | [boazak--tandjoaure-pcap](NCTF26/challenges/forensics/boazak--tandjoaure-pcap/) | boazak | ⏳ |  |  |
-| 15 | [chunk-hunt](NCTF26/challenges/forensics/chunk-hunt/) | — | ✅ | ✔ | ✔ |
-| 16 | [fullaccess5--operation-acces-suspect](NCTF26/challenges/forensics/fullaccess5--operation-acces-suspect/) | fullaccess5 | ⏳ |  |  |
-| 17 | [fullaccess5--operation-faux-colis](NCTF26/challenges/forensics/fullaccess5--operation-faux-colis/) | fullaccess5 | ⏳ |  |  |
-| 18 | [fullaccess5--operation-flooz-piege](NCTF26/challenges/forensics/fullaccess5--operation-flooz-piege/) | fullaccess5 | 📁 | ✔ |  |
-| 19 | [fullaccess5--operation-flux-obscur](NCTF26/challenges/forensics/fullaccess5--operation-flux-obscur/) | fullaccess5 | ⏳ |  |  |
-| 20 | [fullaccess5--operation-ombre-numerique](NCTF26/challenges/forensics/fullaccess5--operation-ombre-numerique/) | fullaccess5 | ⏳ |  |  |
-| 21 | [fullaccess5--operation-reunion-fantome](NCTF26/challenges/forensics/fullaccess5--operation-reunion-fantome/) | fullaccess5 | ⏳ |  |  |
-| 22 | [fullaccess5--operation-swift-hook](NCTF26/challenges/forensics/fullaccess5--operation-swift-hook/) | fullaccess5 | ⏳ |  |  |
-| 23 | [fullaccess5--operation-trace-noire](NCTF26/challenges/forensics/fullaccess5--operation-trace-noire/) | fullaccess5 | ⏳ |  |  |
-| 24 | [fullaccess5--operation-virement-fantome](NCTF26/challenges/forensics/fullaccess5--operation-virement-fantome/) | fullaccess5 | ⏳ |  |  |
-| 25 | [fullaccess5--securecorp-incident-reseau-invite](NCTF26/challenges/forensics/fullaccess5--securecorp-incident-reseau-invite/) | fullaccess5 | ✅ | ✔ | ✔ |
-| 26 | [git-archaeology](NCTF26/challenges/forensics/git-archaeology/) | — | ⏳ |  |  |
-| 27 | [gzip-tar-nest](NCTF26/challenges/forensics/gzip-tar-nest/) | — | ⏳ |  |  |
-| 28 | [http-body-exfil](NCTF26/challenges/forensics/http-body-exfil/) | — | ⏳ |  |  |
-| 29 | [icmp-beacon](NCTF26/challenges/forensics/icmp-beacon/) | — | ✅ | ✔ | ✔ |
-| 30 | [json-sift](NCTF26/challenges/forensics/json-sift/) | — | ⏳ |  |  |
-| 31 | [mem-struct](NCTF26/challenges/forensics/mem-struct/) | — | ⏳ |  |  |
-| 32 | [oxdefault--cadence](NCTF26/challenges/forensics/oxdefault--cadence/) | oxdefault | ⏳ |  |  |
-| 33 | [oxdefault--flush](NCTF26/challenges/forensics/oxdefault--flush/) | oxdefault | ⏳ |  |  |
-| 34 | [oxdefault--le-chant-du-mono](NCTF26/challenges/forensics/oxdefault--le-chant-du-mono/) | oxdefault | ⏳ |  |  |
-| 35 | [oxdefault--pressure](NCTF26/challenges/forensics/oxdefault--pressure/) | oxdefault | ⏳ |  |  |
-| 36 | [png-magic-fix](NCTF26/challenges/forensics/png-magic-fix/) | — | ✅ | ✔ | ✔ |
-| 37 | [spreadsheet-audit](NCTF26/challenges/forensics/spreadsheet-audit/) | — | ⏳ |  |  |
-| 38 | [sqlite-wal](NCTF26/challenges/forensics/sqlite-wal/) | — | 📁 | ✔ |  |
-| 39 | [the-darknova--chronos-hid](NCTF26/challenges/forensics/the-darknova--chronos-hid/) | the-darknova | ⏳ |  |  |
-| 40 | [the-darknova--mirage-1](NCTF26/challenges/forensics/the-darknova--mirage-1/) | the-darknova | ✅ | ✔ | ✔ |
-| 41 | [the-darknova--mirage-2](NCTF26/challenges/forensics/the-darknova--mirage-2/) | the-darknova | ⏳ |  |  |
-| 42 | [the-darknova--mirage-3](NCTF26/challenges/forensics/the-darknova--mirage-3/) | the-darknova | ⏳ |  |  |
-| 43 | [the-darknova--mirage-4](NCTF26/challenges/forensics/the-darknova--mirage-4/) | the-darknova | ⏳ |  |  |
-| 44 | [the-darknova--nvme-ftl-wearlevel](NCTF26/challenges/forensics/the-darknova--nvme-ftl-wearlevel/) | the-darknova | ⏳ |  |  |
-| 45 | [the-darknova--ot-telemetry](NCTF26/challenges/forensics/the-darknova--ot-telemetry/) | the-darknova | ⏳ |  |  |
-| 46 | [thierry8petstar--exfiltrator](NCTF26/challenges/forensics/thierry8petstar--exfiltrator/) | thierry8petstar | ⏳ |  |  |
+| 1 | [the-darknova--lazarus-bridge-heist](NCTF26/challenges/cti/the-darknova--lazarus-bridge-heist/) | the-darknova | ⏳ |  |  |
+| 2 | [the-darknova--sandworm-beacon](NCTF26/challenges/cti/the-darknova--sandworm-beacon/) | the-darknova | ⏳ |  |  |
+| 3 | [the-darknova--silent-patch-cve](NCTF26/challenges/cti/the-darknova--silent-patch-cve/) | the-darknova | ⏳ |  |  |
+| 4 | [the-darknova--vendor-supply-drop](NCTF26/challenges/cti/the-darknova--vendor-supply-drop/) | the-darknova | ⏳ |  |  |
+
+</details>
+
+<details>
+<summary><b>defense</b> (5 challenges)</summary>
+
+| # | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|
+| 1 | [defense-audit-assigame](NCTF26/challenges/defense/defense-audit-assigame/) | — | ⏳ |  |  |
+| 2 | [defense-binaire-guichet](NCTF26/challenges/defense/defense-binaire-guichet/) | — | ⏳ |  |  |
+| 3 | [defense-linux-ceet](NCTF26/challenges/defense/defense-linux-ceet/) | — | ⏳ |  |  |
+| 4 | [defense-wallet-akpe](NCTF26/challenges/defense/defense-wallet-akpe/) | — | ⏳ |  |  |
+| 5 | [defense-web-agbadja](NCTF26/challenges/defense/defense-web-agbadja/) | — | ⏳ |  |  |
+
+</details>
+
+<details>
+<summary><b>forensics</b> (47 challenges)</summary>
+
+| # | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|
+| 1 | [algorithme123--coupure-sokode](NCTF26/challenges/forensics/algorithme123--coupure-sokode/) | algorithme123 | 📁 | ✔ |  |
+| 2 | [algorithme123--kds-whitespace-commit](NCTF26/challenges/forensics/algorithme123--kds-whitespace-commit/) | algorithme123 | 📁 | ✔ |  |
+| 3 | [algorithme123--lome-transit-0417](NCTF26/challenges/forensics/algorithme123--lome-transit-0417/) | algorithme123 | 📁 | ✔ |  |
+| 4 | [algorithme123--zemidjan-classement](NCTF26/challenges/forensics/algorithme123--zemidjan-classement/) | algorithme123 | ⏳ |  |  |
+| 5 | [Audio FSK](NCTF26/challenges/forensics/Audio%20FSK/) | — | 📁 | ✔ |  |
+| 6 | [auth-timeline](NCTF26/challenges/forensics/auth-timeline/) | — | ✅ | ✔ | ✔ |
+| 7 | [boazak--bras-arme](NCTF26/challenges/forensics/boazak--bras-arme/) | boazak | ⏳ |  |  |
+| 8 | [boazak--kouve-memory](NCTF26/challenges/forensics/boazak--kouve-memory/) | boazak | ⏳ |  |  |
+| 9 | [boazak--kpessi](NCTF26/challenges/forensics/boazak--kpessi/) | boazak | ⏳ |  |  |
+| 10 | [boazak--tandjoaure-pcap](NCTF26/challenges/forensics/boazak--tandjoaure-pcap/) | boazak | ⏳ |  |  |
+| 11 | [chunk-hunt](NCTF26/challenges/forensics/chunk-hunt/) | — | ✅ | ✔ | ✔ |
+| 12 | [DNS Exfil](NCTF26/challenges/forensics/DNS%20Exfil/) | — | ⏳ |  |  |
+| 13 | [Evasion Timeline](NCTF26/challenges/forensics/Evasion%20Timeline/) | — | ⏳ |  |  |
+| 14 | [fullaccess5--operation-acces-suspect](NCTF26/challenges/forensics/fullaccess5--operation-acces-suspect/) | fullaccess5 | ⏳ |  |  |
+| 15 | [fullaccess5--operation-faux-colis](NCTF26/challenges/forensics/fullaccess5--operation-faux-colis/) | fullaccess5 | ⏳ |  |  |
+| 16 | [fullaccess5--operation-flooz-piege](NCTF26/challenges/forensics/fullaccess5--operation-flooz-piege/) | fullaccess5 | 📁 | ✔ |  |
+| 17 | [fullaccess5--operation-flux-obscur](NCTF26/challenges/forensics/fullaccess5--operation-flux-obscur/) | fullaccess5 | ⏳ |  |  |
+| 18 | [fullaccess5--operation-ombre-numerique](NCTF26/challenges/forensics/fullaccess5--operation-ombre-numerique/) | fullaccess5 | ⏳ |  |  |
+| 19 | [fullaccess5--operation-reunion-fantome](NCTF26/challenges/forensics/fullaccess5--operation-reunion-fantome/) | fullaccess5 | ⏳ |  |  |
+| 20 | [fullaccess5--operation-swift-hook](NCTF26/challenges/forensics/fullaccess5--operation-swift-hook/) | fullaccess5 | ⏳ |  |  |
+| 21 | [fullaccess5--operation-trace-noire](NCTF26/challenges/forensics/fullaccess5--operation-trace-noire/) | fullaccess5 | ⏳ |  |  |
+| 22 | [fullaccess5--operation-virement-fantome](NCTF26/challenges/forensics/fullaccess5--operation-virement-fantome/) | fullaccess5 | ⏳ |  |  |
+| 23 | [fullaccess5--securecorp-incident-reseau-invite](NCTF26/challenges/forensics/fullaccess5--securecorp-incident-reseau-invite/) | fullaccess5 | ✅ | ✔ | ✔ |
+| 24 | [git-archaeology](NCTF26/challenges/forensics/git-archaeology/) | — | ⏳ |  |  |
+| 25 | [gzip-tar-nest](NCTF26/challenges/forensics/gzip-tar-nest/) | — | ⏳ |  |  |
+| 26 | [http-body-exfil](NCTF26/challenges/forensics/http-body-exfil/) | — | ⏳ |  |  |
+| 27 | [icmp-beacon](NCTF26/challenges/forensics/icmp-beacon/) | — | ✅ | ✔ | ✔ |
+| 28 | [json-sift](NCTF26/challenges/forensics/json-sift/) | — | ⏳ |  |  |
+| 29 | [mem-struct](NCTF26/challenges/forensics/mem-struct/) | — | ⏳ |  |  |
+| 30 | [oxdefault--cadence](NCTF26/challenges/forensics/oxdefault--cadence/) | oxdefault | ⏳ |  |  |
+| 31 | [oxdefault--flush](NCTF26/challenges/forensics/oxdefault--flush/) | oxdefault | ⏳ |  |  |
+| 32 | [oxdefault--le-chant-du-mono](NCTF26/challenges/forensics/oxdefault--le-chant-du-mono/) | oxdefault | ⏳ |  |  |
+| 33 | [oxdefault--pressure](NCTF26/challenges/forensics/oxdefault--pressure/) | oxdefault | ⏳ |  |  |
+| 34 | [png-magic-fix](NCTF26/challenges/forensics/png-magic-fix/) | — | ✅ | ✔ | ✔ |
+| 35 | [spreadsheet-audit](NCTF26/challenges/forensics/spreadsheet-audit/) | — | ⏳ |  |  |
+| 36 | [sqlite-wal](NCTF26/challenges/forensics/sqlite-wal/) | — | 📁 | ✔ |  |
+| 37 | [SRAM Retention](NCTF26/challenges/forensics/SRAM%20Retention/) | — | 📁 | ✔ |  |
+| 38 | [the-darknova--chronos-hid](NCTF26/challenges/forensics/the-darknova--chronos-hid/) | the-darknova | ⏳ |  |  |
+| 39 | [the-darknova--mirage-1](NCTF26/challenges/forensics/the-darknova--mirage-1/) | the-darknova | ✅ | ✔ | ✔ |
+| 40 | [the-darknova--mirage-2](NCTF26/challenges/forensics/the-darknova--mirage-2/) | the-darknova | ⏳ |  |  |
+| 41 | [the-darknova--mirage-3](NCTF26/challenges/forensics/the-darknova--mirage-3/) | the-darknova | ⏳ |  |  |
+| 42 | [the-darknova--mirage-4](NCTF26/challenges/forensics/the-darknova--mirage-4/) | the-darknova | ⏳ |  |  |
+| 43 | [the-darknova--nvme-ftl-wearlevel](NCTF26/challenges/forensics/the-darknova--nvme-ftl-wearlevel/) | the-darknova | ⏳ |  |  |
+| 44 | [the-darknova--ot-telemetry](NCTF26/challenges/forensics/the-darknova--ot-telemetry/) | the-darknova | ⏳ |  |  |
+| 45 | [thierry8petstar--exfiltrator](NCTF26/challenges/forensics/thierry8petstar--exfiltrator/) | thierry8petstar | ⏳ |  |  |
+| 46 | [USB Keystrokes](NCTF26/challenges/forensics/USB%20Keystrokes/) | — | ⏳ |  |  |
 | 47 | [zip-carve](NCTF26/challenges/forensics/zip-carve/) | — | ⏳ |  |  |
 
-### hardware
+</details>
 
-_8 épreuves_
+<details>
+<summary><b>hardware</b> (8 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [boot-rom](NCTF26/challenges/hardware/boot-rom/) | — | ⏳ |  |  |
 | 2 | [firmware-blob](NCTF26/challenges/hardware/firmware-blob/) | — | ⏳ |  |  |
@@ -441,36 +463,39 @@ _8 épreuves_
 | 7 | [uart-capture](NCTF26/challenges/hardware/uart-capture/) | — | ✅ | ✔ | ✔ |
 | 8 | [vcd-fsm](NCTF26/challenges/hardware/vcd-fsm/) | — | ⏳ |  |  |
 
-### ics
+</details>
 
-_1 épreuves_
+<details>
+<summary><b>ics</b> (1 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [komisergio--adjengre](NCTF26/challenges/ics/komisergio--adjengre/) | komisergio | ⏳ |  |  |
 
-### iot
+</details>
 
-_3 épreuves_
+<details>
+<summary><b>iot</b> (3 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [the-darknova--canfd-ecu-glitch](NCTF26/challenges/iot/the-darknova--canfd-ecu-glitch/) | the-darknova | ⏳ |  |  |
 | 2 | [the-darknova--matter-thread-ghost](NCTF26/challenges/iot/the-darknova--matter-thread-ghost/) | the-darknova | ⏳ |  |  |
 | 3 | [the-darknova--riscv-bmc-shadow](NCTF26/challenges/iot/the-darknova--riscv-bmc-shadow/) | the-darknova | ⏳ |  |  |
 
-### misc
+</details>
 
-_18 épreuves_
+<details>
+<summary><b>misc</b> (18 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--neverlost](NCTF26/challenges/misc/44r0nmeta--neverlost/) | 44r0nmeta | ⏳ |  |  |
-| 2 | [Heartbeat](NCTF26/challenges/misc/Heartbeat/) | — | ⏳ |  |  |
-| 3 | [boazak--djagble](NCTF26/challenges/misc/boazak--djagble/) | boazak | ⏳ |  |  |
-| 4 | [boazak--petit-fally](NCTF26/challenges/misc/boazak--petit-fally/) | boazak | ⏳ |  |  |
-| 5 | [en2eavor--princess-habits](NCTF26/challenges/misc/en2eavor--princess-habits/) | en2eavor | ⏳ |  |  |
-| 6 | [esolang-jail](NCTF26/challenges/misc/esolang-jail/) | — | ⏳ |  |  |
+| 2 | [boazak--djagble](NCTF26/challenges/misc/boazak--djagble/) | boazak | ⏳ |  |  |
+| 3 | [boazak--petit-fally](NCTF26/challenges/misc/boazak--petit-fally/) | boazak | ⏳ |  |  |
+| 4 | [en2eavor--princess-habits](NCTF26/challenges/misc/en2eavor--princess-habits/) | en2eavor | ⏳ |  |  |
+| 5 | [esolang-jail](NCTF26/challenges/misc/esolang-jail/) | — | ⏳ |  |  |
+| 6 | [Heartbeat](NCTF26/challenges/misc/Heartbeat/) | — | ⏳ |  |  |
 | 7 | [oxdefault--les-murmures-de-l-omni](NCTF26/challenges/misc/oxdefault--les-murmures-de-l-omni/) | oxdefault | ⏳ |  |  |
 | 8 | [oxdefault--overheard](NCTF26/challenges/misc/oxdefault--overheard/) | oxdefault | ⏳ |  |  |
 | 9 | [oxdefault--perfect](NCTF26/challenges/misc/oxdefault--perfect/) | oxdefault | ⏳ |  |  |
@@ -484,11 +509,12 @@ _18 épreuves_
 | 17 | [thierry8petstar--oui-ou-non-1](NCTF26/challenges/misc/thierry8petstar--oui-ou-non-1/) | thierry8petstar | ⏳ |  |  |
 | 18 | [thierry8petstar--oui-ou-non-2](NCTF26/challenges/misc/thierry8petstar--oui-ou-non-2/) | thierry8petstar | ⏳ |  |  |
 
-### ml
+</details>
 
-_11 épreuves_
+<details>
+<summary><b>ml</b> (11 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [adv-flip](NCTF26/challenges/ml/adv-flip/) | — | ⏳ |  |  |
 | 2 | [adversarial-gate](NCTF26/challenges/ml/adversarial-gate/) | — | ⏳ |  |  |
@@ -502,11 +528,12 @@ _11 épreuves_
 | 10 | [tree-path](NCTF26/challenges/ml/tree-path/) | — | ⏳ |  |  |
 | 11 | [trojan-trigger](NCTF26/challenges/ml/trojan-trigger/) | — | ⏳ |  |  |
 
-### mobile
+</details>
 
-_13 épreuves_
+<details>
+<summary><b>mobile</b> (13 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [boazak--akodesewa-shield](NCTF26/challenges/mobile/boazak--akodesewa-shield/) | boazak | ⏳ |  |  |
 | 2 | [boazak--devo-mobile](NCTF26/challenges/mobile/boazak--devo-mobile/) | boazak | ⏳ |  |  |
@@ -522,11 +549,12 @@ _13 épreuves_
 | 12 | [strings-goldmine](NCTF26/challenges/mobile/strings-goldmine/) | — | ⏳ |  |  |
 | 13 | [webview-bridge](NCTF26/challenges/mobile/webview-bridge/) | — | ⏳ |  |  |
 
-### networking
+</details>
 
-_11 épreuves_
+<details>
+<summary><b>networking</b> (11 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [acl-firewall](NCTF26/challenges/networking/acl-firewall/) | — | ✅ | ✔ | ✔ |
 | 2 | [bgp-bestpath](NCTF26/challenges/networking/bgp-bestpath/) | — | ⏳ |  |  |
@@ -540,11 +568,12 @@ _11 épreuves_
 | 10 | [tls-sni](NCTF26/challenges/networking/tls-sni/) | — | ⏳ |  |  |
 | 11 | [wire-tap](NCTF26/challenges/networking/wire-tap/) | — | ⏳ |  |  |
 
-### osint
+</details>
 
-_13 épreuves_
+<details>
+<summary><b>osint</b> (13 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [algorithme123--memoire-togo-fiche](NCTF26/challenges/osint/algorithme123--memoire-togo-fiche/) | algorithme123 | ⏳ |  |  |
 | 2 | [cred-reuse](NCTF26/challenges/osint/cred-reuse/) | — | ✅ | ✔ | ✔ |
@@ -560,11 +589,12 @@ _13 épreuves_
 | 12 | [social-export](NCTF26/challenges/osint/social-export/) | — | ⏳ |  |  |
 | 13 | [wayback-diff](NCTF26/challenges/osint/wayback-diff/) | — | ⏳ |  |  |
 
-### ppc
+</details>
 
-_10 épreuves_
+<details>
+<summary><b>ppc</b> (10 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [congruence-vault](NCTF26/challenges/ppc/congruence-vault/) | — | ⏳ |  |  |
 | 2 | [dfa-oracle](NCTF26/challenges/ppc/dfa-oracle/) | — | ⏳ |  |  |
@@ -577,11 +607,12 @@ _10 épreuves_
 | 9 | [sudoku-vault](NCTF26/challenges/ppc/sudoku-vault/) | — | ⏳ |  |  |
 | 10 | [z-locator](NCTF26/challenges/ppc/z-locator/) | — | ✅ | ✔ | ✔ |
 
-### pwn
+</details>
 
-_22 épreuves_
+<details>
+<summary><b>pwn</b> (22 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--dzitri](NCTF26/challenges/pwn/44r0nmeta--dzitri/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [algorithme123--aneho-manifestd](NCTF26/challenges/pwn/algorithme123--aneho-manifestd/) | algorithme123 | ⏳ |  |  |
@@ -606,11 +637,12 @@ _22 épreuves_
 | 21 | [the-darknova--uring-slab-alchemy](NCTF26/challenges/pwn/the-darknova--uring-slab-alchemy/) | the-darknova | ⏳ |  |  |
 | 22 | [the-darknova--wasm-linear-escape](NCTF26/challenges/pwn/the-darknova--wasm-linear-escape/) | the-darknova | ⏳ |  |  |
 
-### reverse
+</details>
 
-_29 épreuves_
+<details>
+<summary><b>reverse</b> (29 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--wotowoto](NCTF26/challenges/reverse/44r0nmeta--wotowoto/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [algorithme123--kara-express-billet](NCTF26/challenges/reverse/algorithme123--kara-express-billet/) | algorithme123 | ⏳ |  |  |
@@ -642,11 +674,12 @@ _29 épreuves_
 | 28 | [thierry8petstar--stateful-vm](NCTF26/challenges/reverse/thierry8petstar--stateful-vm/) | thierry8petstar | ⏳ |  |  |
 | 29 | [triple-wrap](NCTF26/challenges/reverse/triple-wrap/) | — | ⏳ |  |  |
 
-### stego
+</details>
 
-_15 épreuves_
+<details>
+<summary><b>stego</b> (15 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [algorithme123--atakpame-zero-width](NCTF26/challenges/stego/algorithme123--atakpame-zero-width/) | algorithme123 | ⏳ |  |  |
 | 2 | [algorithme123--greffe-espaces-lome](NCTF26/challenges/stego/algorithme123--greffe-espaces-lome/) | algorithme123 | ✅ | ✔ | ✔ |
@@ -664,11 +697,12 @@ _15 épreuves_
 | 14 | [wav-lsb](NCTF26/challenges/stego/wav-lsb/) | — | ⏳ |  |  |
 | 15 | [zero-width-note](NCTF26/challenges/stego/zero-width-note/) | — | ⏳ |  |  |
 
-### supplychain
+</details>
 
-_14 épreuves_
+<details>
+<summary><b>supplychain</b> (14 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [build-cache-poison](NCTF26/challenges/supplychain/build-cache-poison/) | — | ⏳ |  |  |
 | 2 | [buildfarm-artswap](NCTF26/challenges/supplychain/buildfarm-artswap/) | — | 📝 | ✔ | ✔ |
@@ -685,11 +719,12 @@ _14 épreuves_
 | 13 | [tuf-rollback](NCTF26/challenges/supplychain/tuf-rollback/) | — | ⏳ |  |  |
 | 14 | [typosquat-lockfile](NCTF26/challenges/supplychain/typosquat-lockfile/) | — | ✅ | ✔ | ✔ |
 
-### sysadmin
+</details>
 
-_12 épreuves_
+<details>
+<summary><b>sysadmin</b> (12 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [alias-slip](NCTF26/challenges/sysadmin/alias-slip/) | — | ✅ | ✔ | ✔ |
 | 2 | [auditd-cap](NCTF26/challenges/sysadmin/auditd-cap/) | — | ⏳ |  |  |
@@ -704,11 +739,12 @@ _12 épreuves_
 | 11 | [unit-eval](NCTF26/challenges/sysadmin/unit-eval/) | — | ⏳ |  |  |
 | 12 | [vault-reuse](NCTF26/challenges/sysadmin/vault-reuse/) | — | ⏳ |  |  |
 
-### warmup
+</details>
 
-_16 épreuves_
+<details>
+<summary><b>warmup</b> (16 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [atbash-cipher](NCTF26/challenges/warmup/atbash-cipher/) | — | ⏳ |  |  |
 | 2 | [base32-decode](NCTF26/challenges/warmup/base32-decode/) | — | ⏳ |  |  |
@@ -727,11 +763,12 @@ _16 épreuves_
 | 15 | [vigenere-known-key](NCTF26/challenges/warmup/vigenere-known-key/) | — | ⏳ |  |  |
 | 16 | [zip-comment](NCTF26/challenges/warmup/zip-comment/) | — | ✅ | ✔ | ✔ |
 
-### web
+</details>
 
-_76 épreuves_
+<details>
+<summary><b>web</b> (76 challenges)</summary>
 
-| # | Épreuve | Auteur | Statut | 📁 | 🛠️ |
+| # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--flex](NCTF26/challenges/web/44r0nmeta--flex/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [44r0nmeta--kiyena](NCTF26/challenges/web/44r0nmeta--kiyena/) | 44r0nmeta | ⏳ |  |  |
@@ -810,80 +847,172 @@ _76 épreuves_
 | 75 | [thierry8petstar--shadow-catalog](NCTF26/challenges/web/thierry8petstar--shadow-catalog/) | thierry8petstar | ⏳ |  |  |
 | 76 | [webhook-relay](NCTF26/challenges/web/webhook-relay/) | — | ⏳ |  |  |
 
-## 🌍 ECOWAS CTF 2026 / épreuves à identifier
+</details>
 
-Épreuves présentes dans l’archive mais absentes de la liste officielle NCTF26 (auteur non encore identifié). Détails et pistes de rangement : [`ECOWASCTF 2026/A_CLASSER.md`](ECOWASCTF%202026/A_CLASSER.md).
+### Unidentified NCTF26 material
 
-| # | Épreuve | Auteur | Statut |
-|---|---|---|---|
-| 1 | [acme-license](ECOWASCTF%202026/acme-license/) | — | 📁 |
-| 2 | [AEGIS-VAULT](ECOWASCTF%202026/AEGIS-VAULT/) | — | ✅ |
-| 3 | [archive-olympio](ECOWASCTF%202026/archive-olympio/) | — | 📝 |
-| 4 | [bmp-zip](ECOWASCTF%202026/bmp-zip/) | — | ✅ |
-| 5 | [bnat-memdump](ECOWASCTF%202026/bnat-memdump/) | — | 📁 |
-| 6 | [bnat-vm](ECOWASCTF%202026/bnat-vm/) | — | 📁 |
-| 7 | [breach](ECOWASCTF%202026/breach/) | — | ✅ |
-| 8 | [bytecode-vm](ECOWASCTF%202026/bytecode-vm/) | — | 📁 |
-| 9 | [c2pa-provenance](ECOWASCTF%202026/c2pa-provenance/) | — | 📁 |
-| 10 | [c5-ecdlp](ECOWASCTF%202026/c5-ecdlp/) | — | 📝 |
-| 11 | [capture-memory](ECOWASCTF%202026/capture-memory/) | — | ✅ |
-| 12 | [ch33](ECOWASCTF%202026/ch33/) | — | 📁 |
-| 13 | [chall](ECOWASCTF%202026/chall/) | — | ✅ |
-| 14 | [chall-pie5](ECOWASCTF%202026/chall-pie5/) | — | 📁 |
-| 15 | [ChannelBot](ECOWASCTF%202026/ChannelBot/) | — | ✅ |
-| 16 | [checksum-match](ECOWASCTF%202026/checksum-match/) | — | 📁 |
-| 17 | [desk-photo](ECOWASCTF%202026/desk-photo/) | — | ✅ |
-| 18 | [ecdsa-nonce-reuse](ECOWASCTF%202026/ecdsa-nonce-reuse/) | — | 📝 |
-| 19 | [entvault-apk](ECOWASCTF%202026/entvault-apk/) | — | 📁 |
-| 20 | [espace-client](ECOWASCTF%202026/espace-client/) | — | 📁 |
-| 21 | [exfil-capture](ECOWASCTF%202026/exfil-capture/) | — | 📁 |
-| 22 | [exif-decoy](ECOWASCTF%202026/exif-decoy/) | — | 📁 |
-| 23 | [finale-pdf](ECOWASCTF%202026/finale-pdf/) | — | 📝 |
-| 24 | [foodctf](ECOWASCTF%202026/foodctf/) | — | 📝 |
-| 25 | [fzlp](ECOWASCTF%202026/fzlp/) | — | 📁 |
-| 26 | [git-web-exposure](ECOWASCTF%202026/git-web-exposure/) | — | 📝 |
-| 27 | [halcyon](ECOWASCTF%202026/halcyon/) | — | 📝 |
-| 28 | [hastad-broadcast](ECOWASCTF%202026/hastad-broadcast/) | — | ✅ |
-| 29 | [hid-tablet](ECOWASCTF%202026/hid-tablet/) | — | 📝 |
-| 30 | [host-inventory](ECOWASCTF%202026/host-inventory/) | — | 📝 |
-| 31 | [incident-analysis](ECOWASCTF%202026/incident-analysis/) | — | 📁 |
-| 32 | [indice](ECOWASCTF%202026/indice/) | — | 📁 |
-| 33 | [internal-toolbox](ECOWASCTF%202026/internal-toolbox/) | — | 📁 |
-| 34 | [jpg-zip-polyglot](ECOWASCTF%202026/jpg-zip-polyglot/) | — | 📁 |
-| 35 | [lcg-stream](ECOWASCTF%202026/lcg-stream/) | — | ✅ |
-| 36 | [memdump-raw](ECOWASCTF%202026/memdump-raw/) | — | 📁 |
-| 37 | [multi-log-siem](ECOWASCTF%202026/multi-log-siem/) | — | 📝 |
-| 38 | [niamtougou](ECOWASCTF%202026/niamtougou/) | — | 📁 |
-| 39 | [notsie-ad](ECOWASCTF%202026/notsie-ad/) | — | 📁 |
-| 40 | [path-traversal-cdn](ECOWASCTF%202026/path-traversal-cdn/) | — | 📁 |
-| 41 | [pe-resources](ECOWASCTF%202026/pe-resources/) | — | 📁 |
-| 42 | [php-upload-rce](ECOWASCTF%202026/php-upload-rce/) | — | 📝 |
-| 43 | [pop1](ECOWASCTF%202026/pop1/) | — | 📁 |
-| 44 | [prison-pipeline](ECOWASCTF%202026/prison-pipeline/) | — | 📝 |
-| 45 | [prng-stream](ECOWASCTF%202026/prng-stream/) | — | 📁 |
-| 46 | [replay-gate](ECOWASCTF%202026/replay-gate/) | — | 📝 |
-| 47 | [rsa-coppersmith](ECOWASCTF%202026/rsa-coppersmith/) | — | 📝 |
-| 48 | [rsa-leak-p](ECOWASCTF%202026/rsa-leak-p/) | — | ✅ |
-| 49 | [sayen-forum-stego](ECOWASCTF%202026/sayen-forum-stego/) | — | 📝 |
-| 50 | [securebank-apk](ECOWASCTF%202026/securebank-apk/) | — | 📁 |
-| 51 | [sentinelbot](ECOWASCTF%202026/sentinelbot/) | — | ✅ |
-| 52 | [ssrf-ec2](ECOWASCTF%202026/ssrf-ec2/) | — | 📝 |
-| 53 | [svg-mosaic](ECOWASCTF%202026/svg-mosaic/) | — | 📁 |
-| 54 | [validator](ECOWASCTF%202026/validator/) | — | 📁 |
-| 55 | [vault-vlt1](ECOWASCTF%202026/vault-vlt1/) | — | 📁 |
-| 56 | [vaultpay-apk](ECOWASCTF%202026/vaultpay-apk/) | — | ✅ |
-| 57 | [void](ECOWASCTF%202026/void/) | — | 📁 |
-| 58 | [wasm-checker](ECOWASCTF%202026/wasm-checker/) | — | 📁 |
-| 59 | [xor-repeat](ECOWASCTF%202026/xor-repeat/) | — | ✅ |
+60 folders of NCTF26 files and write-ups not yet matched to an official challenge (see [`NCTF26/_unidentified/A_CLASSER.md`](NCTF26/_unidentified/A_CLASSER.md) for suggestions).
 
-## 🤝 Contribuer
+<details>
+<summary>Show the list</summary>
 
-1. Retrouver l’énoncé → `sujet/enonce.md` (copie exacte, avec les points).
-2. Déposer les fichiers d’origine, sans les modifier → `fichiers/`.
-3. Rédiger `solve/writeup.md` (analyse, exploitation, flag) et ajouter les scripts.
-4. Mettre à jour le statut dans le `README.md` de l’épreuve.
+[`acme-license`](NCTF26/_unidentified/acme-license/), [`AEGIS-VAULT`](NCTF26/_unidentified/AEGIS-VAULT/), [`archive-olympio`](NCTF26/_unidentified/archive-olympio/), [`bmp-zip`](NCTF26/_unidentified/bmp-zip/), [`bnat-memdump`](NCTF26/_unidentified/bnat-memdump/), [`bnat-vm`](NCTF26/_unidentified/bnat-vm/), [`breach`](NCTF26/_unidentified/breach/), [`bytecode-vm`](NCTF26/_unidentified/bytecode-vm/), [`c2pa-provenance`](NCTF26/_unidentified/c2pa-provenance/), [`c5-ecdlp`](NCTF26/_unidentified/c5-ecdlp/), [`capture-memory`](NCTF26/_unidentified/capture-memory/), [`ch33`](NCTF26/_unidentified/ch33/), [`chall`](NCTF26/_unidentified/chall/), [`chall-pie5`](NCTF26/_unidentified/chall-pie5/), [`ChannelBot`](NCTF26/_unidentified/ChannelBot/), [`checksum-match`](NCTF26/_unidentified/checksum-match/), [`desk-photo`](NCTF26/_unidentified/desk-photo/), [`ecdsa-nonce-reuse`](NCTF26/_unidentified/ecdsa-nonce-reuse/), [`entvault-apk`](NCTF26/_unidentified/entvault-apk/), [`espace-client`](NCTF26/_unidentified/espace-client/), [`exfil-capture`](NCTF26/_unidentified/exfil-capture/), [`exif-decoy`](NCTF26/_unidentified/exif-decoy/), [`finale-pdf`](NCTF26/_unidentified/finale-pdf/), [`foodctf`](NCTF26/_unidentified/foodctf/), [`fzlp`](NCTF26/_unidentified/fzlp/), [`git-web-exposure`](NCTF26/_unidentified/git-web-exposure/), [`halcyon`](NCTF26/_unidentified/halcyon/), [`hastad-broadcast`](NCTF26/_unidentified/hastad-broadcast/), [`hid-tablet`](NCTF26/_unidentified/hid-tablet/), [`host-inventory`](NCTF26/_unidentified/host-inventory/), [`incident-analysis`](NCTF26/_unidentified/incident-analysis/), [`indice`](NCTF26/_unidentified/indice/), [`internal-toolbox`](NCTF26/_unidentified/internal-toolbox/), [`jpg-zip-polyglot`](NCTF26/_unidentified/jpg-zip-polyglot/), [`lcg-stream`](NCTF26/_unidentified/lcg-stream/), [`memdump-raw`](NCTF26/_unidentified/memdump-raw/), [`moodle-foad`](NCTF26/_unidentified/moodle-foad/), [`multi-log-siem`](NCTF26/_unidentified/multi-log-siem/), [`niamtougou`](NCTF26/_unidentified/niamtougou/), [`notsie-ad`](NCTF26/_unidentified/notsie-ad/), [`path-traversal-cdn`](NCTF26/_unidentified/path-traversal-cdn/), [`pe-resources`](NCTF26/_unidentified/pe-resources/), [`php-upload-rce`](NCTF26/_unidentified/php-upload-rce/), [`pop1`](NCTF26/_unidentified/pop1/), [`prison-pipeline`](NCTF26/_unidentified/prison-pipeline/), [`prng-stream`](NCTF26/_unidentified/prng-stream/), [`replay-gate`](NCTF26/_unidentified/replay-gate/), [`rsa-coppersmith`](NCTF26/_unidentified/rsa-coppersmith/), [`rsa-leak-p`](NCTF26/_unidentified/rsa-leak-p/), [`sayen-forum-stego`](NCTF26/_unidentified/sayen-forum-stego/), [`securebank-apk`](NCTF26/_unidentified/securebank-apk/), [`sentinelbot`](NCTF26/_unidentified/sentinelbot/), [`ssrf-ec2`](NCTF26/_unidentified/ssrf-ec2/), [`svg-mosaic`](NCTF26/_unidentified/svg-mosaic/), [`validator`](NCTF26/_unidentified/validator/), [`vault-vlt1`](NCTF26/_unidentified/vault-vlt1/), [`vaultpay-apk`](NCTF26/_unidentified/vaultpay-apk/), [`void`](NCTF26/_unidentified/void/), [`wasm-checker`](NCTF26/_unidentified/wasm-checker/), [`xor-repeat`](NCTF26/_unidentified/xor-repeat/)
 
-## ⚖️ Crédits et avertissement
+</details>
 
-Les épreuves appartiennent à leurs auteurs respectifs et aux organisateurs (CERT.tg pour le NCTF26). Cette archive est publiée à des fins **pédagogiques** après la fin des compétitions. Les adresses `*.t.ctf.tg` présentes dans les write-ups étaient des instances temporaires, aujourd’hui expirées. Auteur ou organisateur souhaitant le retrait d’une épreuve : ouvrez une *issue*.
+## ECOWAS CTF 2026
+
+Regional ECOWAS CTF (flag format `EcowasCTF{...}`), West-African themed challenges.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | crypto | [adinkra-flag](ECOWASCTF%202026/challenges/crypto/adinkra-flag/) | — | 📁 | ✔ |  |
+| 2 | forensics | [parrot-cage](ECOWASCTF%202026/challenges/forensics/parrot-cage/) | — | 📁 | ✔ |  |
+| 3 | forensics | [traffic](ECOWASCTF%202026/challenges/forensics/traffic/) | — | 📁 | ✔ |  |
+| 4 | hardware | [griot-gw-firmware](ECOWASCTF%202026/challenges/hardware/griot-gw-firmware/) | — | 📁 | ✔ |  |
+| 5 | misc | [arts](ECOWASCTF%202026/challenges/misc/arts/) | — | 📁 | ✔ |  |
+| 6 | misc | [human-error-chain](ECOWASCTF%202026/challenges/misc/human-error-chain/) | — | 📁 | ✔ |  |
+| 7 | misc | [oracle-bones](ECOWASCTF%202026/challenges/misc/oracle-bones/) | — | 📁 | ✔ |  |
+| 8 | misc | [rhythm](ECOWASCTF%202026/challenges/misc/rhythm/) | — | 📁 | ✔ |  |
+| 9 | misc | [song](ECOWASCTF%202026/challenges/misc/song/) | — | 📁 | ✔ |  |
+| 10 | misc | [stops](ECOWASCTF%202026/challenges/misc/stops/) | — | 📁 | ✔ |  |
+| 11 | misc | [tiles](ECOWASCTF%202026/challenges/misc/tiles/) | — | 📁 | ✔ |  |
+| 12 | mobile | [app-peek](ECOWASCTF%202026/challenges/mobile/app-peek/) | — | 📁 | ✔ |  |
+| 13 | network | [abidjan-dns-exfil](ECOWASCTF%202026/challenges/network/abidjan-dns-exfil/) | — | 📁 | ✔ |  |
+| 14 | osint | [liaison-emails](ECOWASCTF%202026/challenges/osint/liaison-emails/) | — | 📁 | ✔ |  |
+| 15 | reverse | [djinn](ECOWASCTF%202026/challenges/reverse/djinn/) | — | 📁 | ✔ |  |
+| 16 | reverse | [gates](ECOWASCTF%202026/challenges/reverse/gates/) | — | 📁 | ✔ |  |
+| 17 | reverse | [ngoma](ECOWASCTF%202026/challenges/reverse/ngoma/) | — | 📁 | ✔ |  |
+| 18 | reverse | [swahili-mangle](ECOWASCTF%202026/challenges/reverse/swahili-mangle/) | — | 📁 | ✔ |  |
+| 19 | reverse | [yoruba-vm](ECOWASCTF%202026/challenges/reverse/yoruba-vm/) | — | 📁 | ✔ |  |
+| 20 | stego | [adinkra](ECOWASCTF%202026/challenges/stego/adinkra/) | — | 📁 | ✔ |  |
+| 21 | stego | [baobab](ECOWASCTF%202026/challenges/stego/baobab/) | — | 📁 | ✔ |  |
+| 22 | stego | [drums](ECOWASCTF%202026/challenges/stego/drums/) | — | 📁 | ✔ |  |
+| 23 | stego | [egble](ECOWASCTF%202026/challenges/stego/egble/) | — | 📁 | ✔ |  |
+| 24 | stego | [elmina](ECOWASCTF%202026/challenges/stego/elmina/) | — | 📁 | ✔ |  |
+| 25 | stego | [kora](ECOWASCTF%202026/challenges/stego/kora/) | — | 📁 | ✔ |  |
+
+## HackDCTF 2026
+
+Challenges from HackDCTF (flag format `HackDCTF{...}` / `HackCTF{...}`).
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | crypto | [symbol-ciphers](HackDCTF%202026/challenges/crypto/symbol-ciphers/) | — | 📝 | ✔ | ✔ |
+| 2 | reverse | [toguiii-antiti](HackDCTF%202026/challenges/reverse/toguiii-antiti/) | — | 📁 | ✔ |  |
+| 3 | stego | [humidity](HackDCTF%202026/challenges/stego/humidity/) | — | 📁 | ✔ |  |
+
+## Cyberini
+
+Training challenges and write-ups from the Cyberini platform.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | network | [capture-pcapng](Other%20platforms/Cyberini/challenges/network/capture-pcapng/) | — | 📁 | ✔ |  |
+| 2 | reverse | [check-py](Other%20platforms/Cyberini/challenges/reverse/check-py/) | — | 📁 | ✔ |  |
+| 3 | stego | [logocyb](Other%20platforms/Cyberini/challenges/stego/logocyb/) | — | 📁 | ✔ |  |
+| 4 | web | [urlpreview-write18](Other%20platforms/Cyberini/challenges/web/urlpreview-write18/) | — | 📝 |  | ✔ |
+
+## TryHackMe
+
+TryHackMe rooms with a write-up.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | web | [shoreline-display](Other%20platforms/TryHackMe/challenges/web/shoreline-display/) | — | 📝 |  | ✔ |
+
+## BDSec
+
+Challenges from BDSec CTF.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | reverse | [crack-me-vault](Other%20platforms/BDSec/challenges/reverse/crack-me-vault/) | — | 📁 | ✔ |  |
+
+## Root-Me
+
+Root-Me challenge files only — Root-Me rules forbid publishing solutions.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | crypto | [ch1](Other%20platforms/Root-Me/challenges/crypto/ch1/) | — | 📁 | ✔ |  |
+| 2 | crypto | [ch13](Other%20platforms/Root-Me/challenges/crypto/ch13/) | — | 📁 | ✔ |  |
+| 3 | crypto | [ch2](Other%20platforms/Root-Me/challenges/crypto/ch2/) | — | 📁 | ✔ |  |
+| 4 | crypto | [ch48](Other%20platforms/Root-Me/challenges/crypto/ch48/) | — | 📁 | ✔ |  |
+| 5 | crypto | [ch49](Other%20platforms/Root-Me/challenges/crypto/ch49/) | — | 📁 | ✔ |  |
+| 6 | crypto | [ch50](Other%20platforms/Root-Me/challenges/crypto/ch50/) | — | 📁 | ✔ |  |
+| 7 | crypto | [ch51](Other%20platforms/Root-Me/challenges/crypto/ch51/) | — | 📁 | ✔ |  |
+| 8 | crypto | [ch6](Other%20platforms/Root-Me/challenges/crypto/ch6/) | — | 📁 | ✔ |  |
+| 9 | crypto | [ch7](Other%20platforms/Root-Me/challenges/crypto/ch7/) | — | 📁 | ✔ |  |
+| 10 | crypto | [ch8](Other%20platforms/Root-Me/challenges/crypto/ch8/) | — | 📁 | ✔ |  |
+| 11 | network | [ch3](Other%20platforms/Root-Me/challenges/network/ch3/) | — | 📁 | ✔ |  |
+| 12 | reverse | [ch1](Other%20platforms/Root-Me/challenges/reverse/ch1/) | — | 📁 | ✔ |  |
+| 13 | reverse | [ch2](Other%20platforms/Root-Me/challenges/reverse/ch2/) | — | 📁 | ✔ |  |
+
+## Unsorted 2026
+
+Challenges played in 2026 whose event has not been identified yet.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | crypto | [base64-cipher](Unsorted%202026/challenges/crypto/base64-cipher/) | — | 📁 | ✔ |  |
+| 2 | crypto | [bit2bit](Unsorted%202026/challenges/crypto/bit2bit/) | — | 📁 | ✔ |  |
+| 3 | crypto | [cjk-shift](Unsorted%202026/challenges/crypto/cjk-shift/) | — | 📁 | ✔ |  |
+| 4 | crypto | [ecdsa-signatures](Unsorted%202026/challenges/crypto/ecdsa-signatures/) | — | 📁 | ✔ |  |
+| 5 | crypto | [lwe](Unsorted%202026/challenges/crypto/lwe/) | — | 📁 | ✔ |  |
+| 6 | crypto | [messages-esolang](Unsorted%202026/challenges/crypto/messages-esolang/) | — | 📁 | ✔ |  |
+| 7 | crypto | [mq-system](Unsorted%202026/challenges/crypto/mq-system/) | — | 📁 | ✔ |  |
+| 8 | crypto | [number-list](Unsorted%202026/challenges/crypto/number-list/) | — | 📁 | ✔ |  |
+| 9 | crypto | [rsa-e3-affine-padding](Unsorted%202026/challenges/crypto/rsa-e3-affine-padding/) | — | 📁 | ✔ |  |
+| 10 | crypto | [rsa-params](Unsorted%202026/challenges/crypto/rsa-params/) | — | 📁 | ✔ |  |
+| 11 | crypto | [rsa-private-key-leak](Unsorted%202026/challenges/crypto/rsa-private-key-leak/) | — | 📁 | ✔ |  |
+| 12 | forensics | [11070-folders](Unsorted%202026/challenges/forensics/11070-folders/) | — | 📁 | ✔ |  |
+| 13 | forensics | [fat-image](Unsorted%202026/challenges/forensics/fat-image/) | — | 📁 | ✔ |  |
+| 14 | forensics | [firefox-places](Unsorted%202026/challenges/forensics/firefox-places/) | — | 📁 | ✔ |  |
+| 15 | forensics | [monitor-pcap](Unsorted%202026/challenges/forensics/monitor-pcap/) | — | 📁 | ✔ |  |
+| 16 | network | [kerberos-catcorp](Unsorted%202026/challenges/network/kerberos-catcorp/) | — | 📁 | ✔ |  |
+| 17 | reverse | [crackme-net](Unsorted%202026/challenges/reverse/crackme-net/) | — | 📁 | ✔ |  |
+| 18 | reverse | [crackme-obf](Unsorted%202026/challenges/reverse/crackme-obf/) | — | 📝 | ✔ | ✔ |
+| 19 | reverse | [crackme-win-linux](Unsorted%202026/challenges/reverse/crackme-win-linux/) | — | 📁 | ✔ |  |
+| 20 | reverse | [crackmemask](Unsorted%202026/challenges/reverse/crackmemask/) | — | 📁 | ✔ |  |
+| 21 | reverse | [crackumulateur](Unsorted%202026/challenges/reverse/crackumulateur/) | — | 📁 | ✔ |  |
+| 22 | reverse | [nyancat](Unsorted%202026/challenges/reverse/nyancat/) | — | 📁 | ✔ |  |
+| 23 | reverse | [vm-reverse](Unsorted%202026/challenges/reverse/vm-reverse/) | — | 📁 | ✔ |  |
+| 24 | stego | [bali](Unsorted%202026/challenges/stego/bali/) | — | 📁 | ✔ |  |
+| 25 | stego | [cicada](Unsorted%202026/challenges/stego/cicada/) | — | 📁 | ✔ |  |
+| 26 | stego | [coucher-soleil](Unsorted%202026/challenges/stego/coucher-soleil/) | — | 📁 | ✔ |  |
+| 27 | stego | [images-jpeg](Unsorted%202026/challenges/stego/images-jpeg/) | — | 📁 | ✔ |  |
+| 28 | stego | [office-docx](Unsorted%202026/challenges/stego/office-docx/) | — | 📁 | ✔ |  |
+| 29 | stego | [perception-trac](Unsorted%202026/challenges/stego/perception-trac/) | — | 📁 | ✔ |  |
+| 30 | stego | [plage-vacances](Unsorted%202026/challenges/stego/plage-vacances/) | — | 📁 | ✔ |  |
+| 31 | stego | [stego-output](Unsorted%202026/challenges/stego/stego-output/) | — | 📁 | ✔ |  |
+| 32 | stego | [trace](Unsorted%202026/challenges/stego/trace/) | — | 📁 | ✔ |  |
+| 33 | stego | [video-textures](Unsorted%202026/challenges/stego/video-textures/) | — | 📁 | ✔ |  |
+| 34 | stego | [whitespace-series](Unsorted%202026/challenges/stego/whitespace-series/) | — | 📁 | ✔ |  |
+| 35 | stego | [zip-stego](Unsorted%202026/challenges/stego/zip-stego/) | — | 📁 | ✔ |  |
+
+## 🤝 Contributing
+
+1. Retrieve the exact statement → `sujet/enonce.md` (with points and author).
+2. Add the original files, unmodified → `fichiers/`.
+3. Write `solve/writeup.md` (analysis, exploitation, flag) and add the solve scripts.
+4. Update the status/flag in the challenge `README.md`, then run `python3 scripts/generate_readme.py`.
+
+## ⚖️ Credits & disclaimer
+
+All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events ended. The `*.t.ctf.tg` addresses found in write-ups were temporary instances and have expired. If you are an author or organiser and want a challenge removed, please open an issue.
 

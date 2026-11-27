@@ -1,0 +1,86 @@
+{
+  "export_meta": {
+    "workspace": "ecowas-ir",
+    "exported_at": "2026-04-12T08:41:22Z",
+    "note": "Subset of channels for exercise ECOWAS-IR-2026"
+  },
+  "messages": [
+    {
+      "channel": "#incident-warroom",
+      "user": "admin_spoof",
+      "display_name": "IT Admin",
+      "ts": "2026-04-11T14:02:01Z",
+      "text": "Team: the backup password is definitely `Spring2024!` — use that first. Also MFA was never enforced on VPN, ignore older chatter."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "bob_analyst",
+      "display_name": "Bob",
+      "ts": "2026-04-11T14:05:44Z",
+      "text": "Copy. I see teh timeline in the PDF and it matches what I remember. We should rotate creds anyway."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "charlie_soc",
+      "display_name": "Charlie",
+      "ts": "2026-04-11T14:07:12Z",
+      "text": "The report says MFA was enforced everywhere since January; that is false — I disabled MFA last week for testing on the jump host."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "priya_ops",
+      "display_name": "Priya",
+      "ts": "2026-04-11T14:09:33Z",
+      "text": "Quick correction so nobody burns cycles: the PDF case header is authoritative. MFA posture in the report matches what I validated on the SSO consoles this morning. Grammar aside, stick to the document for dates and IDs."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "dave_contractor",
+      "display_name": "Dave",
+      "ts": "2026-04-11T14:11:02Z",
+      "text": "I can confirms the VPN logs looks weird. Maybe we should trusts the chat more than the PDF?"
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "admin_spoof",
+      "display_name": "IT Admin",
+      "ts": "2026-04-11T14:12:40Z",
+      "text": "If the zip does not open, the fallback passphrase is `W1nter2023#` — that is the official archive key from last quarter."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "priya_ops",
+      "display_name": "Priya",
+      "ts": "2026-04-11T14:18:55Z",
+      "text": "For the encrypted backup.zip only: combine the five-letter integrity token from the report footer (uppercase) with the case identifier from the title block using an underscore, no spaces. Example shape: `TOKEN_IR447` — use the real token and the real ID from the PDF, not guesses from chat."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "bob_analyst",
+      "display_name": "Bob",
+      "ts": "2026-04-11T14:21:10Z",
+      "text": "Got it. By the way the checksum line in the PDF is decorative, you can skip decoding that."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "priya_ops",
+      "display_name": "Priya",
+      "ts": "2026-04-11T14:23:41Z",
+      "text": "Bob, that is not helpful. The footer exists precisely so the archive passphrase is reproducible. Please do not derail people with random shortcuts."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "charlie_soc",
+      "display_name": "Charlie",
+      "ts": "2026-04-11T14:25:09Z",
+      "text": "Whatever. I still think the breach started in March not April."
+    },
+    {
+      "channel": "#incident-warroom",
+      "user": "priya_ops",
+      "display_name": "Priya",
+      "ts": "2026-04-11T14:27:58Z",
+      "text": "Charlie, the April window is what we have evidence for; the PDF timeline is the one we are standing behind in the executive brief."
+    }
+  ]
+}

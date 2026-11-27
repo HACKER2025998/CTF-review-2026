@@ -1,9 +1,9 @@
 # Identifiants personnels (VPN) — ne jamais publier
 *.ovpn
 # Reconnaissance sur un site réel tiers, hors CTF
-ECOWASCTF 2026/moodle-foad/
+NCTF26/_unidentified/moodle-foad/
 # Fichiers > 100 Mo (limite GitHub)
-ECOWASCTF 2026/_pieces_jointes_non_attribuees/code_1.145.2-1793945276_amd64.deb
+NCTF26/_unidentified/_pieces_jointes_non_attribuees/code_1.145.2-1793945276_amd64.deb
 # Divers
 __pycache__/
 *.pyc
