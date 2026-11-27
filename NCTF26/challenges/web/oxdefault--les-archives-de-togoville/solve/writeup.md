@@ -1,0 +1,20 @@
+# Write-up — oxdefault--les-archives-de-togoville
+
+- **Catégorie :** web
+- **Auteur du challenge :** oxdefault
+
+## Énoncé
+
+Voir `../sujet/enonce.md`.
+
+## Analyse
+
+## Exploitation
+
+## Script de résolution
+
+Voir les scripts de ce dossier `solve/`.
+
+## Flag
+
+`NCTF{...}`

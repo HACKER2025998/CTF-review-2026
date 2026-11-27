@@ -1,0 +1,269 @@
+
+with ThreadPoolExecutor(max_workers=8) as ex:
+ list(ex.map(lambda p:inspect(B+p),paths))
+PY
+
+/usr/bin/python3 -u /tmp/ghostflag.py
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /fla
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /sit[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: / (C
+
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /sec
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /rob
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /fla
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /sec
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /.we
+rapi
+[PAGE] https://aubq2mwietezp2g3.t.ctf.tg/message 200
+[TEXT] GhostFlag GHOSTFLAG AGENCY Division des Operations Speciales TOP SECRET // EYES ONLY Authentification Agent Se connecter Mission: ECHO-7 Statut: [CLASSIFIE] Derniere Transmission 2026-08-15 04:00:00 UTC Agents Actifs 47 agents en mission 2026 GhostFlag Agency Made by Petstar Ce message s'autodetruira dans 5 secondes... (pas vraiment)
+[COMMENT]  
+    ================================================================
+    GHOSTFLAG AGENCY - ACCES RESTREINT - NIVEAU 7
+    ================================================================
+    NOTE AUX DEVELOPPEURS:
+    - Pensez a securiser le dossier fnd_password avant la mise en ligne
+    - Les credentials par defaut sont a changer
+    - TODO: Implementer le chiffrement AES
+    ================================================================
+    Serveur: Apache 2.4.57 | Flask 3.0.0 | Python 3.11
+    ================================================================
+    
+[COMMENT]  
+    [SECURITE] Session ID: 7a3b-f91c-4d22-8e67-9a0b3c4d5e6f
+    [LOGS] Derniere connexion: 2024-01-15 03:42:17 UTC
+    [STATUS] Agent: INCONNU | Niveau: NON HABILITE
+    [NOTE] Pattern de sauvegarde: backup_dd_mm_yyyy.sql
+    
+[COMMENT]  
+        ATTENTION:
+        Le dossier /secret_files/fnd_password/ contient
+        les mots de passe des agents dormants.
+        NE PAS EXPOSER CE DOSSIER AU PUBLIC !
+        
+[COMMENT]  
+        TODO - @sysadmin:
+        Mot de passe root par defaut toujours actif !
+        Faire un tour dans fnd_password pour les changements urgents.
+        
+de[ASSET] https://aubq2mwietezp2g3.t.ctf.tg/static/css/style.css * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0a0a;
+    color: #00ff00;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.subtitle {
+    color: #008800;
+    margin: 10px 0;
+}
+
+.classified {
+    color: #ff0000;
+    font-weight: bold;
+    border: 1px solid #ff0000;
+    display: inline-block;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+
+.login-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px;
+    border: 1px solid #003300;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    background: #111;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    width: 300px;
+}
+
+button {
+    background: #003300;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+}
+
+button:hover {
+    background: #005500;
+}
+
+#result {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.redacted {
+    background: #333;
+    color: #333;
+}
+
+.card {
+    border: 1px solid #003300;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #00aa00;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid #003300;
+}
+
+.hidden-note {
+    color: #0a0a0a;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+ 
+[PAGE] https://aubq2mwietezp2g3.t.ctf.tg/script.js 200
+[TEXT] GhostFlag GHOSTFLAG AGENCY Division des Operations Speciales TOP SECRET // EYES ONLY Authentification Agent Se connecter Mission: ECHO-7 Statut: [CLASSIFIE] Derniere Transmission 2026-08-15 04:00:00 UTC Agents Actifs 47 agents en mission 2026 GhostFlag Agency Made by Petstar Ce message s'autodetruira dans 5 secondes... (pas vraiment)
+[COMMENT]  
+    ================================================================
+    GHOSTFLAG AGENCY - ACCES RESTREINT - NIVEAU 7
+    ================================================================
+    NOTE AUX DEVELOPPEURS:
+    - Pensez a securiser le dossier fnd_password avant la mise en ligne
+    - Les credentials par defaut sont a changer
+    - TODO: Implementer le chiffrement AES
+    ================================================================
+    Serveur: Apache 2.4.57 | Flask 3.0.0 | Python 3.11
+    ================================================================
+    
+[COMMENT]  
+    [SECURITE] Session ID: 7a3b-f91c-4d22-8e67-9a0b3c4d5e6f
+    [LOGS] Derniere connexion: 2024-01-15 03:42:17 UTC
+    [STATUS] Agent: INCONNU | Niveau: NON HABILITE
+    [NOTE] Pattern de sauvegarde: backup_dd_mm_yyyy.sql
+    
+[COMMENT]  
+        ATTENTION:
+        Le dossier /secret_files/fnd_password/ contient
+        les mots de passe des agents dormants.
+        NE PAS EXPOSER CE DOSSIER AU PUBLIC !
+        
+[COMMENT]  
+        TODO - @sysadmin:
+        Mot de passe root par defaut toujours actif !
+        Faire un tour dans fnd_password pour les changements urgents.
+        
+m
+[PAGE] https://aubq2mwietezp2g3.t.ctf.tg/static/script.js 200
+[TEXT] GhostFlag GHOSTFLAG AGENCY Division des Operations Speciales TOP SECRET // EYES ONLY Authentification Agent Se connecter Mission: ECHO-7 Statut: [CLASSIFIE] Derniere Transmission 2026-08-15 04:00:00 UTC Agents Actifs 47 agents en mission 2026 GhostFlag Agency Made by Petstar Ce message s'autodetruira dans 5 secondes... (pas vraiment)
+[COMMENT]  
+    ================================================================
+    GHOSTFLAG AGENCY - ACCES RESTREINT - NIVEAU 7
+    ================================================================
+    NOTE AUX DEVELOPPEURS:
+    - Pensez a securiser le dossier fnd_password avant la mise en ligne
+    - Les credentials par defaut sont a changer
+    - TODO: Implementer le chiffrement AES
+    ================================================================
+    Serveur: Apache 2.4.57 | Flask 3.0.0 | Python 3.11
+    ================================================================
+    
+[COMMENT]  
+    [SECURITE] Session ID: 7a3b-f91c-4d22-8e67-9a0b3c4d5e6f
+    [LOGS] Derniere connexion: 2024-01-15 03:42:17 UTC
+    [STATUS] Agent: INCONNU | Niveau: NON HABILITE
+    [NOTE] Pattern de sauvegarde: backup_dd_mm_yyyy.sql
+    
+[COMMENT]  
+        ATTENTION:
+        Le dossier /secret_files/fnd_password/ contient
+        les mots de passe des agents dormants.
+        NE PAS EXPOSER CE DOSSIER AU PUBLIC !
+        
+[COMMENT]  
+        TODO - @sysadmin:
+        Mot de passe root par defaut toujours actif !
+        Faire un tour dans fnd_password pour les changements urgents.
+        
+
+[PAGE] https://aubq2mwietezp2g3.t.ctf.tg/favicon.ico 200
+[TEXT] GhostFlag GHOSTFLAG AGENCY Division des Operations Speciales TOP SECRET // EYES ONLY Authentification Agent Se connecter Mission: ECHO-7 Statut: [CLASSIFIE] Derniere Transmission 2026-08-15 04:00:00 UTC Agents Actifs 47 agents en mission 2026 GhostFlag Agency Made by Petstar Ce message s'autodetruira dans 5 secondes... (pas vraiment)
+[COMMENT]  
+    ================================================================
+    GHOSTFLAG AGENCY - ACCES RESTREINT - NIVEAU 7
+    ================================================================
+    NOTE AUX DEVELOPPEURS:
+    - Pensez a securiser le dossier fnd_password avant la mise en ligne
+    - Les credentials par defaut sont a changer
+    - TODO: Implementer le chiffrement AES
+    ================================================================
+    Serveur: Apache 2.4.57 | Flask 3.0.0 | Python 3.11
+    ================================================================
+    
+[COMMENT]  
+    [SECURITE] Session ID: 7a3b-f91c-4d22-8e67-9a0b3c4d5e6f
+    [LOGS] Derniere connexion: 2024-01-15 03:42:17 UTC
+    [STATUS] Agent: INCONNU | Niveau: NON HABILITE
+    [NOTE] Pattern de sauvegarde: backup_dd_mm_yyyy.sql
+    
+[COMMENT]  
+        ATTENTION:
+        Le dossier /secret_files/fnd_password/ contient
+        les mots de passe des agents dormants.
+        NE PAS EXPOSER CE DOSSIER AU PUBLIC !
+        
+[COMMENT]  
+        TODO - @sysadmin:
+        Mot de passe root par defaut toujours actif !
+        Faire un tour dans fnd_password pour les changements urgents.
+        
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /hid
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /gho
+[ERROR] [ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /admHTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /age
+
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /bac
+[ERROR] HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /bac[ERROR]
+ HTTPSConnectionPool(host='aubq2mwietezp2g3.t.ctf.tg', port=443): Max retries exceeded with url: /sta
+                                                                                                                       
+┌──(xhackerip㉿pvqxyi3xgxl7ufaa)-[/tmp/be_git]
+└─$ rapide
+

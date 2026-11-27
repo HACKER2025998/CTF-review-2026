@@ -1,0 +1,8 @@
+HTTP/2 403 
+server: nginx/1.27.5
+date: Thu, 19 Nov 2026 11:48:41 GMT
+content-type: text/html; charset=utf-8
+content-length: 2
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+no

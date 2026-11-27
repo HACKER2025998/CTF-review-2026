@@ -1,0 +1,8 @@
+HTTP/2 200 
+server: nginx/1.27.5
+date: Thu, 19 Nov 2026 11:48:34 GMT
+content-type: application/json
+content-length: 126
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+{"block_size":16,"target":"2d086ccadb7341843adac2947559e4b46c8c0cc142d932ab6385a8a9c351641388d2e36d07efecfd5cba97126ba79bc9"}

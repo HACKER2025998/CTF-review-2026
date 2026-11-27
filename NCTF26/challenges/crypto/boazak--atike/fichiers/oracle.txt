@@ -1,0 +1,12 @@
+HTTP/2 500 
+server: nginx/1.27.5
+date: Thu, 19 Nov 2026 11:48:37 GMT
+content-type: text/html; charset=utf-8
+content-length: 265
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>

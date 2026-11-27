@@ -1,0 +1,10 @@
+[Interface]
+PrivateKey = YEyaki67zC5nAKH9ac9OFcj0hsEe1qe48Iz0HNUGvlI=
+Address = 10.101.23.3/32
+MTU = 1380
+
+[Peer]
+PublicKey = CZE3ijf11G5jkBuVQdz9ZNnS768RjODw/ZGr7Z2GpTk=
+Endpoint = vpn.ctf.tg:28523
+AllowedIPs = 10.100.23.0/24
+PersistentKeepalive = 25

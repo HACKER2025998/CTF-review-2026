@@ -1,0 +1,625 @@
+
+python3 -u /tmp/curfew.py
+===== RECON =====
+
+[200] GET /
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Curfew — La sonnerie qui ferme les sessions</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="hero-centered">
+  <p class="eyebrow">GESTION DE SESSIONS POUR ETABLISSEMENTS</p>
+  <h1>Chaque poste a son heure de fermeture.</h1>
+  <p class="lede">
+    Salles informatiques, mediatheques, bornes de consultation : Curfew
+    donne a votre service informatique une cloche unique pour fermer une
+    session, ou toutes a la fois. Fini les postes restes ouverts apres le
+    depart d'un agent ou la fin d'un examen.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="/register">Creer un compte</a>
+    <a class="btn btn-ghost" href="/lo
+
+[200] GET /login
+LOCATION: -
+COOKIE: session=eyJjYXB0Y2hhX2Fuc3dlciI6N30.au9nZg.vyOiXVZUjVW3TtnNy-U_o6VPP6Q; HttpOnly; Path=/
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Connexion — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Connexion</h2>
+  
+  <form method="post" autocomplete="off">
+    <label>Nom d'utilisateur
+      <input type="text" name="username" required>
+    </label>
+    <label>Mot de passe
+      <input type="password" name="password" required>
+    </label>
+    <label class="captcha-label">
+      Verification humaine : combien font 5 + 2 ?
+      <input type="text" name="captcha" inputmode="numeric" required>
+    </label>
+    <button class="btn btn-primary" type="submit">Se connecter</button>
+  </form>
+  <p class="switch">Pas encore de compte ? <a href="/register">Cr
+
+[200] GET /register
+LOCATION: -
+COOKIE: session=eyJjYXB0Y2hhX2Fuc3dlciI6MTF9.au9nZw.t78c8kNOrCYzPItF8-suTRwqst4; HttpOnly; Path=/
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Creer un compte — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Creer un compte</h2>
+  
+  <form method="post" autocomplete="off">
+    <label>Nom d'utilisateur
+      <input type="text" name="username" required>
+    </label>
+    <label>Mot de passe
+      <input type="password" name="password" required>
+    </label>
+    <label class="captcha-label">
+      Verification humaine : combien font 6 + 5 ?
+      <input type="text" name="captcha" inputmode="numeric" required>
+    </label>
+    <button class="btn btn-primary" type="submit">Creer le compte</button>
+  </form>
+  <p class="switch">Deja un compte ? <a href="/log
+
+[302] GET /dashboard
+LOCATION: /login
+COOKIE: -
+BODY: <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/login">/login</a>. If not, click the link.
+
+
+[302] GET /admin
+LOCATION: /login
+COOKIE: -
+BODY: <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/login">/login</a>. If not, click the link.
+
+
+[404] GET /profile
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[404] GET /api/me
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[404] GET /api/admin
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[404] GET /flag
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[302] GET /logout
+LOCATION: /
+COOKIE: curfew_session=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/
+BODY: <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/">/</a>. If not, click the link.
+
+
+[200] GET /robots.txt
+LOCATION: -
+COOKIE: -
+BODY: User-agent: GPTBot
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: *
+Disallow: /admin
+
+
+===== HOME FORM FIELDS =====
+
+[200] GET /
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Curfew — La sonnerie qui ferme les sessions</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="hero-centered">
+  <p class="eyebrow">GESTION DE SESSIONS POUR ETABLISSEMENTS</p>
+  <h1>Chaque poste a son heure de fermeture.</h1>
+  <p class="lede">
+    Salles informatiques, mediatheques, bornes de consultation : Curfew
+    donne a votre service informatique une cloche unique pour fermer une
+    session, ou toutes a la fois. Fini les postes restes ouverts apres le
+    depart d'un agent ou la fin d'un examen.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="/register">Creer un compte</a>
+    <a class="btn btn-ghost" href="/lo
+[]
+
+===== TEST REGISTRATION =====
+
+[200] POST /register
+LOCATION: -
+COOKIE: session=eyJjYXB0Y2hhX2Fuc3dlciI6OH0.au9naA.BxE37QL7zIWs3AvtmNmfXuJXIhY; HttpOnly; Path=/
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Creer un compte — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Creer un compte</h2>
+  <p class="error">Verification humaine incorrecte.</p>
+  <form method="post" autocomplete="off">
+    <label>Nom d'utilisateur
+      <input type="text" name="username" required>
+    </label>
+    <label>Mot de passe
+      <input type="password" name="password" required>
+    </label>
+    <label class="captcha-label">
+      Verification humaine : combien font 2 + 6 ?
+      <input type="text" name="captcha" inputmode="numeric" required>
+    </label>
+    <button class="btn btn-primary" type="submit">Creer le compte</button>
+  </for
+
+===== TEST LOGIN =====
+
+[200] POST /login
+LOCATION: -
+COOKIE: session=eyJjYXB0Y2hhX2Fuc3dlciI6OX0.au9naA.6WHVZTPmLMK4A_3s2_niuWps8JI; HttpOnly; Path=/
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Connexion — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Connexion</h2>
+  <p class="error">Verification humaine incorrecte.</p>
+  <form method="post" autocomplete="off">
+    <label>Nom d'utilisateur
+      <input type="text" name="username" required>
+    </label>
+    <label>Mot de passe
+      <input type="password" name="password" required>
+    </label>
+    <label class="captcha-label">
+      Verification humaine : combien font 7 + 2 ?
+      <input type="text" name="captcha" inputmode="numeric" required>
+    </label>
+    <button class="btn btn-primary" type="submit">Se connecter</button>
+  </form>
+  <p class="
+
+===== AUTHENTICATED =====
+
+[302] GET /dashboard
+LOCATION: /login
+COOKIE: -
+BODY: <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/login">/login</a>. If not, click the link.
+
+
+[302] GET /admin
+LOCATION: /login
+COOKIE: -
+BODY: <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to the target URL: <a href="/login">/login</a>. If not, click the link.
+
+
+[404] GET /flag
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[404] GET /api/me
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+[404] GET /api/admin
+LOCATION: -
+COOKIE: -
+BODY: <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="google" content="noai">
+  <title>Erreur 404 — Curfew</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">&#9790;</span> Curfew
+    </a>
+    <nav>
+      
+        <a href="/login">Connexion</a>
+        <a class="cta" href="/register">Creer un compte</a>
+      
+    </nav>
+  </header>
+  <main>
+    
+<section class="auth-box">
+  <h2>Erreur 404</h2>
+  <p>Page introuvable.</p>
+  <p><a href="/">Retour a l'accueil</a></p>
+</section>
+
+  </main>
+  <footer>
+    <span>Curfew</span> &middot; <span>La sonnerie qui ferme les sessions, poste par poste</span> &middot; <span>&copy; 2026 Curfew</span>
+  </footer>
+</body>
+</html>
+
+===== COOKIE ANALYSIS =====
+session = eyJjYXB0Y2hhX2Fuc3dlciI6OX0.au9naA.6WHVZTPmLMK4A_3s2_niuWps8JI
+DECODE 0 b'{"captcha_answer":9}'
+DECODE 1 b'j\xefgh'
+                                                                                                                       
+┌──(xhackerip㉿xkali)-[/tmp/be_git]
+└─$ 
+

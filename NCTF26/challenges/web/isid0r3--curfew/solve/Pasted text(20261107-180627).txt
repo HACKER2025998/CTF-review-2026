@@ -1,0 +1,219 @@
+
+
+
+
+
+
+
+
+
+
+
+
+┌──(xhackerip㉿xkali)-[/tmp/be_git]
+└─$ sed -i 's|https://fn46fftynoh2hf3g.t.ctf.tg|https://gvgsojee2wfbjxmr.t.ctf.tg|g' /tmp/curfew_next.py
+python3 -u /tmp/curfew_next.py
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 239, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 989, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 494, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 470, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1125, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 827, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 246, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed to resolve 'gvgsojee2wfbjxmr.t.ctf.tg' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 555, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Max retries exceeded with url: /register (Caused by NameResolutionError("HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed to resolve 'gvgsojee2wfbjxmr.t.ctf.tg' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/curfew_next.py", line 30, in <module>
+    answer=captcha("/register")
+  File "/tmp/curfew_next.py", line 8, in captcha
+    r=s.get(B+page,timeout=6)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Max retries exceeded with url: /register (Caused by NameResolutionError("HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed to resolve 'gvgsojee2wfbjxmr.t.ctf.tg' ([Errno -3] Temporary failure in name resolution)"))
+                                                                                                                       
+┌──(xhackerip㉿xkali)-[/tmp/be_git]
+└─$ 
+┌──(xhackerip㉿xkali)-[/tmp/be_git]
+└─$ >....                                                                                                              
+s.trust_env=False
+
+def captcha(route):
+    r=s.get(B+route,timeout=6)
+    m=re.search(r'combien font\s*(\d+)\s*\+\s*(\d+)',r.text,re.I)
+    if not m:
+        print("ERREUR CAPTCHA",r.status_code,r.text[:500])
+        raise SystemExit
+    return str(int(m[1])+int(m[2]))
+
+u="ctf"+str(int(time.time()))
+p="Test123456"
+
+c=captcha("/register")
+r=s.post(B+"/register",data={"username":u,"password":p,"captcha":c},
+         timeout=6,allow_redirects=False)
+print("REGISTER",r.status_code,r.headers.get("Location"),flush=True)
+
+c=captcha("/login")
+r=s.post(B+"/login",data={"username":u,"password":p,"captcha":c},
+         timeout=6,allow_redirects=False)
+print("LOGIN",r.status_code,r.headers.get("Location"),flush=True)
+
+print("COOKIES",s.cookies.get_dict(),flush=True)
+token=s.cookies.get("curfew_session")
+
+if token:
+    print("TOKEN",token,flush=True)
+    for i,part in enumerate(token.split(".")[:2]):
+        try:
+            raw=base64.urlsafe_b64decode(part+"="*(-len(part)%4))
+            print("DECODE",i,raw[:1000],flush=True)
+        except Exception: pass
+
+for route in ["/dashboard","/admin"]:
+    r=s.get(B+route,timeout=6,allow_redirects=False)
+    print("\nPAGE",route,r.status_code,r.headers.get("Location"),
+          re.sub(r'\s+',' ',r.text)[:2200],flush=True)
+    print("FLAGS",re.findall(r'NCTF\{[^}]+\}',r.text),flush=True)
+
+if token:
+    s.get(B+"/logout",timeout=6)
+    t=requests.Session()
+    t.trust_env=False
+    t.cookies.set("curfew_session",token)
+    for route in ["/dashboard","/admin"]:
+        r=t.get(B+route,timeout=6,allow_redirects=False)
+        print("REPLAY",route,r.status_code,r.headers.get("Location"),
+              r.text[:450],flush=True)
+PY
+python3 -u /tmp/curfew_quick.py
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 239, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 989, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 494, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 470, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1125, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 827, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 246, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed to resolve 'gvgsojee2wfbjxmr.t.ctf.tg' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 555, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Max retries exceeded with url: /register (Caused by NameResolutionError("HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed to resolve 'gvgsojee2wfbjxmr.t.ctf.tg' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/curfew_quick.py", line 18, in <module>
+    c=captcha("/register")
+  File "/tmp/curfew_quick.py", line 8, in captcha
+    r=s.get(B+route,timeout=6)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Max retries exceeded with url: /register (Caused by NameResolutionError("HTTPSConnection(host='gvgsojee2wfbjxmr.t.ctf.tg', port=443): Failed 

@@ -1,0 +1,379 @@
+python3 -u /tmp/be.py
+  WARNING: The script dulwich is installed in '/home/xhackerip/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script git-dumper is installed in '/home/xhackerip/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+===== RECON =====
+[200] / 958 bytes
+[200] /.git/HEAD 23 bytes
+ref: refs/heads/master
+
+[200] /.git/config 148 bytes
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	email = ctf@challenge.com
+	name = CTF Challenge
+
+[200] /.git/index 289 bytes
+[200] /.git/logs/HEAD 718 bytes
+0000000000000000000000000000000000000000 d06c5b7d215e72e9555af886ea064b9c9b4fe7d4 CTF Challenge <ctf@challenge.com> 1794073736 +0000	commit (initial): Initial commit: Added README
+d06c5b7d215e72e9555af886ea064b9c9b4fe7d4 2af9ed02ee9962084014b9f787c42e63c895beeb CTF Challenge <ctf@challenge.com> 1794073736 +0000	commit: Added encrypted backup file
+2af9ed02ee9962084014b9f787c42e63c895beeb 3502fb0c8e3e05d4afcec1d48acf3903f728ca10 CTF Challenge <ctf@challenge.com> 1794073736 +0000	commit: Updated do
+[404] /.git/packed-refs 207 bytes
+[404] /.gitignore 207 bytes
+[404] /flag.txt 207 bytes
+[404] /robots.txt 207 bytes
+
+===== GIT EXTRACTION =====
+[CMD] python3 -m git_dumper https://uhyfmune56m5tukt.t.ctf.tg/.git/ /tmp/be_git
+[-] Testing https://uhyfmune56m5tukt.t.ctf.tg/.git/HEAD [200]
+[-] Testing https://uhyfmune56m5tukt.t.ctf.tg/.git/ [404]
+[-] Fetching common files
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/commit-msg.sample [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/applypatch-msg.sample [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/post-commit.sample [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/post-commit.sample responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/pre-applypatch.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/pre-push.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/pre-rebase.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/post-update.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/pre-commit.sample [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.gitignore [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.gitignore responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/COMMIT_EDITMSG [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/description [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/info/exclude [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/prepare-commit-msg.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/index [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/update.sample [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/info/packs [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/info/packs responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/post-receive.sample [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/post-receive.sample responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/hooks/pre-receive.sample [200]
+[-] Finding refs/
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/FETCH_HEAD [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/FETCH_HEAD responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/config [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/info/refs [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/info/refs responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/ORIG_HEAD [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/ORIG_HEAD responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/HEAD [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/development [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/development responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/production [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/HEAD [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/production responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/HEAD responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/main [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/staging [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/main responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/staging responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/master [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/master [200]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/master responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/HEAD [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/production [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/heads/production responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/staging [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/staging responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/main [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/main responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/packed-refs [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/packed-refs responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/production [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/development [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/development [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/production responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/development responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/stash [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/remotes/origin/development responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/logs/refs/stash responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/staging [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/staging responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/main [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/master [200]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/heads/main responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/main [404]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/main responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/HEAD [404]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/HEAD responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/production [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/stash [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/staging [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/staging [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/production [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/main [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/production responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/stash responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/staging responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/staging responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/main responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/production responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/master [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/master [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/master responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/master responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/development [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/development [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/wtree/refs/heads/development responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/remotes/origin/development responded with status code 404
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/master [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/master responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/production [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/staging [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/development [404]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/main [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/staging responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/production responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/development responded with status code 404
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/refs/wip/index/refs/heads/main responded with status code 404
+[-] Finding packs
+[-] Finding objects
+[-] Fetching objects
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/35/f1b2aaac40ed96961b0a6f2be362ca1562a9c6 [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/d0/6c5b7d215e72e9555af886ea064b9c9b4fe7d4 [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/35/02fb0c8e3e05d4afcec1d48acf3903f728ca10 [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/93/ba4c2f9691d4b49a2cf1fcb87da693c8533b55 [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/2a/f9ed02ee9962084014b9f787c42e63c895beeb [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/7d/5a0582f7cf4f156c6dc46f05c3aeabc62e03ae [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/4d/30a7bafd9f39d016ea05c3c06f2642775c4656 [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/00/00000000000000000000000000000000000000 [404]
+[-] https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/00/00000000000000000000000000000000000000 responded with status code 404
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/5c/71bcbc56d8b8061a5b6124089583ceb1d3d1f6 [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/4c/4b98dc7b8c14497adb7d4a3d974e965bcd145f [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/81/1918fdfb1385bd3a7bfe71e04878eb5218396b [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/d5/59684d70abb7e305dfd30f5e132fe1b506f65c [200]
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/c9/cb3194d46574a8f7da2fe8abfcd1068a99fa7c [200]
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'uhyfmune56m5tukt.t.ctf.tg'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[-] Fetching https://uhyfmune56m5tukt.t.ctf.tg/.git/objects/e3/01a364f3a13b3bcc3dd10145d9ab00c29f1bad [200]
+[-] Running git checkout .
+
+[COMMAND] git -C /tmp/be_git log --all --oneline
+4d30a7b Production release - cleaned up debug files
+3502fb0 Updated documentation and added debug logs
+2af9ed0 Added encrypted backup file
+d06c5b7 Initial commit: Added README Password hint: The password is 'git_history_rules'. This one is very long and so difficult to remind. I have to change it with one easy.
+
+
+[COMMAND] git -C /tmp/be_git grep -I -n -i -E NCTF|flag|secret|password HEAD
+
+
+[COMMAND] git -C /tmp/be_git log --all -p -- .
+commit 4d30a7bafd9f39d016ea05c3c06f2642775c4656
+Author: CTF Challenge <ctf@challenge.com>
+Date:   Sat Nov 7 17:48:56 2026 +0000
+
+    Production release - cleaned up debug files
+
+diff --git a/README.md b/README.md
+index e301a36..7d5a058 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-# Updated README
++Production ready
+
+commit 3502fb0c8e3e05d4afcec1d48acf3903f728ca10
+Author: CTF Challenge <ctf@challenge.com>
+Date:   Sat Nov 7 17:48:56 2026 +0000
+
+    Updated documentation and added debug logs
+
+diff --git a/README.md b/README.md
+index 811918f..e301a36 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-Initial project setup
++# Updated README
+diff --git a/debug.log b/debug.log
+new file mode 100644
+index 0000000..93ba4c2
+--- /dev/null
++++ b/debug.log
+@@ -0,0 +1 @@
++Debug mode enabled
+
+commit 2af9ed02ee9962084014b9f787c42e63c895beeb
+Author: CTF Challenge <ctf@challenge.com>
+Date:   Sat Nov 7 17:48:56 2026 +0000
+
+    Added encrypted backup file
+
+diff --git a/backup.zip b/backup.zip
+new file mode 100644
+index 0000000..35f1b2a
+Binary files /dev/null and b/backup.zip differ
+
+commit d06c5b7d215e72e9555af886ea064b9c9b4fe7d4
+Author: CTF Challenge <ctf@challenge.com>
+Date:   Sat Nov 7 17:48:56 2026 +0000
+
+    Initial commit: Added README
+    Password hint: The password is 'git_history_rules'. This one is very long and so difficult to remind. I have to change it with one easy.
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..811918f
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++Initial project setup
+
+
+[FSCK] 
+
+[*] Terminé. Vérifier les sorties.
+                                                                                                                       
+┌──(xha
