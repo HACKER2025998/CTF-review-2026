@@ -10,15 +10,16 @@ A structured archive of the CTF challenges played in **2026**: every challenge h
 |---|---|
 | [NCTF26 — Togo National CTF 2026](#nctf26--togo-national-ctf-2026) | 525 |
 | [ECOWAS CTF 2026](#ecowas-ctf-2026) | 25 |
+| [RedX (RedReaper) Qualification 2026](#redx-redreaper-qualification-2026) | 57 |
 | [HackDCTF 2026](#hackdctf-2026) | 3 |
 | [Cyberini](#cyberini) | 4 |
 | [TryHackMe](#tryhackme) | 1 |
 | [BDSec](#bdsec) | 1 |
 | [Root-Me](#root-me) | 13 |
 | [Unsorted 2026](#unsorted-2026) | 35 |
-| **Total** | **607** |
+| **Total** | **664** |
 
-Status: ✅ solved (flag recovered) **56** · 📝 write-up / scripts in progress **25** · 📖 public write-up available **60** · 📁 files available, not solved yet **96** · ⏳ statement still to retrieve **370**
+Status: ✅ solved (flag recovered) **56** · 📝 write-up / scripts in progress **25** · 📖 public write-up available **60** · 📁 files available, not solved yet **153** · ⏳ statement still to retrieve **370**
 
 ## 🗂️ Repository layout
 
@@ -34,6 +35,7 @@ CTF-review-2026/
 │   ├── kingofthehill/              King of the Hill toolkit + write-ups
 │   ├── tools/  templates/
 ├── ECOWASCTF 2026/challenges/<category>/<challenge>/
+├── RedX Qualification 2026/challenges/<category>/<challenge>/
 ├── HackDCTF 2026/challenges/...
 ├── Other platforms/{Root-Me,TryHackMe,Cyberini,BDSec}/challenges/...
 └── Unsorted 2026/challenges/...
@@ -894,6 +896,72 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-u
 | 24 | stego | [elmina](ECOWASCTF%202026/challenges/stego/elmina/) | — | 📁 | ✔ |  |
 | 25 | stego | [kora](ECOWASCTF%202026/challenges/stego/kora/) | — | 📁 | ✔ |  |
 
+## RedX (RedReaper) Qualification 2026
+
+Online qualification round of the RedX / RedReaper CTF (27 November 2026, CTFd, flag format `RxR{...}`). All **57 challenges** archived with statement, author, difficulty and original files.
+
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+
+| # | Category | Challenge | Author | Status | 📁 | 🛠️ |
+|---|---|---|---|---|---|---|
+| 1 | ai-hacking | [gradient-ghost](RedX%20Qualification%202026/challenges/ai-hacking/gradient-ghost/) | — | 📁 | ✔ |  |
+| 2 | ai-hacking | [leaky-metadata](RedX%20Qualification%202026/challenges/ai-hacking/leaky-metadata/) | — | 📁 | ✔ |  |
+| 3 | crypto | [death-certificate](RedX%20Qualification%202026/challenges/crypto/death-certificate/) | FBI_Soldier | 📁 |  |  |
+| 4 | crypto | [knock-knock](RedX%20Qualification%202026/challenges/crypto/knock-knock/) | FBI_Soldier | 📁 |  |  |
+| 5 | crypto | [phone-home](RedX%20Qualification%202026/challenges/crypto/phone-home/) | FBI_Soldier | 📁 | ✔ |  |
+| 6 | crypto | [reaper-s-cipher](RedX%20Qualification%202026/challenges/crypto/reaper-s-cipher/) | FBI_Soldier | 📁 |  |  |
+| 7 | crypto | [two-souls-one-nonce](RedX%20Qualification%202026/challenges/crypto/two-souls-one-nonce/) | FBI_Soldier | 📁 |  |  |
+| 8 | crypto | [whispers-of-the-reaper](RedX%20Qualification%202026/challenges/crypto/whispers-of-the-reaper/) | FBI_Soldier | 📁 |  |  |
+| 9 | dfir | [amanapay](RedX%20Qualification%202026/challenges/dfir/amanapay/) | Nova0x | 📁 | ✔ |  |
+| 10 | dfir | [last-backup](RedX%20Qualification%202026/challenges/dfir/last-backup/) | Nova0x | 📁 |  |  |
+| 11 | dfir | [meridian-handoff](RedX%20Qualification%202026/challenges/dfir/meridian-handoff/) | Nova0x | 📁 |  |  |
+| 12 | dfir | [only-human](RedX%20Qualification%202026/challenges/dfir/only-human/) | Nova0x | 📁 | ✔ |  |
+| 13 | dfir | [phantom](RedX%20Qualification%202026/challenges/dfir/phantom/) | odytr | 📁 | ✔ |  |
+| 14 | dfir | [robben-s](RedX%20Qualification%202026/challenges/dfir/robben-s/) | odytr | 📁 | ✔ |  |
+| 15 | dfir | [silent-primary](RedX%20Qualification%202026/challenges/dfir/silent-primary/) | Viscanturtle | 📁 | ✔ |  |
+| 16 | dfir | [spare-key](RedX%20Qualification%202026/challenges/dfir/spare-key/) | odytr | 📁 |  |  |
+| 17 | dfir | [ticket](RedX%20Qualification%202026/challenges/dfir/ticket/) | odytr | 📁 |  |  |
+| 18 | hardware | [breadboard-necromancer](RedX%20Qualification%202026/challenges/hardware/breadboard-necromancer/) | FBI_Soldier | 📁 |  |  |
+| 19 | hardware | [hearse-key-fob](RedX%20Qualification%202026/challenges/hardware/hearse-key-fob/) | FBI_Soldier | 📁 |  |  |
+| 20 | hardware | [laser-necropsy](RedX%20Qualification%202026/challenges/hardware/laser-necropsy/) | FBI_Soldier | 📁 |  |  |
+| 21 | hardware | [last-receipt](RedX%20Qualification%202026/challenges/hardware/last-receipt/) | FBI_Soldier | 📁 |  |  |
+| 22 | hardware | [relay-mausoleum](RedX%20Qualification%202026/challenges/hardware/relay-mausoleum/) | FBI_Soldier | 📁 |  |  |
+| 23 | misc | [grave-automaton](RedX%20Qualification%202026/challenges/misc/grave-automaton/) | FBI_Soldier | 📁 | ✔ |  |
+| 24 | misc | [graveyard-zoning](RedX%20Qualification%202026/challenges/misc/graveyard-zoning/) | FBI_Soldier | 📁 |  |  |
+| 25 | misc | [ouija](RedX%20Qualification%202026/challenges/misc/ouija/) | FBI_Soldier | 📁 | ✔ |  |
+| 26 | misc | [reaper-s-confessional](RedX%20Qualification%202026/challenges/misc/reaper-s-confessional/) | FBI_Soldier | 📁 |  |  |
+| 27 | misc | [reaper-s-game](RedX%20Qualification%202026/challenges/misc/reaper-s-game/) | FBI_Soldier | 📁 |  |  |
+| 28 | misc | [tombstone-typeface](RedX%20Qualification%202026/challenges/misc/tombstone-typeface/) | FBI_Soldier | 📁 | ✔ |  |
+| 29 | osint | [ashes-in-the-water](RedX%20Qualification%202026/challenges/osint/ashes-in-the-water/) | Shadowmonarch | 📁 |  |  |
+| 30 | osint | [bloody-flag](RedX%20Qualification%202026/challenges/osint/bloody-flag/) | 𝓚𝓲𝓻𝓪𝓷𝓷 | 📁 | ✔ |  |
+| 31 | osint | [russian-zombi](RedX%20Qualification%202026/challenges/osint/russian-zombi/) | 𝓚𝓲𝓻𝓪𝓷𝓷 | 📁 | ✔ |  |
+| 32 | osint | [ten-years-is-long-enough](RedX%20Qualification%202026/challenges/osint/ten-years-is-long-enough/) | Shadowmonarch | 📁 |  |  |
+| 33 | osint | [the-last-frame](RedX%20Qualification%202026/challenges/osint/the-last-frame/) | Shadowmonarch | 📁 | ✔ |  |
+| 34 | osint | [the-last-transmission](RedX%20Qualification%202026/challenges/osint/the-last-transmission/) | 𝓚𝓲𝓻𝓪𝓷𝓷 | 📁 | ✔ |  |
+| 35 | osint | [the-only-guests](RedX%20Qualification%202026/challenges/osint/the-only-guests/) | Shadowmonarch | 📁 |  |  |
+| 36 | pwn | [broken-boundaries](RedX%20Qualification%202026/challenges/pwn/broken-boundaries/) | SAK-TRA | 📁 |  |  |
+| 37 | pwn | [echoes-of-memory](RedX%20Qualification%202026/challenges/pwn/echoes-of-memory/) | SAK-TRA | 📁 | ✔ |  |
+| 38 | pwn | [heap-of-secrets](RedX%20Qualification%202026/challenges/pwn/heap-of-secrets/) | SAK-TRA | 📁 |  |  |
+| 39 | pwn | [the-forgotten-return](RedX%20Qualification%202026/challenges/pwn/the-forgotten-return/) | SAK-TRA | 📁 | ✔ |  |
+| 40 | pwn | [the-last-calling-convention](RedX%20Qualification%202026/challenges/pwn/the-last-calling-convention/) | SAK-TRA | 📁 | ✔ |  |
+| 41 | pwn | [the-silent-syscall](RedX%20Qualification%202026/challenges/pwn/the-silent-syscall/) | SAK-TRA | 📁 |  |  |
+| 42 | reverse | [bone-machine](RedX%20Qualification%202026/challenges/reverse/bone-machine/) | DRX0 | 📁 |  |  |
+| 43 | reverse | [grave-digger](RedX%20Qualification%202026/challenges/reverse/grave-digger/) | DRX0 | 📁 |  |  |
+| 44 | reverse | [lantern-signals](RedX%20Qualification%202026/challenges/reverse/lantern-signals/) | DRX0 | 📁 |  |  |
+| 45 | reverse | [phantom-thread](RedX%20Qualification%202026/challenges/reverse/phantom-thread/) | DRX0 | 📁 |  |  |
+| 46 | reverse | [puppeteer](RedX%20Qualification%202026/challenges/reverse/puppeteer/) | DRX0 | 📁 |  |  |
+| 47 | reverse | [signal-fire](RedX%20Qualification%202026/challenges/reverse/signal-fire/) | DRX0 | 📁 |  |  |
+| 48 | reverse | [the-last-rite](RedX%20Qualification%202026/challenges/reverse/the-last-rite/) | DRX0 | 📁 |  |  |
+| 49 | satellite | [the-catch-that-wasnt](RedX%20Qualification%202026/challenges/satellite/the-catch-that-wasnt/) | SAK-TRA | 📁 | ✔ |  |
+| 50 | satellite | [the-star-outside-the-crop](RedX%20Qualification%202026/challenges/satellite/the-star-outside-the-crop/) | SAK-TRA | 📁 | ✔ |  |
+| 51 | web | [boo](RedX%20Qualification%202026/challenges/web/boo/) | 0xL4!TH | 📁 |  |  |
+| 52 | web | [chainextend](RedX%20Qualification%202026/challenges/web/chainextend/) | 0xL4!TH | 📁 |  |  |
+| 53 | web | [gatehouse](RedX%20Qualification%202026/challenges/web/gatehouse/) | 0xismo | 📁 |  |  |
+| 54 | web | [pytraix](RedX%20Qualification%202026/challenges/web/pytraix/) | 0xL4!TH | 📁 |  |  |
+| 55 | web | [voltbay](RedX%20Qualification%202026/challenges/web/voltbay/) | 0xismo | 📁 |  |  |
+| 56 | web | [waybill](RedX%20Qualification%202026/challenges/web/waybill/) | 0xismo | 📁 |  |  |
+| 57 | welcome | [first-dig](RedX%20Qualification%202026/challenges/welcome/first-dig/) | — | 📁 |  |  |
+
 ## HackDCTF 2026
 
 Challenges from HackDCTF (flag format `HackDCTF{...}` / `HackCTF{...}`).
@@ -1018,5 +1086,5 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-u
 
 ## ⚖️ Credits & disclaimer
 
-All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events ended. The `*.t.ctf.tg` addresses found in write-ups were temporary instances and have expired. If you are an author or organiser and want a challenge removed, please open an issue.
+All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, the RedX / RedReaper team, HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events ended. The `*.t.ctf.tg` addresses found in write-ups were temporary instances and have expired. If you are an author or organiser and want a challenge removed, please open an issue.
 

@@ -19,6 +19,9 @@ CTFS = [  # (folder, title, description)
      'National CTF of Togo organised by CERT.tg (final in Lomé, 19–20 November 2026). '
      'The full official list of **525 challenges** is archived, each with its author.'),
     ('ECOWASCTF 2026', 'ECOWAS CTF 2026', 'Regional ECOWAS CTF (flag format `EcowasCTF{...}`), West-African themed challenges.'),
+    ('RedX Qualification 2026', 'RedX (RedReaper) Qualification 2026',
+     'Online qualification round of the RedX / RedReaper CTF (27 November 2026, CTFd, flag format `RxR{...}`). '
+     'All **57 challenges** archived with statement, author, difficulty and original files.'),
     ('HackDCTF 2026', 'HackDCTF 2026', 'Challenges from HackDCTF (flag format `HackDCTF{...}` / `HackCTF{...}`).'),
     ('Other platforms/Cyberini', 'Cyberini', 'Training challenges and write-ups from the Cyberini platform.'),
     ('Other platforms/TryHackMe', 'TryHackMe', 'TryHackMe rooms with a write-up.'),
@@ -39,6 +42,7 @@ def info(d):
     if not author or author.lower().startswith(('inconnu', 'unknown')): author = '—'
     flag = field(rd, 'Flag')
     files = (d / 'fichiers').is_dir() and any(p.name != '.gitkeep' for p in (d / 'fichiers').iterdir())
+    instance_only = not files and '## Statement' in ((d / 'sujet/enonce.md').read_text(errors='ignore') if (d / 'sujet/enonce.md').exists() else '')
     public = (d / 'solve' / 'writeup_alwil17.md').exists()
     solve = (d / 'solve').is_dir() and any(
         p.name not in ('.gitkeep', 'writeup_alwil17.md') and not (p.name == 'writeup.md' and any(t in p.read_text(errors='ignore') for t in TEMPLATE_MARK)
@@ -47,7 +51,7 @@ def info(d):
     if flag and flag != '—': status = '✅'
     elif solve: status = '📝'
     elif public: status = '📖'
-    elif files: status = '📁'
+    elif files or instance_only: status = '📁'
     else: status = '⏳'
     return author, status, files, solve or public
 
@@ -92,6 +96,7 @@ o += ['## 🗂️ Repository layout', '', '```',
       '│   ├── kingofthehill/              King of the Hill toolkit + write-ups',
       '│   ├── tools/  templates/',
       '├── ECOWASCTF 2026/challenges/<category>/<challenge>/',
+      '├── RedX Qualification 2026/challenges/<category>/<challenge>/',
       '├── HackDCTF 2026/challenges/...',
       '├── Other platforms/{Root-Me,TryHackMe,Cyberini,BDSec}/challenges/...',
       '└── Unsorted 2026/challenges/...',
@@ -168,7 +173,7 @@ o += ['## 🤝 Contributing', '',
       'They are stored as `solve/writeup_alwil17.md` with a link to the original article. Thanks to alwil17! '
       'Their flags are partially masked, as in the original articles.', '',
       '## ⚖️ Credits & disclaimer', '',
-      'All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, '
+      'All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, the RedX / RedReaper team, '
       'HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events '
       'ended. The `*.t.ctf.tg` addresses found in write-ups were temporary instances and have expired. '
       'If you are an author or organiser and want a challenge removed, please open an issue.', '']
