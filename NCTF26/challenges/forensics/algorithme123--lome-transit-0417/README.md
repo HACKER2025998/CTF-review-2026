@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - NCTF2026 review/NCTF26/challenges/misc/bus-horaires
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/lome-transit-0417/> → `solve/writeup_alwil17.md`

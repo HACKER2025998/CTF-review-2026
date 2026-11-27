@@ -4,7 +4,7 @@
 |---|---|
 | Catégorie | ai |
 | Auteur | inconnu (à compléter) |
-| Statut | sujet à retrouver |
+| Statut | write-up public disponible (alwil17), sujet à retrouver |
 | Flag | — |
 
 ## Contenu
@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - (aucune — dossier vide créé)
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/oracle-encoding-smuggle/> → `solve/writeup_alwil17.md`

@@ -39,15 +39,17 @@ def info(d):
     if not author or author.lower().startswith(('inconnu', 'unknown')): author = '—'
     flag = field(rd, 'Flag')
     files = (d / 'fichiers').is_dir() and any(p.name != '.gitkeep' for p in (d / 'fichiers').iterdir())
+    public = (d / 'solve' / 'writeup_alwil17.md').exists()
     solve = (d / 'solve').is_dir() and any(
-        p.name != '.gitkeep' and not (p.name == 'writeup.md' and any(t in p.read_text(errors='ignore') for t in TEMPLATE_MARK)
+        p.name not in ('.gitkeep', 'writeup_alwil17.md') and not (p.name == 'writeup.md' and any(t in p.read_text(errors='ignore') for t in TEMPLATE_MARK)
                                       and len(p.read_text(errors='ignore')) < 600)
         for p in (d / 'solve').iterdir())
     if flag and flag != '—': status = '✅'
     elif solve: status = '📝'
+    elif public: status = '📖'
     elif files: status = '📁'
     else: status = '⏳'
-    return author, status, files, solve
+    return author, status, files, solve or public
 
 def challenges(ctf):
     base = ROOT / ctf / 'challenges'
@@ -77,7 +79,7 @@ for folder, title, _ in CTFS:
     o.append(f'| [{title}](#{re.sub(r"[^a-z0-9 -]", "", title.lower()).replace(" ", "-")}) | {len(data[folder])} |')
 o += [f'| **Total** | **{total}** |', '',
       f'Status: ✅ solved (flag recovered) **{st["✅"]}** · 📝 write-up / scripts in progress **{st["📝"]}** · '
-      f'📁 files available, not solved yet **{st["📁"]}** · ⏳ statement still to retrieve **{st["⏳"]}**', '']
+      f'📖 public write-up available **{st["📖"]}** · 📁 files available, not solved yet **{st["📁"]}** · ⏳ statement still to retrieve **{st["⏳"]}**', '']
 o += ['## 🗂️ Repository layout', '', '```',
       'CTF-review-2026/',
       '├── README.md',
@@ -114,7 +116,7 @@ o += ['## 🚀 Usage', '', '```bash', f'git clone {REPO}.git',
       '> ⚠️ Some files are **intentionally malicious** binaries or scripts (reverse, pwn, forensics, supply-chain challenges). '
       'Only run them inside an isolated VM.', '']
 
-legend = ('Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. '
+legend = ('Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. '
           'Columns 📁 / 🛠️: challenge files / solve material present.')
 
 for folder, title, desc in CTFS:
@@ -158,6 +160,13 @@ o += ['## 🤝 Contributing', '',
       '2. Add the original files, unmodified → `fichiers/`.',
       '3. Write `solve/writeup.md` (analysis, exploitation, flag) and add the solve scripts.',
       '4. Update the status/flag in the challenge `README.md`, then run `python3 scripts/generate_readme.py`.', '',
+      '## 📖 Public write-ups by alwil17', '',
+      f'{sum(1 for v in data.values() for r in v if (r[2] / "solve/writeup_alwil17.md").exists())} NCTF26 challenges include a public write-up by '
+      '[**alwil17**](https://github.com/Alwil17), copied from <https://alwil17.github.io/ctf-writeups/> '
+      '([source](https://github.com/Alwil17/ctf-writeups)) under the MIT License — see '
+      '[`THIRD_PARTY_LICENSES/alwil17-ctf-writeups.LICENSE`](THIRD_PARTY_LICENSES/alwil17-ctf-writeups.LICENSE). '
+      'They are stored as `solve/writeup_alwil17.md` with a link to the original article. Thanks to alwil17! '
+      'Their flags are partially masked, as in the original articles.', '',
       '## ⚖️ Credits & disclaimer', '',
       'All challenges belong to their respective authors and organisers (CERT.tg for NCTF26, the ECOWAS CTF organisers, '
       'HackDCTF, Cyberini, TryHackMe, BDSec, Root-Me). This archive is published for **educational purposes** after the events '

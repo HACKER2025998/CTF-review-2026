@@ -17,3 +17,7 @@
 
   - NCTF2026 review/NCTF26/challenges/misc/Terre-et-Fibres
   - backup kali/NCTF26_WRITEUPS_DOSSIER [35] qr-festival
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/tisserands-dapaong/> → `solve/writeup_alwil17.md`

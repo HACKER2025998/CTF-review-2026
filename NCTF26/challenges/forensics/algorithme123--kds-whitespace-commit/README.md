@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - NCTF2026 review/NCTF26/challenges/forensics/kds-git-policy
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/kds-whitespace-commit/> → `solve/writeup_alwil17.md`

@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - NCTF2026 review/NCTF26/challenges/web/bibliotech-xxe
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/bibliotech/> → `solve/writeup_alwil17.md`

@@ -17,3 +17,7 @@
 
   - NCTF2026 review/NCTF26/challenges/web/linkcard-ssrf
   - backup kali/NCTF26_WRITEUPS_DOSSIER [16] isid0r3--linkcard
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/linkcard/> → `solve/writeup_alwil17.md`

@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - NCTF2026 review/NCTF26/challenges/forensics/incident-sokode
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/coupure-sokode/> → `solve/writeup_alwil17.md`

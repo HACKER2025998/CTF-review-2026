@@ -16,3 +16,7 @@
 ## Provenance (réorganisation du 27/11/2026)
 
   - backup kali/NCTF26_WRITEUPS_DOSSIER [20] lockstep
+
+## Write-up public
+
+- alwil17 : <https://alwil17.github.io/ctf-writeups/posts/lockstep/> → `solve/writeup_alwil17.md`

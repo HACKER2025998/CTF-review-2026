@@ -18,7 +18,7 @@ A structured archive of the CTF challenges played in **2026**: every challenge h
 | [Unsorted 2026](#unsorted-2026) | 35 |
 | **Total** | **607** |
 
-Status: ✅ solved (flag recovered) **56** · 📝 write-up / scripts in progress **25** · 📁 files available, not solved yet **99** · ⏳ statement still to retrieve **427**
+Status: ✅ solved (flag recovered) **56** · 📝 write-up / scripts in progress **25** · 📖 public write-up available **60** · 📁 files available, not solved yet **96** · ⏳ statement still to retrieve **370**
 
 ## 🗂️ Repository layout
 
@@ -122,7 +122,7 @@ National CTF of Togo organised by CERT.tg (final in Lomé, 19–20 November 2026
 
 ### Full challenge list
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 <details>
 <summary><b>ai</b> (13 challenges)</summary>
@@ -137,7 +137,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 6 | [mcp-manifest-audit](NCTF26/challenges/ai/mcp-manifest-audit/) | — | ⏳ |  |  |
 | 7 | [oracle-canary-decoy](NCTF26/challenges/ai/oracle-canary-decoy/) | — | ⏳ |  |  |
 | 8 | [oracle-doc-injection](NCTF26/challenges/ai/oracle-doc-injection/) | — | ⏳ |  |  |
-| 9 | [oracle-encoding-smuggle](NCTF26/challenges/ai/oracle-encoding-smuggle/) | — | ⏳ |  |  |
+| 9 | [oracle-encoding-smuggle](NCTF26/challenges/ai/oracle-encoding-smuggle/) | — | 📖 |  | ✔ |
 | 10 | [oracle-fake-system](NCTF26/challenges/ai/oracle-fake-system/) | — | ⏳ |  |  |
 | 11 | [oracle-multi-turn](NCTF26/challenges/ai/oracle-multi-turn/) | — | ⏳ |  |  |
 | 12 | [oracle-reverse-emit](NCTF26/challenges/ai/oracle-reverse-emit/) | — | ⏳ |  |  |
@@ -171,18 +171,18 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 |---|---|---|---|---|---|
 | 1 | [0xfle1j4i--cartograph](NCTF26/challenges/boot2root/0xfle1j4i--cartograph/) | 0xfle1j4i | ⏳ |  |  |
 | 2 | [0xfle1j4i--consent](NCTF26/challenges/boot2root/0xfle1j4i--consent/) | 0xfle1j4i | ⏳ |  |  |
-| 3 | [0xfle1j4i--devlog](NCTF26/challenges/boot2root/0xfle1j4i--devlog/) | 0xfle1j4i | ⏳ |  |  |
+| 3 | [0xfle1j4i--devlog](NCTF26/challenges/boot2root/0xfle1j4i--devlog/) | 0xfle1j4i | 📖 |  | ✔ |
 | 4 | [0xfle1j4i--gitforge](NCTF26/challenges/boot2root/0xfle1j4i--gitforge/) | 0xfle1j4i | ⏳ |  |  |
 | 5 | [0xfle1j4i--mailroom](NCTF26/challenges/boot2root/0xfle1j4i--mailroom/) | 0xfle1j4i | ⏳ |  |  |
 | 6 | [0xfle1j4i--quill](NCTF26/challenges/boot2root/0xfle1j4i--quill/) | 0xfle1j4i | ⏳ |  |  |
 | 7 | [0xfle1j4i--signet](NCTF26/challenges/boot2root/0xfle1j4i--signet/) | 0xfle1j4i | ⏳ |  |  |
-| 8 | [44r0nmeta--adzogbo](NCTF26/challenges/boot2root/44r0nmeta--adzogbo/) | 44r0nmeta | ⏳ |  |  |
-| 9 | [algorithme123--fret-savane-appui](NCTF26/challenges/boot2root/algorithme123--fret-savane-appui/) | algorithme123 | ⏳ |  |  |
-| 10 | [algorithme123--niamtougou-cloud](NCTF26/challenges/boot2root/algorithme123--niamtougou-cloud/) | algorithme123 | ⏳ |  |  |
-| 11 | [algorithme123--pal-maintenance](NCTF26/challenges/boot2root/algorithme123--pal-maintenance/) | algorithme123 | ⏳ |  |  |
+| 8 | [44r0nmeta--adzogbo](NCTF26/challenges/boot2root/44r0nmeta--adzogbo/) | 44r0nmeta | 📖 |  | ✔ |
+| 9 | [algorithme123--fret-savane-appui](NCTF26/challenges/boot2root/algorithme123--fret-savane-appui/) | algorithme123 | 📖 |  | ✔ |
+| 10 | [algorithme123--niamtougou-cloud](NCTF26/challenges/boot2root/algorithme123--niamtougou-cloud/) | algorithme123 | 📖 |  | ✔ |
+| 11 | [algorithme123--pal-maintenance](NCTF26/challenges/boot2root/algorithme123--pal-maintenance/) | algorithme123 | 📖 |  | ✔ |
 | 12 | [boazak--adja-annuaires](NCTF26/challenges/boot2root/boazak--adja-annuaires/) | boazak | ⏳ |  |  |
 | 13 | [boazak--agou](NCTF26/challenges/boot2root/boazak--agou/) | boazak | ⏳ |  |  |
-| 14 | [boazak--akpan-backup](NCTF26/challenges/boot2root/boazak--akpan-backup/) | boazak | ⏳ |  |  |
+| 14 | [boazak--akpan-backup](NCTF26/challenges/boot2root/boazak--akpan-backup/) | boazak | 📖 |  | ✔ |
 | 15 | [boazak--alome-commande](NCTF26/challenges/boot2root/boazak--alome-commande/) | boazak | ⏳ |  |  |
 | 16 | [boazak--ayimolou-session](NCTF26/challenges/boot2root/boazak--ayimolou-session/) | boazak | ⏳ |  |  |
 | 17 | [boazak--cinkasse](NCTF26/challenges/boot2root/boazak--cinkasse/) | boazak | ⏳ |  |  |
@@ -193,17 +193,17 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 22 | [boazak--kpeme](NCTF26/challenges/boot2root/boazak--kpeme/) | boazak | ⏳ |  |  |
 | 23 | [boazak--nadoba](NCTF26/challenges/boot2root/boazak--nadoba/) | boazak | ⏳ |  |  |
 | 24 | [boazak--sotram-runner](NCTF26/challenges/boot2root/boazak--sotram-runner/) | boazak | ⏳ |  |  |
-| 25 | [boot2root-c2](NCTF26/challenges/boot2root/boot2root-c2/) | — | ⏳ |  |  |
+| 25 | [boot2root-c2](NCTF26/challenges/boot2root/boot2root-c2/) | — | 📖 |  | ✔ |
 | 26 | [boot2root-linux](NCTF26/challenges/boot2root/boot2root-linux/) | — | ⏳ |  |  |
 | 27 | [boot2root-ssh](NCTF26/challenges/boot2root/boot2root-ssh/) | — | ⏳ |  |  |
-| 28 | [komisergio--agbadza](NCTF26/challenges/boot2root/komisergio--agbadza/) | komisergio | ⏳ |  |  |
+| 28 | [komisergio--agbadza](NCTF26/challenges/boot2root/komisergio--agbadza/) | komisergio | 📖 |  | ✔ |
 | 29 | [komisergio--aneho-b2r](NCTF26/challenges/boot2root/komisergio--aneho-b2r/) | komisergio | ⏳ |  |  |
-| 30 | [komisergio--ayimolou](NCTF26/challenges/boot2root/komisergio--ayimolou/) | komisergio | ⏳ |  |  |
-| 31 | [komisergio--bassar](NCTF26/challenges/boot2root/komisergio--bassar/) | komisergio | ⏳ |  |  |
-| 32 | [komisergio--cda](NCTF26/challenges/boot2root/komisergio--cda/) | komisergio | ⏳ |  |  |
-| 33 | [komisergio--djaradjara](NCTF26/challenges/boot2root/komisergio--djaradjara/) | komisergio | ⏳ |  |  |
-| 34 | [komisergio--pala](NCTF26/challenges/boot2root/komisergio--pala/) | komisergio | ⏳ |  |  |
-| 35 | [komisergio--redteam-tg](NCTF26/challenges/boot2root/komisergio--redteam-tg/) | komisergio | ⏳ |  |  |
+| 30 | [komisergio--ayimolou](NCTF26/challenges/boot2root/komisergio--ayimolou/) | komisergio | 📖 |  | ✔ |
+| 31 | [komisergio--bassar](NCTF26/challenges/boot2root/komisergio--bassar/) | komisergio | 📖 |  | ✔ |
+| 32 | [komisergio--cda](NCTF26/challenges/boot2root/komisergio--cda/) | komisergio | 📖 |  | ✔ |
+| 33 | [komisergio--djaradjara](NCTF26/challenges/boot2root/komisergio--djaradjara/) | komisergio | 📖 |  | ✔ |
+| 34 | [komisergio--pala](NCTF26/challenges/boot2root/komisergio--pala/) | komisergio | 📖 |  | ✔ |
+| 35 | [komisergio--redteam-tg](NCTF26/challenges/boot2root/komisergio--redteam-tg/) | komisergio | 📖 |  | ✔ |
 | 36 | [r06u3-004--kpakpa](NCTF26/challenges/boot2root/r06u3-004--kpakpa/) | r06u3-004 | ⏳ |  |  |
 
 </details>
@@ -282,8 +282,8 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--dzesido](NCTF26/challenges/crypto/44r0nmeta--dzesido/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [affine-relay](NCTF26/challenges/crypto/affine-relay/) | — | ⏳ |  |  |
-| 3 | [algorithme123--kpepsi-clearing](NCTF26/challenges/crypto/algorithme123--kpepsi-clearing/) | algorithme123 | ⏳ |  |  |
-| 4 | [algorithme123--togocel-legacy](NCTF26/challenges/crypto/algorithme123--togocel-legacy/) | algorithme123 | ⏳ |  |  |
+| 3 | [algorithme123--kpepsi-clearing](NCTF26/challenges/crypto/algorithme123--kpepsi-clearing/) | algorithme123 | 📖 |  | ✔ |
+| 4 | [algorithme123--togocel-legacy](NCTF26/challenges/crypto/algorithme123--togocel-legacy/) | algorithme123 | 📖 |  | ✔ |
 | 5 | [boazak--afa](NCTF26/challenges/crypto/boazak--afa/) | boazak | ⏳ |  |  |
 | 6 | [boazak--afagnan](NCTF26/challenges/crypto/boazak--afagnan/) | boazak | 📝 |  | ✔ |
 | 7 | [boazak--agbale](NCTF26/challenges/crypto/boazak--agbale/) | boazak | 📁 | ✔ |  |
@@ -293,7 +293,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 11 | [boazak--djobokou](NCTF26/challenges/crypto/boazak--djobokou/) | boazak | ⏳ |  |  |
 | 12 | [boazak--enye](NCTF26/challenges/crypto/boazak--enye/) | boazak | 📝 |  | ✔ |
 | 13 | [boazak--fufu](NCTF26/challenges/crypto/boazak--fufu/) | boazak | ✅ |  | ✔ |
-| 14 | [boazak--glidji](NCTF26/challenges/crypto/boazak--glidji/) | boazak | ⏳ |  |  |
+| 14 | [boazak--glidji](NCTF26/challenges/crypto/boazak--glidji/) | boazak | 📖 |  | ✔ |
 | 15 | [boazak--kara](NCTF26/challenges/crypto/boazak--kara/) | boazak | ⏳ |  |  |
 | 16 | [boazak--klo](NCTF26/challenges/crypto/boazak--klo/) | boazak | ⏳ |  |  |
 | 17 | [boazak--koklo](NCTF26/challenges/crypto/boazak--koklo/) | boazak | ⏳ |  |  |
@@ -306,14 +306,14 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 24 | [boazak--sakpata](NCTF26/challenges/crypto/boazak--sakpata/) | boazak | ⏳ |  |  |
 | 25 | [boazak--sodabi](NCTF26/challenges/crypto/boazak--sodabi/) | boazak | ✅ | ✔ | ✔ |
 | 26 | [boazak--sokode-crypto](NCTF26/challenges/crypto/boazak--sokode-crypto/) | boazak | 📝 | ✔ | ✔ |
-| 27 | [boazak--tchamba](NCTF26/challenges/crypto/boazak--tchamba/) | boazak | ⏳ |  |  |
+| 27 | [boazak--tchamba](NCTF26/challenges/crypto/boazak--tchamba/) | boazak | 📖 |  | ✔ |
 | 28 | [boazak--tchoukoutou](NCTF26/challenges/crypto/boazak--tchoukoutou/) | boazak | ⏳ |  |  |
 | 29 | [boazak--venovi](NCTF26/challenges/crypto/boazak--venovi/) | boazak | ✅ | ✔ | ✔ |
 | 30 | [boazak--yeye](NCTF26/challenges/crypto/boazak--yeye/) | boazak | ✅ |  | ✔ |
 | 31 | [boazak--zangbeto](NCTF26/challenges/crypto/boazak--zangbeto/) | boazak | ⏳ |  |  |
 | 32 | [commit-bias](NCTF26/challenges/crypto/commit-bias/) | — | ⏳ |  |  |
 | 33 | [ecb-echo](NCTF26/challenges/crypto/ecb-echo/) | — | ⏳ |  |  |
-| 34 | [en2eavor--big-bang](NCTF26/challenges/crypto/en2eavor--big-bang/) | en2eavor | ⏳ |  |  |
+| 34 | [en2eavor--big-bang](NCTF26/challenges/crypto/en2eavor--big-bang/) | en2eavor | 📖 |  | ✔ |
 | 35 | [fermat-twins](NCTF26/challenges/crypto/fermat-twins/) | — | ✅ | ✔ | ✔ |
 | 36 | [gf2-cipher](NCTF26/challenges/crypto/gf2-cipher/) | — | ⏳ |  |  |
 | 37 | [glue-and-extend](NCTF26/challenges/crypto/glue-and-extend/) | — | ⏳ |  |  |
@@ -390,7 +390,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 2 | [defense-binaire-guichet](NCTF26/challenges/defense/defense-binaire-guichet/) | — | ⏳ |  |  |
 | 3 | [defense-linux-ceet](NCTF26/challenges/defense/defense-linux-ceet/) | — | ⏳ |  |  |
 | 4 | [defense-wallet-akpe](NCTF26/challenges/defense/defense-wallet-akpe/) | — | ⏳ |  |  |
-| 5 | [defense-web-agbadja](NCTF26/challenges/defense/defense-web-agbadja/) | — | ⏳ |  |  |
+| 5 | [defense-web-agbadja](NCTF26/challenges/defense/defense-web-agbadja/) | — | 📖 |  | ✔ |
 
 </details>
 
@@ -399,10 +399,10 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [algorithme123--coupure-sokode](NCTF26/challenges/forensics/algorithme123--coupure-sokode/) | algorithme123 | 📁 | ✔ |  |
-| 2 | [algorithme123--kds-whitespace-commit](NCTF26/challenges/forensics/algorithme123--kds-whitespace-commit/) | algorithme123 | 📁 | ✔ |  |
-| 3 | [algorithme123--lome-transit-0417](NCTF26/challenges/forensics/algorithme123--lome-transit-0417/) | algorithme123 | 📁 | ✔ |  |
-| 4 | [algorithme123--zemidjan-classement](NCTF26/challenges/forensics/algorithme123--zemidjan-classement/) | algorithme123 | ⏳ |  |  |
+| 1 | [algorithme123--coupure-sokode](NCTF26/challenges/forensics/algorithme123--coupure-sokode/) | algorithme123 | 📖 | ✔ | ✔ |
+| 2 | [algorithme123--kds-whitespace-commit](NCTF26/challenges/forensics/algorithme123--kds-whitespace-commit/) | algorithme123 | 📖 | ✔ | ✔ |
+| 3 | [algorithme123--lome-transit-0417](NCTF26/challenges/forensics/algorithme123--lome-transit-0417/) | algorithme123 | 📖 | ✔ | ✔ |
+| 4 | [algorithme123--zemidjan-classement](NCTF26/challenges/forensics/algorithme123--zemidjan-classement/) | algorithme123 | 📖 |  | ✔ |
 | 5 | [Audio FSK](NCTF26/challenges/forensics/Audio%20FSK/) | — | 📁 | ✔ |  |
 | 6 | [auth-timeline](NCTF26/challenges/forensics/auth-timeline/) | — | ✅ | ✔ | ✔ |
 | 7 | [boazak--bras-arme](NCTF26/challenges/forensics/boazak--bras-arme/) | boazak | ⏳ |  |  |
@@ -493,11 +493,11 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 1 | [44r0nmeta--neverlost](NCTF26/challenges/misc/44r0nmeta--neverlost/) | 44r0nmeta | ⏳ |  |  |
 | 2 | [boazak--djagble](NCTF26/challenges/misc/boazak--djagble/) | boazak | ⏳ |  |  |
 | 3 | [boazak--petit-fally](NCTF26/challenges/misc/boazak--petit-fally/) | boazak | ⏳ |  |  |
-| 4 | [en2eavor--princess-habits](NCTF26/challenges/misc/en2eavor--princess-habits/) | en2eavor | ⏳ |  |  |
+| 4 | [en2eavor--princess-habits](NCTF26/challenges/misc/en2eavor--princess-habits/) | en2eavor | 📖 |  | ✔ |
 | 5 | [esolang-jail](NCTF26/challenges/misc/esolang-jail/) | — | ⏳ |  |  |
 | 6 | [Heartbeat](NCTF26/challenges/misc/Heartbeat/) | — | ⏳ |  |  |
 | 7 | [oxdefault--les-murmures-de-l-omni](NCTF26/challenges/misc/oxdefault--les-murmures-de-l-omni/) | oxdefault | ⏳ |  |  |
-| 8 | [oxdefault--overheard](NCTF26/challenges/misc/oxdefault--overheard/) | oxdefault | ⏳ |  |  |
+| 8 | [oxdefault--overheard](NCTF26/challenges/misc/oxdefault--overheard/) | oxdefault | 📖 |  | ✔ |
 | 9 | [oxdefault--perfect](NCTF26/challenges/misc/oxdefault--perfect/) | oxdefault | ⏳ |  |  |
 | 10 | [the-darknova--bgp-rpki-blackhole](NCTF26/challenges/misc/the-darknova--bgp-rpki-blackhole/) | the-darknova | ⏳ |  |  |
 | 11 | [the-darknova--git-ofs-ouroboros](NCTF26/challenges/misc/the-darknova--git-ofs-ouroboros/) | the-darknova | ⏳ |  |  |
@@ -575,17 +575,17 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [algorithme123--memoire-togo-fiche](NCTF26/challenges/osint/algorithme123--memoire-togo-fiche/) | algorithme123 | ⏳ |  |  |
+| 1 | [algorithme123--memoire-togo-fiche](NCTF26/challenges/osint/algorithme123--memoire-togo-fiche/) | algorithme123 | 📖 |  | ✔ |
 | 2 | [cred-reuse](NCTF26/challenges/osint/cred-reuse/) | — | ✅ | ✔ | ✔ |
 | 3 | [ct-log-pivot](NCTF26/challenges/osint/ct-log-pivot/) | — | ⏳ |  |  |
 | 4 | [device-backup-geo](NCTF26/challenges/osint/device-backup-geo/) | — | ⏳ |  |  |
 | 5 | [doc-metadata](NCTF26/challenges/osint/doc-metadata/) | — | ✅ | ✔ | ✔ |
-| 6 | [en2eavor--glingo](NCTF26/challenges/osint/en2eavor--glingo/) | en2eavor | ⏳ |  |  |
+| 6 | [en2eavor--glingo](NCTF26/challenges/osint/en2eavor--glingo/) | en2eavor | 📖 |  | ✔ |
 | 7 | [entity-graph](NCTF26/challenges/osint/entity-graph/) | — | ⏳ |  |  |
 | 8 | [exif-triangulation](NCTF26/challenges/osint/exif-triangulation/) | — | ⏳ |  |  |
 | 9 | [fullaccess5--alerte-uvci](NCTF26/challenges/osint/fullaccess5--alerte-uvci/) | fullaccess5 | ⏳ |  |  |
 | 10 | [r06u3-004--histoire-vivi](NCTF26/challenges/osint/r06u3-004--histoire-vivi/) | r06u3-004 | ⏳ |  |  |
-| 11 | [r06u3-004--osint-vivi-sre](NCTF26/challenges/osint/r06u3-004--osint-vivi-sre/) | r06u3-004 | ⏳ |  |  |
+| 11 | [r06u3-004--osint-vivi-sre](NCTF26/challenges/osint/r06u3-004--osint-vivi-sre/) | r06u3-004 | 📖 |  | ✔ |
 | 12 | [social-export](NCTF26/challenges/osint/social-export/) | — | ⏳ |  |  |
 | 13 | [wayback-diff](NCTF26/challenges/osint/wayback-diff/) | — | ⏳ |  |  |
 
@@ -598,7 +598,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 |---|---|---|---|---|---|
 | 1 | [congruence-vault](NCTF26/challenges/ppc/congruence-vault/) | — | ⏳ |  |  |
 | 2 | [dfa-oracle](NCTF26/challenges/ppc/dfa-oracle/) | — | ⏳ |  |  |
-| 3 | [dijkstra-relay](NCTF26/challenges/ppc/dijkstra-relay/) | — | ⏳ |  |  |
+| 3 | [dijkstra-relay](NCTF26/challenges/ppc/dijkstra-relay/) | — | 📖 |  | ✔ |
 | 4 | [hull-cipher](NCTF26/challenges/ppc/hull-cipher/) | — | ✅ | ✔ | ✔ |
 | 5 | [knapsack-locker](NCTF26/challenges/ppc/knapsack-locker/) | — | ⏳ |  |  |
 | 6 | [life-decode](NCTF26/challenges/ppc/life-decode/) | — | ⏳ |  |  |
@@ -614,14 +614,14 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [44r0nmeta--dzitri](NCTF26/challenges/pwn/44r0nmeta--dzitri/) | 44r0nmeta | ⏳ |  |  |
-| 2 | [algorithme123--aneho-manifestd](NCTF26/challenges/pwn/algorithme123--aneho-manifestd/) | algorithme123 | ⏳ |  |  |
-| 3 | [boazak--kande-heap](NCTF26/challenges/pwn/boazak--kande-heap/) | boazak | ⏳ |  |  |
+| 1 | [44r0nmeta--dzitri](NCTF26/challenges/pwn/44r0nmeta--dzitri/) | 44r0nmeta | 📖 |  | ✔ |
+| 2 | [algorithme123--aneho-manifestd](NCTF26/challenges/pwn/algorithme123--aneho-manifestd/) | algorithme123 | 📖 |  | ✔ |
+| 3 | [boazak--kande-heap](NCTF26/challenges/pwn/boazak--kande-heap/) | boazak | 📖 |  | ✔ |
 | 4 | [boazak--niamtougou-fmt](NCTF26/challenges/pwn/boazak--niamtougou-fmt/) | boazak | ⏳ |  |  |
 | 5 | [bridged-protoparse](NCTF26/challenges/pwn/bridged-protoparse/) | — | ⏳ |  |  |
 | 6 | [bss-admin-flip](NCTF26/challenges/pwn/bss-admin-flip/) | — | ✅ | ✔ | ✔ |
 | 7 | [en2eavor--pew-pew](NCTF26/challenges/pwn/en2eavor--pew-pew/) | en2eavor | ⏳ |  |  |
-| 8 | [fmt-key-leak](NCTF26/challenges/pwn/fmt-key-leak/) | — | ⏳ |  |  |
+| 8 | [fmt-key-leak](NCTF26/challenges/pwn/fmt-key-leak/) | — | 📖 |  | ✔ |
 | 9 | [format-string-101](NCTF26/challenges/pwn/format-string-101/) | — | 📁 | ✔ |  |
 | 10 | [heap-note](NCTF26/challenges/pwn/heap-note/) | — | ⏳ |  |  |
 | 11 | [komisergio--koutammakou](NCTF26/challenges/pwn/komisergio--koutammakou/) | komisergio | ⏳ |  |  |
@@ -645,7 +645,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
 | 1 | [44r0nmeta--wotowoto](NCTF26/challenges/reverse/44r0nmeta--wotowoto/) | 44r0nmeta | ⏳ |  |  |
-| 2 | [algorithme123--kara-express-billet](NCTF26/challenges/reverse/algorithme123--kara-express-billet/) | algorithme123 | ⏳ |  |  |
+| 2 | [algorithme123--kara-express-billet](NCTF26/challenges/reverse/algorithme123--kara-express-billet/) | algorithme123 | 📖 |  | ✔ |
 | 3 | [boazak--agbelouve](NCTF26/challenges/reverse/boazak--agbelouve/) | boazak | 📝 | ✔ | ✔ |
 | 4 | [boazak--blitta-packer](NCTF26/challenges/reverse/boazak--blitta-packer/) | boazak | 📁 | ✔ |  |
 | 5 | [boazak--dankpen-wasm](NCTF26/challenges/reverse/boazak--dankpen-wasm/) | boazak | ⏳ |  |  |
@@ -683,11 +683,11 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 |---|---|---|---|---|---|
 | 1 | [algorithme123--atakpame-zero-width](NCTF26/challenges/stego/algorithme123--atakpame-zero-width/) | algorithme123 | ⏳ |  |  |
 | 2 | [algorithme123--greffe-espaces-lome](NCTF26/challenges/stego/algorithme123--greffe-espaces-lome/) | algorithme123 | ✅ | ✔ | ✔ |
-| 3 | [algorithme123--rn1-last-photo](NCTF26/challenges/stego/algorithme123--rn1-last-photo/) | algorithme123 | ⏳ |  |  |
+| 3 | [algorithme123--rn1-last-photo](NCTF26/challenges/stego/algorithme123--rn1-last-photo/) | algorithme123 | 📖 |  | ✔ |
 | 4 | [algorithme123--tisserands-dapaong](NCTF26/challenges/stego/algorithme123--tisserands-dapaong/) | algorithme123 | ✅ | ✔ | ✔ |
 | 5 | [boazak--kabou](NCTF26/challenges/stego/boazak--kabou/) | boazak | ✅ | ✔ | ✔ |
 | 6 | [dtmf-dial](NCTF26/challenges/stego/dtmf-dial/) | — | ⏳ |  |  |
-| 7 | [en2eavor--sayen-game](NCTF26/challenges/stego/en2eavor--sayen-game/) | en2eavor | ⏳ |  |  |
+| 7 | [en2eavor--sayen-game](NCTF26/challenges/stego/en2eavor--sayen-game/) | en2eavor | 📖 |  | ✔ |
 | 8 | [layered-png](NCTF26/challenges/stego/layered-png/) | — | ⏳ |  |  |
 | 9 | [lsb-bmp](NCTF26/challenges/stego/lsb-bmp/) | — | ✅ | ✔ | ✔ |
 | 10 | [png-text-chunk](NCTF26/challenges/stego/png-text-chunk/) | — | ⏳ |  |  |
@@ -732,12 +732,12 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 4 | [bridged-envreuse](NCTF26/challenges/sysadmin/bridged-envreuse/) | — | ⏳ |  |  |
 | 5 | [env-forge](NCTF26/challenges/sysadmin/env-forge/) | — | ⏳ |  |  |
 | 6 | [mask-slip](NCTF26/challenges/sysadmin/mask-slip/) | — | ⏳ |  |  |
-| 7 | [rbac-reveal](NCTF26/challenges/sysadmin/rbac-reveal/) | — | ⏳ |  |  |
+| 7 | [rbac-reveal](NCTF26/challenges/sysadmin/rbac-reveal/) | — | 📖 |  | ✔ |
 | 8 | [rotate-root](NCTF26/challenges/sysadmin/rotate-root/) | — | ⏳ |  |  |
 | 9 | [secret-slip](NCTF26/challenges/sysadmin/secret-slip/) | — | ⏳ |  |  |
 | 10 | [state-secret](NCTF26/challenges/sysadmin/state-secret/) | — | ⏳ |  |  |
-| 11 | [unit-eval](NCTF26/challenges/sysadmin/unit-eval/) | — | ⏳ |  |  |
-| 12 | [vault-reuse](NCTF26/challenges/sysadmin/vault-reuse/) | — | ⏳ |  |  |
+| 11 | [unit-eval](NCTF26/challenges/sysadmin/unit-eval/) | — | 📖 |  | ✔ |
+| 12 | [vault-reuse](NCTF26/challenges/sysadmin/vault-reuse/) | — | 📖 |  | ✔ |
 
 </details>
 
@@ -746,15 +746,15 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [atbash-cipher](NCTF26/challenges/warmup/atbash-cipher/) | — | ⏳ |  |  |
-| 2 | [base32-decode](NCTF26/challenges/warmup/base32-decode/) | — | ⏳ |  |  |
-| 3 | [base64-decode](NCTF26/challenges/warmup/base64-decode/) | — | ⏳ |  |  |
-| 4 | [base85-decode](NCTF26/challenges/warmup/base85-decode/) | — | ⏳ |  |  |
+| 1 | [atbash-cipher](NCTF26/challenges/warmup/atbash-cipher/) | — | 📖 |  | ✔ |
+| 2 | [base32-decode](NCTF26/challenges/warmup/base32-decode/) | — | 📖 |  | ✔ |
+| 3 | [base64-decode](NCTF26/challenges/warmup/base64-decode/) | — | 📖 |  | ✔ |
+| 4 | [base85-decode](NCTF26/challenges/warmup/base85-decode/) | — | 📖 |  | ✔ |
 | 5 | [binary-ascii](NCTF26/challenges/warmup/binary-ascii/) | — | ✅ | ✔ | ✔ |
-| 6 | [csv-cell](NCTF26/challenges/warmup/csv-cell/) | — | ⏳ |  |  |
+| 6 | [csv-cell](NCTF26/challenges/warmup/csv-cell/) | — | 📖 |  | ✔ |
 | 7 | [hex-decode](NCTF26/challenges/warmup/hex-decode/) | — | ⏳ |  |  |
-| 8 | [html-entities](NCTF26/challenges/warmup/html-entities/) | — | ⏳ |  |  |
-| 9 | [morse-code](NCTF26/challenges/warmup/morse-code/) | — | ⏳ |  |  |
+| 8 | [html-entities](NCTF26/challenges/warmup/html-entities/) | — | 📖 |  | ✔ |
+| 9 | [morse-code](NCTF26/challenges/warmup/morse-code/) | — | 📖 |  | ✔ |
 | 10 | [reverse-string](NCTF26/challenges/warmup/reverse-string/) | — | ⏳ |  |  |
 | 11 | [rot13-decode](NCTF26/challenges/warmup/rot13-decode/) | — | ⏳ |  |  |
 | 12 | [rot47-decode](NCTF26/challenges/warmup/rot47-decode/) | — | ✅ | ✔ | ✔ |
@@ -770,16 +770,16 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 | # | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|
-| 1 | [44r0nmeta--flex](NCTF26/challenges/web/44r0nmeta--flex/) | 44r0nmeta | ⏳ |  |  |
-| 2 | [44r0nmeta--kiyena](NCTF26/challenges/web/44r0nmeta--kiyena/) | 44r0nmeta | ⏳ |  |  |
-| 3 | [algorithme123--marche-lome-carnet](NCTF26/challenges/web/algorithme123--marche-lome-carnet/) | algorithme123 | ⏳ |  |  |
-| 4 | [algorithme123--radio-kloto](NCTF26/challenges/web/algorithme123--radio-kloto/) | algorithme123 | ⏳ |  |  |
+| 1 | [44r0nmeta--flex](NCTF26/challenges/web/44r0nmeta--flex/) | 44r0nmeta | 📖 |  | ✔ |
+| 2 | [44r0nmeta--kiyena](NCTF26/challenges/web/44r0nmeta--kiyena/) | 44r0nmeta | 📖 |  | ✔ |
+| 3 | [algorithme123--marche-lome-carnet](NCTF26/challenges/web/algorithme123--marche-lome-carnet/) | algorithme123 | 📖 |  | ✔ |
+| 4 | [algorithme123--radio-kloto](NCTF26/challenges/web/algorithme123--radio-kloto/) | algorithme123 | 📖 |  | ✔ |
 | 5 | [bitvault-fees](NCTF26/challenges/web/bitvault-fees/) | — | ⏳ |  |  |
 | 6 | [bitvault-refund](NCTF26/challenges/web/bitvault-refund/) | — | ⏳ |  |  |
 | 7 | [bitvault-tiers](NCTF26/challenges/web/bitvault-tiers/) | — | ⏳ |  |  |
 | 8 | [boazak--adeta](NCTF26/challenges/web/boazak--adeta/) | boazak | ⏳ |  |  |
 | 9 | [boazak--agbodrafo](NCTF26/challenges/web/boazak--agbodrafo/) | boazak | ⏳ |  |  |
-| 10 | [boazak--agoe](NCTF26/challenges/web/boazak--agoe/) | boazak | ⏳ |  |  |
+| 10 | [boazak--agoe](NCTF26/challenges/web/boazak--agoe/) | boazak | 📖 |  | ✔ |
 | 11 | [boazak--agokoli](NCTF26/challenges/web/boazak--agokoli/) | boazak | ⏳ |  |  |
 | 12 | [boazak--akloa-rendus](NCTF26/challenges/web/boazak--akloa-rendus/) | boazak | ⏳ |  |  |
 | 13 | [boazak--akodessewa](NCTF26/challenges/web/boazak--akodessewa/) | boazak | ⏳ |  |  |
@@ -788,7 +788,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 16 | [boazak--aneho](NCTF26/challenges/web/boazak--aneho/) | boazak | ⏳ |  |  |
 | 17 | [boazak--anie](NCTF26/challenges/web/boazak--anie/) | boazak | ⏳ |  |  |
 | 18 | [boazak--assahoun-registre](NCTF26/challenges/web/boazak--assahoun-registre/) | boazak | ⏳ |  |  |
-| 19 | [boazak--atakpame](NCTF26/challenges/web/boazak--atakpame/) | boazak | ⏳ |  |  |
+| 19 | [boazak--atakpame](NCTF26/challenges/web/boazak--atakpame/) | boazak | 📖 |  | ✔ |
 | 20 | [boazak--be](NCTF26/challenges/web/boazak--be/) | boazak | ⏳ |  |  |
 | 21 | [boazak--dapaong](NCTF26/challenges/web/boazak--dapaong/) | boazak | ⏳ |  |  |
 | 22 | [boazak--dapaong-sso](NCTF26/challenges/web/boazak--dapaong-sso/) | boazak | ⏳ |  |  |
@@ -800,10 +800,10 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 28 | [boazak--nangbeto](NCTF26/challenges/web/boazak--nangbeto/) | boazak | ⏳ |  |  |
 | 29 | [boazak--notse](NCTF26/challenges/web/boazak--notse/) | boazak | ⏳ |  |  |
 | 30 | [boazak--notse-graphql](NCTF26/challenges/web/boazak--notse-graphql/) | boazak | ⏳ |  |  |
-| 31 | [boazak--sokode](NCTF26/challenges/web/boazak--sokode/) | boazak | ⏳ |  |  |
+| 31 | [boazak--sokode](NCTF26/challenges/web/boazak--sokode/) | boazak | 📖 |  | ✔ |
 | 32 | [boazak--togbi](NCTF26/challenges/web/boazak--togbi/) | boazak | ⏳ |  |  |
 | 33 | [boazak--togoville](NCTF26/challenges/web/boazak--togoville/) | boazak | ⏳ |  |  |
-| 34 | [boazak--tsevie](NCTF26/challenges/web/boazak--tsevie/) | boazak | ⏳ |  |  |
+| 34 | [boazak--tsevie](NCTF26/challenges/web/boazak--tsevie/) | boazak | 📖 |  | ✔ |
 | 35 | [boazak--vogan](NCTF26/challenges/web/boazak--vogan/) | boazak | 📝 |  | ✔ |
 | 36 | [boazak--vogan-cms](NCTF26/challenges/web/boazak--vogan-cms/) | boazak | ⏳ |  |  |
 | 37 | [bridged-deser](NCTF26/challenges/web/bridged-deser/) | hibris, Clawd | ✅ |  | ✔ |
@@ -819,12 +819,12 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 | 47 | [isid0r3--bibliotech](NCTF26/challenges/web/isid0r3--bibliotech/) | isid0r3 | ✅ |  | ✔ |
 | 48 | [isid0r3--carnet](NCTF26/challenges/web/isid0r3--carnet/) | isid0r3 | ✅ |  | ✔ |
 | 49 | [isid0r3--curfew](NCTF26/challenges/web/isid0r3--curfew/) | isid0r3 | 📝 |  | ✔ |
-| 50 | [isid0r3--fleuriste2](NCTF26/challenges/web/isid0r3--fleuriste2/) | isid0r3 | ⏳ |  |  |
-| 51 | [isid0r3--lazylax-ctf-challenge](NCTF26/challenges/web/isid0r3--lazylax-ctf-challenge/) | isid0r3 | ⏳ |  |  |
+| 50 | [isid0r3--fleuriste2](NCTF26/challenges/web/isid0r3--fleuriste2/) | isid0r3 | 📖 |  | ✔ |
+| 51 | [isid0r3--lazylax-ctf-challenge](NCTF26/challenges/web/isid0r3--lazylax-ctf-challenge/) | isid0r3 | 📖 |  | ✔ |
 | 52 | [isid0r3--linkcard](NCTF26/challenges/web/isid0r3--linkcard/) | isid0r3 | ✅ |  | ✔ |
 | 53 | [isid0r3--lockstep](NCTF26/challenges/web/isid0r3--lockstep/) | isid0r3 | 📝 |  | ✔ |
-| 54 | [isid0r3--nexero](NCTF26/challenges/web/isid0r3--nexero/) | isid0r3 | ⏳ |  |  |
-| 55 | [isid0r3--proformat](NCTF26/challenges/web/isid0r3--proformat/) | isid0r3 | ⏳ |  |  |
+| 54 | [isid0r3--nexero](NCTF26/challenges/web/isid0r3--nexero/) | isid0r3 | 📖 |  | ✔ |
+| 55 | [isid0r3--proformat](NCTF26/challenges/web/isid0r3--proformat/) | isid0r3 | 📖 |  | ✔ |
 | 56 | [isid0r3--quickvote-ctf-challenge](NCTF26/challenges/web/isid0r3--quickvote-ctf-challenge/) | isid0r3 | ⏳ |  |  |
 | 57 | [jwt-cousin](NCTF26/challenges/web/jwt-cousin/) | — | ⏳ |  |  |
 | 58 | [jwt-forge](NCTF26/challenges/web/jwt-forge/) | — | ⏳ |  |  |
@@ -851,12 +851,12 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 ### Unidentified NCTF26 material
 
-60 folders of NCTF26 files and write-ups not yet matched to an official challenge (see [`NCTF26/_unidentified/A_CLASSER.md`](NCTF26/_unidentified/A_CLASSER.md) for suggestions).
+62 folders of NCTF26 files and write-ups not yet matched to an official challenge (see [`NCTF26/_unidentified/A_CLASSER.md`](NCTF26/_unidentified/A_CLASSER.md) for suggestions).
 
 <details>
 <summary>Show the list</summary>
 
-[`acme-license`](NCTF26/_unidentified/acme-license/), [`AEGIS-VAULT`](NCTF26/_unidentified/AEGIS-VAULT/), [`archive-olympio`](NCTF26/_unidentified/archive-olympio/), [`bmp-zip`](NCTF26/_unidentified/bmp-zip/), [`bnat-memdump`](NCTF26/_unidentified/bnat-memdump/), [`bnat-vm`](NCTF26/_unidentified/bnat-vm/), [`breach`](NCTF26/_unidentified/breach/), [`bytecode-vm`](NCTF26/_unidentified/bytecode-vm/), [`c2pa-provenance`](NCTF26/_unidentified/c2pa-provenance/), [`c5-ecdlp`](NCTF26/_unidentified/c5-ecdlp/), [`capture-memory`](NCTF26/_unidentified/capture-memory/), [`ch33`](NCTF26/_unidentified/ch33/), [`chall`](NCTF26/_unidentified/chall/), [`chall-pie5`](NCTF26/_unidentified/chall-pie5/), [`ChannelBot`](NCTF26/_unidentified/ChannelBot/), [`checksum-match`](NCTF26/_unidentified/checksum-match/), [`desk-photo`](NCTF26/_unidentified/desk-photo/), [`ecdsa-nonce-reuse`](NCTF26/_unidentified/ecdsa-nonce-reuse/), [`entvault-apk`](NCTF26/_unidentified/entvault-apk/), [`espace-client`](NCTF26/_unidentified/espace-client/), [`exfil-capture`](NCTF26/_unidentified/exfil-capture/), [`exif-decoy`](NCTF26/_unidentified/exif-decoy/), [`finale-pdf`](NCTF26/_unidentified/finale-pdf/), [`foodctf`](NCTF26/_unidentified/foodctf/), [`fzlp`](NCTF26/_unidentified/fzlp/), [`git-web-exposure`](NCTF26/_unidentified/git-web-exposure/), [`halcyon`](NCTF26/_unidentified/halcyon/), [`hastad-broadcast`](NCTF26/_unidentified/hastad-broadcast/), [`hid-tablet`](NCTF26/_unidentified/hid-tablet/), [`host-inventory`](NCTF26/_unidentified/host-inventory/), [`incident-analysis`](NCTF26/_unidentified/incident-analysis/), [`indice`](NCTF26/_unidentified/indice/), [`internal-toolbox`](NCTF26/_unidentified/internal-toolbox/), [`jpg-zip-polyglot`](NCTF26/_unidentified/jpg-zip-polyglot/), [`lcg-stream`](NCTF26/_unidentified/lcg-stream/), [`memdump-raw`](NCTF26/_unidentified/memdump-raw/), [`moodle-foad`](NCTF26/_unidentified/moodle-foad/), [`multi-log-siem`](NCTF26/_unidentified/multi-log-siem/), [`niamtougou`](NCTF26/_unidentified/niamtougou/), [`notsie-ad`](NCTF26/_unidentified/notsie-ad/), [`path-traversal-cdn`](NCTF26/_unidentified/path-traversal-cdn/), [`pe-resources`](NCTF26/_unidentified/pe-resources/), [`php-upload-rce`](NCTF26/_unidentified/php-upload-rce/), [`pop1`](NCTF26/_unidentified/pop1/), [`prison-pipeline`](NCTF26/_unidentified/prison-pipeline/), [`prng-stream`](NCTF26/_unidentified/prng-stream/), [`replay-gate`](NCTF26/_unidentified/replay-gate/), [`rsa-coppersmith`](NCTF26/_unidentified/rsa-coppersmith/), [`rsa-leak-p`](NCTF26/_unidentified/rsa-leak-p/), [`sayen-forum-stego`](NCTF26/_unidentified/sayen-forum-stego/), [`securebank-apk`](NCTF26/_unidentified/securebank-apk/), [`sentinelbot`](NCTF26/_unidentified/sentinelbot/), [`ssrf-ec2`](NCTF26/_unidentified/ssrf-ec2/), [`svg-mosaic`](NCTF26/_unidentified/svg-mosaic/), [`validator`](NCTF26/_unidentified/validator/), [`vault-vlt1`](NCTF26/_unidentified/vault-vlt1/), [`vaultpay-apk`](NCTF26/_unidentified/vaultpay-apk/), [`void`](NCTF26/_unidentified/void/), [`wasm-checker`](NCTF26/_unidentified/wasm-checker/), [`xor-repeat`](NCTF26/_unidentified/xor-repeat/)
+[`acme-license`](NCTF26/_unidentified/acme-license/), [`AEGIS-VAULT`](NCTF26/_unidentified/AEGIS-VAULT/), [`ancy`](NCTF26/_unidentified/ancy/), [`archive-olympio`](NCTF26/_unidentified/archive-olympio/), [`bmp-zip`](NCTF26/_unidentified/bmp-zip/), [`bnat-memdump`](NCTF26/_unidentified/bnat-memdump/), [`bnat-vm`](NCTF26/_unidentified/bnat-vm/), [`breach`](NCTF26/_unidentified/breach/), [`bytecode-vm`](NCTF26/_unidentified/bytecode-vm/), [`c2pa-provenance`](NCTF26/_unidentified/c2pa-provenance/), [`c5-ecdlp`](NCTF26/_unidentified/c5-ecdlp/), [`capture-memory`](NCTF26/_unidentified/capture-memory/), [`ch33`](NCTF26/_unidentified/ch33/), [`chall`](NCTF26/_unidentified/chall/), [`chall-pie5`](NCTF26/_unidentified/chall-pie5/), [`ChannelBot`](NCTF26/_unidentified/ChannelBot/), [`checksum-match`](NCTF26/_unidentified/checksum-match/), [`desk-photo`](NCTF26/_unidentified/desk-photo/), [`ecdsa-nonce-reuse`](NCTF26/_unidentified/ecdsa-nonce-reuse/), [`entvault-apk`](NCTF26/_unidentified/entvault-apk/), [`espace-client`](NCTF26/_unidentified/espace-client/), [`exfil-capture`](NCTF26/_unidentified/exfil-capture/), [`exif-decoy`](NCTF26/_unidentified/exif-decoy/), [`finale-pdf`](NCTF26/_unidentified/finale-pdf/), [`foodctf`](NCTF26/_unidentified/foodctf/), [`fzlp`](NCTF26/_unidentified/fzlp/), [`git-web-exposure`](NCTF26/_unidentified/git-web-exposure/), [`halcyon`](NCTF26/_unidentified/halcyon/), [`hastad-broadcast`](NCTF26/_unidentified/hastad-broadcast/), [`hid-tablet`](NCTF26/_unidentified/hid-tablet/), [`host-inventory`](NCTF26/_unidentified/host-inventory/), [`incident-analysis`](NCTF26/_unidentified/incident-analysis/), [`indice`](NCTF26/_unidentified/indice/), [`internal-toolbox`](NCTF26/_unidentified/internal-toolbox/), [`jpg-zip-polyglot`](NCTF26/_unidentified/jpg-zip-polyglot/), [`lcg-stream`](NCTF26/_unidentified/lcg-stream/), [`memdump-raw`](NCTF26/_unidentified/memdump-raw/), [`moodle-foad`](NCTF26/_unidentified/moodle-foad/), [`multi-log-siem`](NCTF26/_unidentified/multi-log-siem/), [`niamtougou`](NCTF26/_unidentified/niamtougou/), [`notsie-ad`](NCTF26/_unidentified/notsie-ad/), [`path-traversal-cdn`](NCTF26/_unidentified/path-traversal-cdn/), [`pe-resources`](NCTF26/_unidentified/pe-resources/), [`php-upload-rce`](NCTF26/_unidentified/php-upload-rce/), [`pop1`](NCTF26/_unidentified/pop1/), [`prison-pipeline`](NCTF26/_unidentified/prison-pipeline/), [`prng-stream`](NCTF26/_unidentified/prng-stream/), [`replay-gate`](NCTF26/_unidentified/replay-gate/), [`ropero`](NCTF26/_unidentified/ropero/), [`rsa-coppersmith`](NCTF26/_unidentified/rsa-coppersmith/), [`rsa-leak-p`](NCTF26/_unidentified/rsa-leak-p/), [`sayen-forum-stego`](NCTF26/_unidentified/sayen-forum-stego/), [`securebank-apk`](NCTF26/_unidentified/securebank-apk/), [`sentinelbot`](NCTF26/_unidentified/sentinelbot/), [`ssrf-ec2`](NCTF26/_unidentified/ssrf-ec2/), [`svg-mosaic`](NCTF26/_unidentified/svg-mosaic/), [`validator`](NCTF26/_unidentified/validator/), [`vault-vlt1`](NCTF26/_unidentified/vault-vlt1/), [`vaultpay-apk`](NCTF26/_unidentified/vaultpay-apk/), [`void`](NCTF26/_unidentified/void/), [`wasm-checker`](NCTF26/_unidentified/wasm-checker/), [`xor-repeat`](NCTF26/_unidentified/xor-repeat/)
 
 </details>
 
@@ -864,7 +864,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Regional ECOWAS CTF (flag format `EcowasCTF{...}`), West-African themed challenges.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -898,7 +898,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Challenges from HackDCTF (flag format `HackDCTF{...}` / `HackCTF{...}`).
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -910,7 +910,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Training challenges and write-ups from the Cyberini platform.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -923,7 +923,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 TryHackMe rooms with a write-up.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -933,7 +933,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Challenges from BDSec CTF.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -943,7 +943,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Root-Me challenge files only — Root-Me rules forbid publishing solutions.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -965,7 +965,7 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 
 Challenges played in 2026 whose event has not been identified yet.
 
-Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
+Legend: ✅ solved · 📝 write-up / scripts in progress · 📖 public write-up (alwil17) · 📁 files available · ⏳ statement to retrieve. Columns 📁 / 🛠️: challenge files / solve material present.
 
 | # | Category | Challenge | Author | Status | 📁 | 🛠️ |
 |---|---|---|---|---|---|---|
@@ -1011,6 +1011,10 @@ Legend: ✅ solved · 📝 write-up / scripts in progress · 📁 files availabl
 2. Add the original files, unmodified → `fichiers/`.
 3. Write `solve/writeup.md` (analysis, exploitation, flag) and add the solve scripts.
 4. Update the status/flag in the challenge `README.md`, then run `python3 scripts/generate_readme.py`.
+
+## 📖 Public write-ups by alwil17
+
+72 NCTF26 challenges include a public write-up by [**alwil17**](https://github.com/Alwil17), copied from <https://alwil17.github.io/ctf-writeups/> ([source](https://github.com/Alwil17/ctf-writeups)) under the MIT License — see [`THIRD_PARTY_LICENSES/alwil17-ctf-writeups.LICENSE`](THIRD_PARTY_LICENSES/alwil17-ctf-writeups.LICENSE). They are stored as `solve/writeup_alwil17.md` with a link to the original article. Thanks to alwil17! Their flags are partially masked, as in the original articles.
 
 ## ⚖️ Credits & disclaimer
 
